@@ -697,6 +697,24 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   .maps .m-vn { position: absolute; left: max(-4%, calc(50% - 640px)); top: -6%; width: clamp(240px, 24vw, 330px); }
   .maps .m-be { position: absolute; right: max(-2%, calc(50% - 620px)); top: 18%; width: clamp(200px, 20vw, 270px); }
 }
+
+/* Blog post: a real card on the blog page and its own reading page */
+.soon-card.post-card { border-style: solid; text-decoration: none; color: inherit; transition: border-color .3s, transform .3s; }
+.soon-card.post-card::after { display: none; }
+.soon-card.post-card:hover { border-color: var(--accent-ink); transform: translateY(-3px); }
+.post-card .pc-img { display: block; margin: -26px -24px 20px; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px 6px 0 0; }
+.post-card .pc-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; display: block; }
+.post-card p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.post-card .tag.read::before { animation: none; }
+.post-head h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3rem, 9vw, 8rem); letter-spacing: -0.055em; line-height: 1; margin: 12px 0 0; }
+.post-k { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.post-body { padding-block: clamp(28px, 6vh, 64px) clamp(60px, 12vh, 120px); }
+.post-body .in { max-width: 720px; }
+.post-cover { margin: 0 0 clamp(32px, 6vh, 56px); }
+.post-cover img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; border-radius: 4px; }
+.post-text p { font-size: clamp(1.02rem, 1.2vw, 1.14rem); line-height: 1.8; margin: 0 0 1.15em; color: #2c2c30; }
+.post-text p:first-child::first-letter { font-family: var(--display); font-size: 3.4em; line-height: .85; float: left; padding: .06em .08em 0 0; color: var(--accent-ink); }
+.post-back { display: inline-block; margin-top: 28px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--orange); }
 </style>
 </head>
 <body>
@@ -1002,16 +1020,55 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   <section class="band soon">
     <div class="in">
       <span class="label">Blog · stories &amp; notes</span>
-      <h1 class="soon-h"><span>my blog</span><span class="s2">coming soon<span class="cur"></span></span></h1>
+      <h1 class="soon-h"><span>my blog</span><span class="s2">first story is up<span class="cur"></span></span></h1>
       <p class="soon-p">Stories from consulting, cities and the bar, written as-is. Until they land here, I share bits of them on Instagram.</p>
       <div class="soon-grid">
-        <div class="soon-card"><span class="k">( 01 ) Stories</span><h3>On having four names</h3><p>Huyền, Minh Nguyệt, pie.at.ounl and Margot.</p><span class="tag">Coming soon</span></div>
+        <a class="soon-card post-card" href="#/stories/chuyen-ke"><span class="pc-img"><img src="img/chuyen-ke.jpg" alt="" loading="lazy"></span><span class="k">( 01 ) Chuyện kể · 24.10.2026</span><h3 lang="vi">Chuyện kể</h3><p lang="vi">Sáng hôm trước đi học, các em mới bảo là, chúng ta cũng qua Bỉ được tháng rưỡi rồi, nhanh thíiii.</p><span class="tag read" data-vi="Đọc bài">Read the story</span></a>
         <div class="soon-card"><span class="k">( 02 ) Field notes</span><h3>What consulting taught me</h3><p>Small lessons from big rollouts.</p><span class="tag">Coming soon</span></div>
         <div class="soon-card"><span class="k">( 03 ) After hours</span><h3>The first 50 cocktails</h3><p>Notes from behind the bar in Hasselt.</p><span class="tag">Coming soon</span></div>
       </div>
       <div class="soon-cta"><a class="btn" href="https://www.instagram.com/pie.at.ounl" target="_blank" rel="noopener">Follow me on Instagram</a></div>
     </div>
   </section>
+</div>
+<div class="view" id="v-post" hidden>
+  <article class="post" id="post-chuyen-ke" lang="vi">
+    <section class="band cs-head post-head">
+      <div class="in">
+        <a class="cs-back" href="#/stories" aria-label="Back to the blog">←</a>
+        <span class="post-k">( Blog · 24.10.2026 )</span>
+        <h1>Chuyện kể</h1>
+      </div>
+    </section>
+    <section class="band post-body">
+      <div class="in">
+        <figure class="post-cover"><img src="img/chuyen-ke.jpg" alt="Bến thuyền Hasselt dưới nắng sáng" width="1399" height="1866" loading="lazy"></figure>
+        <div class="post-text">
+        <p>Sáng hôm trước đi học, các em mới bảo là, chúng ta cũng qua Bỉ được tháng rưỡi rồi, nhanh thíiii.</p>
+        <p>Nghe xong t quay lại bảo: Chị được gần 2 tháng rồi ấy.</p>
+        <p>Nhanh thật, thời điểm này 1 năm trước vẫn còn ôn GRE, nhưng hồi đó chả hiểu sao úp ảnh nhà ga Antwerp lên Insta… Chỉ là linh cảm thôi. Cũng là bức ảnh duy nhất úp lên để manifest.</p>
+        <p>Xoay một hồi quanh châu Âu rồi cũng về lại Bỉ. Vì tự lo học phí với chi phí mà không có học bổng nên cũng không dám làm liều.</p>
+        <p>Từ đó tới nay nhiều ký ức lắm. Dự là replay 2026 đủ cho con bé khóc cả tuần trời.</p>
+        <p>Tết 2026 về nhà, thủ thỉ với ông bà, các bác, o chú là lần ăn Tết này xong không biết lúc nào mới là cái Tết tiếp theo của con nữa.</p>
+        <p>Tết đến nhanh đi nhanh, vèo một cái đã quay lại Sài Gòn… Ban đầu tính tới hết hợp đồng mới báo các anh các chị, mà lịch nghỉ lễ 1/5 kèm kế hoạch đi chơi với E&amp;P, cùng cả cần đi lòng vòng chuẩn bị visa thêm nên thành ra nghỉ sớm. Giữa tháng 4 là đã lwd rùi.</p>
+        <p>Báo sếp nghỉ xong thì chỉ chờ bàn giao thôi, đợt đó ban đêm đi học Pha chế 2 tháng ở Quận 1, một thầy một trò tuần 3 buổi. Cũng đợt này chuyện tình yêu thuận buồm xuôi gió dần lên.</p>
+        <p>Nghỉ pha chế, nghỉ làm xong là đi học Cắm hoa fulltime, vì thế nên 1/5 lại không về lễ nữa, tận hưởng những ngày Sài Gòn vắng tanh.</p>
+        <p>Xong xuôi hết chuyện ở thành phố này là lên xe với Eat&amp;Play đi trip Phan Thiết. Chả mấy khi đủ 9 đứa… đợt đó đêm ven biển chúng t tâm sự đủ thứ chuyện, nhìn lại chính mình, nhìn lại 7-8 năm bên nhau, rồi xin lỗi nhau, cảm ơn nhau.</p>
+        <p>Đến cuối tháng 5 về đón được sinh nhật ở nhà, cùng bố mẹ, ông bà. Nhìn chung là mãn nguyện.</p>
+        <p>Qua ngày 31 tháng 5 là bắt xe thẳng ra Hà Nội, sau hơn 1 năm rời đi. Tới Hà Nội hội ngộ đủ người, anh chị em, bạn học, đồng nghiệp cũ… mà quan trọng nhất là hội ngộ với mối tình quen xa gần 2 năm. Còn nhớ đợt đó còn nhắn anh Mai nửa đêm nhờ nhổ răng khôn giúp em… Sau còn làm thêm cái răng hàm sứ mới, may mà xong xuôi trước khi bay.</p>
+        <p>Tháng 7 về nhà học tiếng Hà Lan một tháng, yên bình, tận hưởng ngày ở với bố mẹ, với em. Gần cuối tháng bố nhập viện, ở với bố gần cả tháng, hồi đó còn bảo mẹ chắc con tự phải về lấy hành lý rồi ra sân bay một mình. Ngờ đâu trước cỡ chục ngày bố khỏi bệnh, về nhà, rồi đón lễ 2/9.</p>
+        <p>Cuối tháng 8 chúng mình chọn dừng lại.</p>
+        <p>Vậy chứ cũng để chuyện qua một bên, mình đón mọi người về ăn lễ, cũng là mở tiệc trước khi bay. Đúng ngày 2/9 mình lên máy bay, đón sinh nhật (trên giấy tờ) ở Bỉ.</p>
+        <p>Qua đây cỡ mấy tuần đầu ở trong trạng thái "đơ", lúc đấy não chưa tiếp nhận được việc gì đang diễn ra… Mình giữ nhịp sinh hoạt đều đặn, xong cũng ngày qua ngày làm hết giấy tờ, cho đến Orientation week đổ về đây, mọi thứ bắt đầu vượt tầm kiểm soát, cuối tháng 10 mình đi trị liệu tâm lý.</p>
+        <p>Qua đây khỏi phải nói nữa, nhịp sống, môi trường, các mqh mới, rồi việc quay lại đi học giúp mình như thay cả hồn lẫn xác. Có hôm gọi điện cho 3 mẹ trẻ, mình bảo là: Lâu lắm rồi mới có cảm giác nói chuyện thoải mái vậy đấy. Vì bên này mọi thứ xung quanh đều phát triển, nhưng cảm giác như tách biệt khỏi chính mình.</p>
+        <p>Đầu tháng 10 đến nay mình mới đón đợt cảm xúc liên tục từ biến cố tình cảm. Như a Phi Hùng hồi xưa hay bảo cảm xúc của mình bị lag ấy… Nên từ hồi đó ngày nào mình cũng khóc, nhưng vẫn đi học, đi làm, đi ra ngoài thôi. Mỗi tội đi chơi thì mình tránh.</p>
+        <p>Cuộc sống mới, mình tiếp nhận được nhịp đi học, đi làm, có nhóm project, có thesis topic, cũng tìm student job, 1001 chuyện với bên này bên kia, rồi lớp học tiếng Hà Lan, thử vô vàn môn thể thao cũ lẫn mới, ở nhà thì nô nức với các bạn trong student housing, học lại cả cách đi chợ, đi siêu thị, cách bên này đặt lịch, làm thủ tục…</p>
+        <p>Mình viết bài này từ cảm hứng "Nói chuyện với bản thân 1 năm trước"... Lúc ấy mình vẫn ở Sài Gòn, mình nhoẻn miệng cười, ngỡ mình sống được thêm mấy kiếp người nữa rồi không chừng.</p>
+        </div>
+        <a class="post-back" href="#/stories" data-vi="← Về trang blog">← Back to the blog</a>
+      </div>
+    </section>
+  </article>
 </div>
 </main>
 
@@ -1680,8 +1737,8 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   window.addEventListener('resize', baselineRules); if (document.fonts && document.fonts.ready) document.fonts.ready.then(baselineRules);
   function route() {
     var h = location.hash, m = h.match(/^#\/(\w+)/), v = m && document.getElementById('v-' + m[1]) ? m[1] : 'home';
-    var cm = h.match(/^#\/work\/([\w-]+)/), shown = cm && fillCase(cm[1]) ? 'case' : v;
-    if (shown !== 'case') document.title = baseTitle; else document.title = document.getElementById('cs-h').textContent + ' · Margot Tran';
+    var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
+    if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
     views.forEach(function (el) { el.hidden = el.id !== 'v-' + shown; });
     document.body.setAttribute('data-view', v);
     navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/' : '#/' + v)); renderNav(a); });
