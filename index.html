@@ -297,6 +297,7 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .sun .strokes path { fill: none; stroke: var(--ink); stroke-width: 8.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .sun .strokes { transition: opacity .5s .3s; }
 .sun .png { opacity: 0; transition: opacity .9s; } .sun.drawn .png { opacity: 1; }
+.sun .orb { opacity: 0; transition: opacity .9s; } .sun.lit .orb { opacity: 1; }
 .sun.sunup .shade { transform: translate(64px, -46px); }
 .sun.sunup .disc { fill: var(--orange); }
 .sun.sunup .rays { opacity: 1; transform: none; }
@@ -754,7 +755,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
           <span class="word d2" data-vi="tư vấn &amp;">by day &amp;</span>
           <svg class="door sun pop d3" viewBox="16 10 190 190" aria-hidden="true">
             <defs><mask id="moonmask" maskUnits="userSpaceOnUse" x="0" y="0" width="230" height="230"><rect width="230" height="230" fill="#fff"/><circle class="shade" cx="129" cy="70" r="19" fill="#000"/></mask></defs>
-            <g transform="translate(2.6 -26.3)"><g class="rays" fill="none" stroke="#8facd8" stroke-width="3.2" stroke-linecap="round"><g>
+            <g class="orb" transform="translate(2.6 -26.3)"><g class="rays" fill="none" stroke="#8facd8" stroke-width="3.2" stroke-linecap="round"><g>
               <path d="M113 46v-10M113 118v10M77 82h-10M149 82h10M88 57l-7-7M138 57l7-7M88 107l-7 7M138 107l7 7"/>
             </g></g>
             <circle class="disc" cx="113" cy="82" r="24" mask="url(#moonmask)"/><g class="blush"><path d="M75 63l-8-5"/><path d="M72 79h-10"/></g></g>
@@ -1033,8 +1034,9 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
     // her drawing as drawn (original PNG), then the moon and the sun keep swapping behind its face
     var sv = document.querySelector('.hero .sun'); if (!sv || sv.dataset.done) return; sv.dataset.done = 1;
     sv.classList.add('drawn');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { sv.classList.add('sunup'); return; }
-    setTimeout(function () { sv.classList.add('sunup'); setInterval(function () { sv.classList.toggle('sunup'); }, 3800); }, 1600);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { sv.classList.add('sunup', 'lit'); return; }
+    // glass first, then the sun rises behind it, then the moon, and so on
+    setTimeout(function () { sv.classList.add('sunup', 'lit'); setInterval(function () { sv.classList.toggle('sunup'); }, 3800); }, 1400);
   }
 
   // Headline types itself in, word by word, like untold; the images pop in as their word finishes
@@ -1579,7 +1581,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   var baseTitle = document.title;
   // Home shelf, after untold's: tall books, a logo on top, the story's title down the spine
   var shelf = document.getElementById('shelf2'), ticks = document.getElementById('sb-ticks'), sbN = document.getElementById('sb-n');
-  var BOOK = { hust: [74, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u'], base: [112, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
+  var BOOK = { hust: [89, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u'], base: [112, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
   var shelfWork = WORK.slice().reverse();
   shelf.innerHTML = shelfWork.map(function (w, i) {
     var b = BOOK[w.id];
