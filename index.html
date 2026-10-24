@@ -692,6 +692,14 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .map .mdot.on .ast { fill: var(--accent-ink); } .map .mdot.on .nm { opacity: 1; }
 @media (prefers-reduced-motion: no-preference) { .map .mdot.on .ast { animation: astspin 2.4s ease-in-out infinite; } @keyframes astspin { 50% { transform: rotate(90deg) scale(1.25); } } }
 @media (max-width: 720px) { .maps { gap: 18px; margin: 28px auto 24px; } .maps .m-vn { width: 56%; } .maps .m-be { width: 38%; } }
+/* Wide screens: the maps flank the headline, Vietnam on the left and Belgium on the right, behind the text */
+@media (min-width: 980px) {
+  #t-work .in { position: relative; }
+  #t-work .in > :not(.maps) { position: relative; z-index: 1; }
+  .maps { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; z-index: 0; }
+  .maps .m-vn { position: absolute; left: max(-4%, calc(50% - 640px)); top: -6%; width: clamp(240px, 24vw, 330px); }
+  .maps .m-be { position: absolute; right: max(-2%, calc(50% - 620px)); top: 18%; width: clamp(200px, 20vw, 270px); }
+}
 </style>
 </head>
 <body>
