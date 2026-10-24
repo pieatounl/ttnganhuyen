@@ -263,7 +263,8 @@ nav.main a:hover::before { transform: scale(1); }
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding-top: calc(env(safe-area-inset-top, 0px) + 104px); padding-bottom: max(56px, 8vh); }
 .hero > .in { position: relative; width: 100%; display: flex; flex-direction: column; }
-.rules { position: absolute; inset: 0; pointer-events: none; }
+.rules { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .8s; }
+.rules.on { opacity: 1; }
 .rules div { position: absolute; height: 1px; background: color-mix(in srgb, var(--ink) 6%, transparent); transform: scaleY(.6); transform-origin: top; }
 .big { font-family: var(--display); font-weight: 400; letter-spacing: -0.055em; line-height: 1.02; font-size: clamp(2.4rem, min(9.6vw, 16.8vh), 8.7rem); margin: 0; position: relative; z-index: 1; }
 .big .ln { display: flex; align-items: baseline; gap: 0.08em; white-space: nowrap; }
@@ -320,11 +321,17 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .stack .p1 { z-index: 3; transform: translate(.04em, 0) rotate(-1deg); }
 .stack .p2 { z-index: 4; transform: translate(.16em, -.14em) rotate(4deg); }
 .stack .p3 { z-index: 1; transform: translate(.22em, .05em) rotate(12deg); }
-.stack:hover { z-index: 5; }
-/* a straight vertical spread, bent slightly like a hand fan pivoting on the left */
-.stack:hover .p0 { z-index: 5; transform: translateX(.08em) rotate(0deg); }
-.stack:hover .p1 { transform: translate(-.02em, -1.08em) rotate(-7deg); }
-.stack:hover .p2 { transform: translate(-.02em, 1em) rotate(7deg); }
+/* a straight vertical spread, bent slightly like a hand fan pivoting on the left; hover on desktop, tap to open and tap again to close on touch */
+@media (hover: hover) {
+  .stack:hover { z-index: 5; }
+  .stack:hover .p0 { z-index: 5; transform: translateX(.08em) rotate(0deg); }
+  .stack:hover .p1 { transform: translate(-.02em, -1.08em) rotate(-7deg); }
+  .stack:hover .p2 { transform: translate(-.02em, 1em) rotate(7deg); }
+}
+.stack.open { z-index: 5; }
+.stack.open .p0 { z-index: 5; transform: translateX(.08em) rotate(0deg); }
+.stack.open .p1 { transform: translate(-.02em, -1.08em) rotate(-7deg); }
+.stack.open .p2 { transform: translate(-.02em, 1em) rotate(7deg); }
 
 .big .l4 { flex-wrap: wrap; row-gap: 12px; }
 .hero .side { display: block; align-self: flex-end; margin: 0 0 0.12em 0.5em; position: relative; padding: 0 0 0 .95em; font-family: var(--body); font-size: clamp(.9rem, 1.08vw, 1.1rem); line-height: 1.55; letter-spacing: 0; white-space: normal; max-width: 380px; }
@@ -1350,7 +1357,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     [d1, d3, d4].forEach(function (d) { mk(g, 'circle', { cx: d.x, cy: d.y, r: d.r, 'class': 'dot o' }); });
     mk(g, 'circle', { cx: d5.x, cy: d5.y, r: d5.r, 'class': 'dot b' });
     // the fourth name, selected like text
-    g.querySelectorAll('.sel').forEach(function (ts) { var bb = ts.getBBox(), r = document.createElementNS(NS, 'rect'), tx = ts.closest('text'); r.setAttribute('class', 'selbg'); var sx = ts.getStartPositionOfChar(0).x, ex = ts.getEndPositionOfChar(ts.getNumberOfChars() - 1).x; r.setAttribute('x', sx - 3); r.setAttribute('y', bb.y - 1); r.setAttribute('width', ex - sx + 6); r.setAttribute('height', bb.height + 2); tx.parentNode.insertBefore(r, tx); });
+    g.querySelectorAll('.sel').forEach(function (ts) { var bb = ts.getBBox(), r = document.createElementNS(NS, 'rect'), tx = ts.closest('text'); r.setAttribute('class', 'selbg'); var sx = ts.getStartPositionOfChar(0).x, ex = ts.getEndPositionOfChar(ts.getNumberOfChars() - 1).x; r.setAttribute('x', sx - 3); var fs = parseFloat(getComputedStyle(ts).fontSize) || bb.height, by = ts.getStartPositionOfChar(0).y; r.setAttribute('y', by - fs * .86); r.setAttribute('width', ex - sx + 6); r.setAttribute('height', fs * 1.12); tx.parentNode.insertBefore(r, tx); });
     return { t: t, full: name, F: F };
   }
   function buildTu(svg, T) {
@@ -1414,7 +1421,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   function layoutHero() {
     var hr = hero.getBoundingClientRect(), box = hero.querySelector('.in').getBoundingClientRect(), html = '', last = 0;
     var l = Math.round(box.left - hr.left), w = Math.round(box.width);
-    hero.querySelectorAll('.big .ln').forEach(function (ln) { var ws = ln.querySelectorAll('.word'), w0 = ws[ws.length - 1], m = document.createElement('i'); m.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline'; w0.appendChild(m); last = m.getBoundingClientRect().bottom - hr.top; m.remove(); html += '<div style="top:' + Math.round(last) + 'px;left:' + l + 'px;width:' + w + 'px"></div>'; });
+    hero.querySelectorAll('.big .ln').forEach(function (ln) { var ws = ln.querySelectorAll('.word'), w0 = ws[ws.length - 1], m = document.createElement('i'); m.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline'; w0.appendChild(m); last = m.getBoundingClientRect().bottom - hr.top - new DOMMatrix(getComputedStyle(w0).transform).m42; m.remove(); html += '<div style="top:' + Math.round(last) + 'px;left:' + l + 'px;width:' + w + 'px"></div>'; });
     rulesEl.innerHTML = html;
     // the caption of the (*) note sits exactly on the last rule
     var sb = side.querySelector('.sb'), lastBl = hero.querySelectorAll('.big .bl'); lastBl = lastBl[lastBl.length - 1];
@@ -1447,10 +1454,14 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     sec.style.backgroundRepeat = 'no-repeat';
     sec.style.backgroundPosition = ys.map(function (v) { return '0 ' + v + 'px'; }).join(',');
   }
+  document.querySelectorAll('.stack').forEach(function (st) { st.addEventListener('click', function () { if (window.matchMedia('(hover: none)').matches) st.classList.toggle('open'); }); });
   layoutHero();
   window.addEventListener('resize', layoutHero);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutHero);
   setTimeout(layoutHero, 600);
+  // the headline settles (fonts, wrapping) in the first moments; the rules follow it and only fade in once it has settled
+  if (window.ResizeObserver) new ResizeObserver(function () { layoutHero(); }).observe(hero.querySelector('.big'));
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { setTimeout(function () { layoutHero(); rulesEl.classList.add('on'); }, 700); });
 
   // Orange menu
   var menu = document.getElementById('menu'), burger = document.getElementById('burger');
