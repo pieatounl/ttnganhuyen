@@ -339,7 +339,10 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 @media (min-width: 900px) { .hero .scroll { right: max(calc((100% - 100vw) / 2 + 14px), -64px); } }
 .hero .side .sb { display: inline-block; width: 0; height: 0; }
 /* the rule beside the note is a blinking caret, as tall as the b of "by night" */
-.hero .side::before { content: ""; position: absolute; left: 0; top: 0; height: var(--caret, 100%); width: 1.5px; background: var(--ink); animation: blink 1s steps(1) infinite; }
+.hero .side { padding-left: 0; }
+/* the headline ends in a blinking caret, as tall as the b of "by night" */
+.big .hcaret { flex: none; align-self: baseline; display: inline-block; width: max(2px, .025em); height: .74em; margin-left: .1em; background: var(--ink); }
+body.ready .big .hcaret { animation: blink 1s steps(1) infinite; }
 @media (min-width: 761px) { .hero .side { max-width: none; } .hero .side em, .hero .side .src { white-space: nowrap; } }
 .hero .side .src { display: block; color: var(--mute); font-size: .82em; letter-spacing: .02em; }
 .hero .cta { margin-top: clamp(28px, 5vh, 56px); display: flex; justify-content: center; align-items: center; gap: 18px; }
@@ -843,7 +846,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
               <span class="card c1 p0"><b data-vi="Cắm hoa">Flowers</b></span>
               <span class="card c2 p1"><b>Bartender</b></span>
               <span class="card c3 p2"><b data-vi="Ký hoạ">Sketching</b></span>
-            </span>)</span>
+            </span>)</span><span class="hcaret pop d5" aria-hidden="true"></span>
         <span class="side pop" id="side"><span data-vi='<em><span class="ast">(*)</span> “Nõn nà xinh xắn chồi đơm nụ,<br>Mơn mởn xanh tươi cành nở hoa.”</em><span class="src">- Ông nội, Nghệ An, 07/01/2006.<i class="sb"></i></span>'><em><span class="ast">(*)</span> “Nõn nà xinh xắn chồi đơm nụ,<br>Mơn mởn xanh tươi cành nở hoa.”</em><span class="src">- My grandfather, Nghệ An, 07/01/2006.<i class="sb"></i></span></span></span><span class="bl"></span></span>
       </h1>
 
