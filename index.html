@@ -297,7 +297,7 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .sun .shade { transition: transform 1.2s cubic-bezier(.6,0,.2,1); }
 .sun .strokes path { fill: none; stroke: var(--ink); stroke-width: 8.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .sun .strokes { transition: opacity .5s .3s; }
-.sun .png { opacity: 0; transition: opacity .9s; } .sun.drawn .png { opacity: 1; }
+.sun .png { opacity: 0; transition: opacity .9s; filter: brightness(0) invert(.27); } .sun.drawn .png { opacity: 1; }
 .sun .orb { opacity: 0; transition: opacity .9s; } .sun.lit .orb { opacity: 1; }
 .sun.sunup .shade { transform: translate(64px, -46px); }
 .sun.sunup .disc { fill: var(--orange); }
@@ -714,10 +714,10 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .post-head h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3rem, 9vw, 8rem); letter-spacing: -0.055em; line-height: 1; margin: 12px 0 0; }
 .post-k { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
 .post-body { padding-block: clamp(28px, 6vh, 64px) clamp(60px, 12vh, 120px); }
-.post-body .in { max-width: 720px; }
+.post-body .in { max-width: 900px; }
 .post-cover { margin: 0 0 clamp(32px, 6vh, 56px); }
 .post-cover img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; border-radius: 4px; }
-.post-text p { font-size: clamp(1.02rem, 1.2vw, 1.14rem); line-height: 1.8; margin: 0 0 1.15em; color: #2c2c30; }
+.post-text p { font-size: clamp(1.02rem, 1.2vw, 1.14rem); line-height: 1.8; margin: 0 0 1.15em; color: #2c2c30; text-align: justify; hyphens: auto; }
 .post-text p:first-child::first-letter { font-family: var(--display); font-size: 3.4em; line-height: .85; float: left; padding: .06em .08em 0 0; color: var(--accent-ink); }
 .post-back { display: inline-block; margin-top: 28px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--orange); }
 a.sb-cta { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; } a.sb-cta:hover { color: var(--accent-ink); border-bottom-color: var(--orange); }
