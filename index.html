@@ -129,7 +129,7 @@ a { color: inherit; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
-.book .bt { flex: none; margin-top: auto; text-wrap: balance; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
+.book .bt { flex: none; margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
 .book.t-u .bt { text-transform: uppercase; font-weight: 500; font-size: min(calc(var(--w) * .4), 2.8rem); }
 .book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .42), 2.4rem); }
 .book .by { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -8px); white-space: nowrap; font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); opacity: 0; transition: opacity .3s; pointer-events: none; }
@@ -292,7 +292,7 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .sc2 { background: linear-gradient(160deg, #4d6f9f, #233650); }
 .sc3 { background: radial-gradient(circle at 70% 30%, #a9c0e2, #4d6f9f 75%); }
 .sc4 { background: linear-gradient(200deg, #6f8fbf, #2c405e); }
-.sun { width: 2.15em; height: 2.15em; margin: -0.55em -0.2em -0.55em 0.02em; flex: none; overflow: visible; cursor: pointer; }
+.sun { width: 2.69em; height: 2.69em; margin: -0.82em -0.25em -0.82em 0.02em; flex: none; overflow: visible; cursor: pointer; }
 .sun .rays { transform-origin: 113px 82px; opacity: 0; transform: scale(.6); transition: opacity .8s, transform .9s cubic-bezier(.2,.7,.2,1); }
 .sun .disc { fill: #cfd6e2; transform-origin: 113px 82px; transition: fill 1s, transform .6s cubic-bezier(.2,.7,.2,1); }
 .sun .shade { transition: transform 1.2s cubic-bezier(.6,0,.2,1); }
@@ -605,7 +605,7 @@ footer.dark .follow a { color: #fff; margin-left: 14px; }
   .big .l1, .big .l4 { padding-left: 0; }
   .big .l2 { padding-left: 14%; }
   .big .l3 { padding-left: 1.65em; }
-  .sun { width: 1.5em; height: 1.5em; margin: -0.3em 0 -0.3em 0.02em; }
+  .sun { width: 1.88em; height: 1.88em; margin: -0.49em 0 -0.49em 0.02em; }
   .scroll { display: none; }
   .hero .side { margin: 16px 0 0; flex-basis: 100%; max-width: 320px; }
   #menu .grid { grid-template-columns: minmax(0, 1fr); }
@@ -700,7 +700,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   .hero .side { margin: calc(var(--sun-h, 0px) + 40px) auto 0; text-align: center; }
   /* the glass leaves the headline and stands on its own between the headline and the poem, so no word covers it */
   .hero .big { position: relative; }
-  .hero .sun { position: absolute; left: 50%; translate: -50% 0; top: var(--sun-top, 100%); width: 1.7em; height: 1.7em; margin: 0; }
+  .hero .sun { position: absolute; left: 50%; translate: -50% 0; top: var(--sun-top, 100%); width: 2.13em; height: 2.13em; margin: 0; }
   .soon-card .martini { width: 32%; right: 5%; bottom: 6%; }
 }
 
@@ -1696,26 +1696,33 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   var baseTitle = document.title;
   // Home shelf, after untold's: tall books, a logo on top, the story's title down the spine
   var shelf = document.getElementById('shelf2'), ticks = document.getElementById('sb-ticks'), sbN = document.getElementById('sb-n');
-  var BOOK = { hust: [89, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u'], base: [112, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
+  var BOOK = { hust: [89, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u', -2], base: [112, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
   var shelfWork = WORK.slice().reverse();
   shelf.innerHTML = shelfWork.map(function (w, i) {
     var b = BOOK[w.id];
-    return '<a class="book t-' + b[3] + '" href="#/work/' + w.id + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '" aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title.replace('\n', '<br>') + '</b><i class="by">' + w.yr + '</i></a>';
+    return '<a class="book t-' + b[3] + '" href="#/work/' + w.id + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '"' + (b[4] ? ' data-fs="' + b[4] + '"' : '') + ' aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title.replace('\n', '<br>') + '</b><i class="by">' + w.yr + '</i></a>';
   }).join('');
+  // spine titles are measured with the font's own metrics (canvas), not the vertical layout box, which Safari reports differently
+  var bookCx = document.createElement('canvas').getContext('2d');
   function fitBooks() {
     shelf.querySelectorAll('.book').forEach(function (bk) {
-      var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg'); t.style.removeProperty('font-size'); t.style.removeProperty('white-space'); t.style.removeProperty('max-height');
-      // the spine never shrinks (flex: none), so its box is the full length of the words, Safari included
-      var avail = bk.clientHeight - lg.offsetHeight - 64;
-      function len() { return t.getBoundingClientRect().height; }
-      if (!(len() > avail && avail > 40)) return;
+      var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg');
+      if (t.dataset.html === undefined) t.dataset.html = t.innerHTML;
+      t.innerHTML = t.dataset.html; t.style.removeProperty('font-size');
+      var avail = bk.clientHeight - lg.offsetHeight - 64; if (avail < 40) return;
+      var cs = getComputedStyle(t), f = parseFloat(cs.fontSize), up = cs.textTransform === 'uppercase';
+      bookCx.font = cs.fontWeight + ' 100px ' + cs.fontFamily;
+      function w(x) { x = up ? x.toUpperCase() : x; return (bookCx.measureText(x).width / 100 - .03 * x.length) * f; }
+      var lines = t.dataset.html.split(/<br\s*\/?>/).map(function (x) { var d = document.createElement('i'); d.innerHTML = x; return d.textContent; });
+      var len = Math.max.apply(null, lines.map(w));
       // a title a little too long shrinks a touch; a much longer one folds onto a second spine line instead of turning tiny
-      if (avail / len() < .8) { t.style.whiteSpace = 'normal'; t.style.maxHeight = avail + 'px'; }
-      var room = bk.clientWidth - 8;
-      for (var k = 0; k < 4 && (len() > avail || t.getBoundingClientRect().width > room); k++) {
-        var f = parseFloat(getComputedStyle(t).fontSize), r = Math.min(avail / len(), room / t.getBoundingClientRect().width, .97);
-        t.style.setProperty('font-size', (f * r).toFixed(1) + 'px', 'important');
+      if (lines.length === 1 && avail / len < .8) {
+        var ws = lines[0].split(' '), best = null;
+        for (var k = 1; k < ws.length; k++) { var a = ws.slice(0, k).join(' '), b = ws.slice(k).join(' '), m = Math.max(w(a), w(b)); if (!best || m < best[0]) best = [m, a, b]; }
+        if (best) { t.innerHTML = best[1] + '<br>' + best[2]; len = best[0]; lines = [best[1], best[2]]; }
       }
+      var nf = f * Math.min(1, avail / len, (bk.clientWidth - 10) / (lines.length * f * 1.02)) + (+bk.dataset.fs || 0);
+      if (Math.abs(nf - f) > .2) t.style.setProperty('font-size', nf.toFixed(1) + 'px', 'important');
     });
   }
   fitBooks(); window.addEventListener('resize', fitBooks); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBooks);
@@ -1805,7 +1812,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       (function st() { i += 1; el.innerHTML = full.slice(0, i) + '<span class="cur"></span>'; if (i < full.length) setTimeout(st, 32); })();
     });
   }, { threshold: .6 }) : null;
-  if (typeIO) document.querySelectorAll('[data-type]').forEach(function (el) { typeIO.observe(el); });
+  // on phones the stories lede simply shows, without typing
+  if (typeIO) document.querySelectorAll('[data-type]').forEach(function (el) { if (el.classList.contains('lede') && window.matchMedia('(max-width: 760px)').matches) return; typeIO.observe(el); });
 
   // Second rotating line, on the projects summary
   var rot2 = document.getElementById('rot2'), ROT2 = { en: ['makes sense', 'connects people', 'grows teams'], vi: ['rõ ràng hơn', 'kết nối người', 'đội ngũ lớn lên'] }, r2 = 0;
