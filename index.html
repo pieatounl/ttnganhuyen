@@ -634,7 +634,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 #talk input:focus, #talk textarea:focus { outline: none; border-bottom-color: var(--orange); }
 #talk .btn { justify-self: start; }
 #talk .x { position: absolute; right: 14px; top: 12px; border: 0; background: none; font-size: 1.1rem; cursor: pointer; color: var(--ink); }
-#talk .sent { margin: 0; font-size: .85rem; color: var(--accent-ink); }
+#talk .sent { margin: 0; font-size: .85rem; color: var(--accent-ink); } #talk .sent.bad { color: #b0413e; } #talk .btn:disabled { opacity: .6; cursor: wait; }
 .places .next b { padding: 0 .2em; } .places .next .cur { height: .7em; vertical-align: -.02em; }
 .crafts .rings span { width: clamp(130px, 15vw, 210px); margin: 0 calc(clamp(130px, 15vw, 210px) * -0.06); display: grid; place-items: center; align-content: center; gap: 4px; }
 .crafts .rings img { width: 48%; height: auto; }
@@ -923,7 +923,8 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
     <label><span data-vi="Email của bạn (để mình trả lời)">Your email (so I can reply)</span><input name="from" type="email" autocomplete="email" required></label>
     <label><span data-vi="Lời nhắn">Message</span><textarea name="msg" rows="5" required></textarea></label>
     <button class="btn" type="submit" data-vi="Gửi">Send</button>
-    <p class="sent" hidden data-vi="Ứng dụng email của bạn sẽ mở ra, chỉ cần bấm gửi.">Your email app opens with the message ready. Just press send.</p>
+    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" hidden>
+    <p class="sent" hidden role="status" aria-live="polite"></p>
   </form>
 </dialog>
 
@@ -998,13 +999,13 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
     <div class="in">
       <span class="label">Blog · stories &amp; notes</span>
       <h1 class="soon-h"><span>my blog</span><span class="s2">coming soon<span class="cur"></span></span></h1>
-      <p class="soon-p">Stories from consulting, cities and the bar, written as-is. Until they land here, I write on Substack.</p>
+      <p class="soon-p">Stories from consulting, cities and the bar, written as-is. Until they land here, I share bits of them on Instagram.</p>
       <div class="soon-grid">
         <div class="soon-card"><span class="k">( 01 ) Stories</span><h3>On having four names</h3><p>Huyền, Minh Nguyệt, pie.at.ounl and Margot.</p><span class="tag">Coming soon</span></div>
         <div class="soon-card"><span class="k">( 02 ) Field notes</span><h3>What consulting taught me</h3><p>Small lessons from big rollouts.</p><span class="tag">Coming soon</span></div>
         <div class="soon-card"><span class="k">( 03 ) After hours</span><h3>The first 50 cocktails</h3><p>Notes from behind the bar in Hasselt.</p><span class="tag">Coming soon</span></div>
       </div>
-      <div class="soon-cta"><a class="btn" href="https://substack.com/@lofopmartii" target="_blank" rel="noopener">Read me on Substack</a></div>
+      <div class="soon-cta"><a class="btn" href="https://www.instagram.com/pie.at.ounl" target="_blank" rel="noopener">Follow me on Instagram</a></div>
     </div>
   </section>
 </div>
@@ -1451,13 +1452,27 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   document.querySelectorAll('.talk-open').forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); if (typeof openMenu === 'function') openMenu(false); openTalk(b.dataset.mode || 'contact'); }); });
   talk.querySelector('.x').addEventListener('click', function () { talk.close ? talk.close() : talk.removeAttribute('open'); });
   talk.addEventListener('click', function (e) { if (e.target === talk) talk.close(); });
+  // Messages go straight to her inbox through Web3Forms; the visitor only sees "sent", never the address.
+  // FORM_KEY is the Web3Forms access key (public by design, it only lets people send to her inbox).
+  var FORM_KEY = '48041e20-d0ed-4df8-bf73-6a60486f0656';
+  var sentEl = talkForm.querySelector('.sent'), sendBtn = talkForm.querySelector('button[type="submit"]');
+  function say(en, vi, bad) { sentEl.textContent = lang === 'vi' ? vi : en; sentEl.classList.toggle('bad', !!bad); sentEl.hidden = false; }
   talkForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var d = new FormData(talkForm), mode = talk.dataset.mode, to = ['hello', 'ttnganhuyen.com'].join(String.fromCharCode(64));
-    var subj = (mode === 'advice' ? (lang === 'vi' ? 'Một lời khuyên cho Margot' : 'A piece of advice for Margot') : (lang === 'vi' ? 'Chào Margot' : 'Hello Margot')) + ' – ' + (d.get('name') || '');
-    var body = d.get('msg') + '\n\n— ' + (d.get('name') || '') + ' (' + d.get('from') + ')';
-    location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
-    talkForm.querySelector('.sent').hidden = false;
+    var d = new FormData(talkForm), mode = talk.dataset.mode;
+    if (d.get('botcheck')) return;
+    var subj = (mode === 'advice' ? 'A piece of advice for Margot' : 'Hello Margot') + ' – ' + (d.get('name') || '');
+    if (!FORM_KEY) { say('Sending is not set up yet. Please try again soon.', 'Chưa gửi được, bạn thử lại sau nhé.', true); return; }
+    sendBtn.disabled = true; say('Sending…', 'Đang gửi…');
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ access_key: FORM_KEY, subject: subj, from_name: 'ttnganhuyen.com', name: d.get('name'), email: d.get('from'), replyto: d.get('from'), message: d.get('msg'), type: mode }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.success) throw new Error(j.message);
+        talkForm.reset(); say('Submitted. Thank you, I will write back soon.', 'Đã gửi. Cảm ơn bạn, mình sẽ sớm trả lời.');
+      })
+      .catch(function () { say('Something went wrong. Please try again in a moment.', 'Có lỗi xảy ra, bạn thử lại sau ít phút nhé.', true); })
+      .then(function () { sendBtn.disabled = false; });
   });
 
   // Cursor ring
