@@ -129,7 +129,7 @@ a { color: inherit; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
-.book .bt { margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
+.book .bt { flex: none; margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
 .book.t-u .bt { text-transform: uppercase; font-weight: 500; font-size: min(calc(var(--w) * .4), 2.8rem); }
 .book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .42), 2.4rem); }
 .book .by { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -8px); white-space: nowrap; font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); opacity: 0; transition: opacity .3s; pointer-events: none; }
@@ -645,7 +645,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .stage .sticky.in { transform: rotate(var(--r, 0deg)); opacity: 1; }
 .stage .sticky small { font-size: .85rem; margin-top: 12px; }
 .stage .hint { position: absolute; left: 4%; bottom: 30%; pointer-events: auto; color: var(--ink); text-decoration: none; transition: color .3s; } .stage .hint:hover { color: var(--accent-ink); }
-@media (max-width: 760px) { .stage { margin-bottom: 0; } .stage .hint { display: none; } .stage .notes { position: static; height: auto; margin-top: 18px; } .stage .sticky { margin-left: 0; left: auto; width: min(300px, 100%); justify-self: center; } .stage .sticky { transform: rotate(var(--r, 0deg)); opacity: 1; } }
+@media (max-width: 760px) { .stage { margin-bottom: 0; } .stage .hint { display: none; } .stage .notes { position: static; height: auto; margin-top: 18px; } .stage .sticky, .stage .sticky.in { margin: 0 auto; left: auto; width: min(270px, 82vw); justify-self: center; } .stage .sticky { transform: rotate(var(--r, 0deg)); opacity: 1; } }
 
 /* ---------- v17 ---------- */
 .big2-link { display: block; text-decoration: none; color: inherit; } .big2-link:hover .folder { transform: rotate(-6deg) translateY(-.06em); }
@@ -1702,8 +1702,13 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   function fitBooks() {
     shelf.querySelectorAll('.book').forEach(function (bk) {
       var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg'); t.style.removeProperty('font-size');
-      var avail = bk.clientHeight - lg.offsetHeight - 64, len = t.getBoundingClientRect().height;
-      if (len > avail && avail > 40) t.style.setProperty('font-size', (parseFloat(getComputedStyle(t).fontSize) * avail / len).toFixed(1) + 'px', 'important');
+      // measure the text itself, not its box: Safari can squeeze a vertical spine's box and let the words run out of the book
+      var avail = bk.clientHeight - lg.offsetHeight - 64, rg = document.createRange(); rg.selectNodeContents(t);
+      for (var k = 0; k < 3; k++) {
+        var len = Math.max(t.getBoundingClientRect().height, t.scrollHeight, rg.getBoundingClientRect().height);
+        if (!(len > avail && avail > 40)) break;
+        t.style.setProperty('font-size', (parseFloat(getComputedStyle(t).fontSize) * avail / len * .98).toFixed(1) + 'px', 'important');
+      }
     });
   }
   fitBooks(); window.addEventListener('resize', fitBooks); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBooks);
