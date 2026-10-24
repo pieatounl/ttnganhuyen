@@ -388,26 +388,27 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .specimen .dot.b { fill: rgba(37, 37, 40, .18); stroke: #252528; stroke-width: 1.2; }
 .specimen .cur2 { fill: var(--ink); animation: blink 1s steps(1) infinite; }
 /* the drawing-in, in the same rhythm as the headline */
-.specimen .guides { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.6,0,.2,1); }
-.specimen .lead { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .7s ease-out; }
-.specimen .head, .specimen .note, .specimen .hatch { opacity: 0; transition: opacity .6s; }
-.specimen .dot { transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .6s cubic-bezier(.3,1.6,.5,1); }
+/* step 1: guides and the name are there from the start; step 2: hatch, circles, arrows, notes; step 3: the tale */
+.specimen .guides { clip-path: none; }
+.specimen .lead { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .7s ease-out .5s; }
+.specimen .head, .specimen .note, .specimen .hatch { opacity: 0; transition: opacity .6s 1.1s; } .specimen .hatch { transition-delay: 0s; }
+.specimen .dot { transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .6s cubic-bezier(.3,1.6,.5,1) .25s; }
 .specimen.on .guides { clip-path: inset(0 0 0 0); }
 .specimen.on .lead { stroke-dashoffset: 0; }
 .specimen.on .head, .specimen.on .note, .specimen.on .hatch { opacity: 1; }
 .specimen.on .dot { transform: scale(1); }
-.specimen .selbg { fill: rgba(143, 172, 216, .55); transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform .7s cubic-bezier(.6,0,.2,1) 1.4s; }
+.specimen .selbg { fill: rgba(143, 172, 216, .55); transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform .7s cubic-bezier(.6,0,.2,1) 1.3s; }
 .specimen.on .selbg { transform: scaleX(1); }
 .names-h .hsel { background: linear-gradient(rgba(143, 172, 216, .55), rgba(143, 172, 216, .55)) no-repeat 0 55% / 0% 88%; padding: 0 .06em; margin: 0 -.06em; transition: background-size .8s cubic-bezier(.6,0,.2,1) .3s; }
 .names-h.lit .hsel { background-size: 100% 88%; }
 .sp-box { position: relative; }
-.tale { margin: 0; border-left: 1px solid var(--ink); padding: 2px 0 2px 14px; font-size: clamp(.74rem, .8vw, .84rem); line-height: 1.55; color: #444; max-width: 420px; text-wrap: pretty; opacity: 0; transition: opacity .8s .9s; }
+.tale { margin: 0; border-left: 1px solid var(--ink); padding: 2px 0 2px 14px; font-size: clamp(.74rem, .8vw, .84rem); line-height: 1.55; color: #444; max-width: 420px; text-wrap: pretty; opacity: 0; transition: opacity .8s 2s; }
 .sp-box .tale { position: absolute; }
 @media (min-width: 1001px) and (max-width: 1240px) { #names-car .sp-box .tale { width: 39.5% !important; max-width: none; font-size: .7rem; top: 0 !important; } }
 @media (min-width: 761px) and (max-width: 1000px) { #names-car .sp-box .tale { position: static; width: auto !important; max-width: 560px; margin: 0 0 14px; } }
 .tale em { font-style: italic; }
 .tale .ast { font-style: normal; font-weight: 600; margin-right: 2px; }
-.sp-box:has(.specimen.on) .tale, .spec.hieu.on .tale { opacity: 1; }
+.sp-box:has(.specimen.on) .tale, .spec.hieu.on .tale { opacity: 1; } .spec.hieu .tale { transition-delay: .9s; }
 .spec.hieu { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .spec.hieu .tale { width: min(420px, 100%); margin-bottom: .6em; }
 .margot { font-family: var(--display); font-weight: 200; font-style: italic; color: #96959b; font-size: clamp(3rem, 8.6vw, 8.2rem); line-height: 1; letter-spacing: -0.02em; margin-left: auto; white-space: nowrap; }
@@ -1366,19 +1367,7 @@ a.sb-cta { color: inherit; text-decoration: none; border-bottom: 1px solid trans
   function playSpec(svg, sp) {
     if (svg.dataset.done) return; svg.dataset.done = 1;
     if (reduce) { svg.classList.add('on'); return; }
-    var bb = sp.t.getBBox(), c = mk(svg, 'rect', { 'class': 'cur2', width: 2.5, height: sp.F * .9, y: bb.y + bb.height * .12 });
-    svg.querySelector('.guides').style.clipPath = 'inset(0 0 0 0)';
-    var x0 = parseFloat(sp.t.getAttribute('x'));
-    sp.t.textContent = '';
-    setTimeout(function () {
-      var i = 0;
-      (function step() {
-        sp.t.textContent = sp.full.slice(0, ++i);
-        c.setAttribute('x', x0 + sp.t.getComputedTextLength() + 6);
-        if (i < sp.full.length) setTimeout(step, 85);
-        else { svg.classList.add('on'); c.remove(); }
-      })();
-    }, 700);
+    setTimeout(function () { svg.classList.add('on'); }, 500);
   }
   var specsReady = false;
   function initSpecs() {
