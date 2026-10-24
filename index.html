@@ -311,6 +311,7 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 @media (prefers-reduced-motion: no-preference) { .sun .rays > g { transform-origin: 113px 82px; animation: spin 30s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } }
 
 .paren { display: inline-flex; align-items: center; position: relative; }
+.big .l4 .paren { margin-left: .18em; }
 .stack { position: relative; width: 1.3em; height: 1em; flex: none; margin: 0 0.06em; }
 .stack .card { position: absolute; left: .2em; top: -.06em; width: 0.84em; height: 1.08em; border-radius: 4px; box-shadow: 0 10px 28px rgba(0,0,0,.16); transition: transform .6s cubic-bezier(.2,.7,.2,1); display: grid; align-content: end; padding: .07em; }
 .stack .card img { position: absolute; left: 12%; top: 9%; width: 76%; height: auto; }
@@ -693,8 +694,10 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   .martini.m-big { width: 150px; }
   .believe { overflow: visible; }
   .sb-drag { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); animation: dragnudge 1.6s ease-in-out infinite; }
-  .hero .side { margin: 64px auto 0; text-align: center; }
-  .hero .sun { position: relative; top: .3em; }
+  .hero .side { margin: calc(var(--sun-h, 0px) + 40px) auto 0; text-align: center; }
+  /* the glass leaves the headline and stands on its own between the headline and the poem, so no word covers it */
+  .hero .big { position: relative; }
+  .hero .sun { position: absolute; left: 50%; translate: -50% 0; top: var(--sun-top, 100%); width: 1.7em; height: 1.7em; margin: 0; }
   .soon-card .martini { width: 32%; right: 5%; bottom: 6%; }
 }
 
@@ -835,12 +838,12 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
         <span class="bl"></span></span>
         <span class="ln l3"><span class="word d3" data-vi="ban đêm">blooming</span><span class="bl"></span></span>
         <span class="ln l4">
+          <span class="word d5" data-vi="nở hoa">by night</span>
           <span class="paren pop d4">(<span class="stack" aria-hidden="true">
               <span class="card c1 p0"><b data-vi="Cắm hoa">Flowers</b></span>
               <span class="card c2 p1"><b>Bartender</b></span>
               <span class="card c3 p2"><b data-vi="Ký hoạ">Sketching</b></span>
             </span>)</span>
-          <span class="word d5" data-vi="nở hoa">by night</span>
         <span class="side pop" id="side"><span data-vi='<em><span class="ast">(*)</span> “Nõn nà xinh xắn chồi đơm nụ,<br>Mơn mởn xanh tươi cành nở hoa.”</em><span class="src">- Ông nội, Nghệ An, 07/01/2006.<i class="sb"></i></span>'><em><span class="ast">(*)</span> “Nõn nà xinh xắn chồi đơm nụ,<br>Mơn mởn xanh tươi cành nở hoa.”</em><span class="src">- My grandfather, Nghệ An, 07/01/2006.<i class="sb"></i></span></span></span><span class="bl"></span></span>
       </h1>
 
@@ -1419,13 +1422,18 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   // Hero rules: one hairline exactly on each headline baseline; the (*) note sits on the last one
   var hero = document.getElementById('hero'), rulesEl = document.getElementById('rules'), side = document.getElementById('side');
   function layoutHero() {
+    var big = hero.querySelector('.big'), sun = big.querySelector('.sun'), w4 = big.querySelector('.l4 .word');
+    if (getComputedStyle(sun).position === 'absolute') {
+      big.style.setProperty('--sun-top', Math.round(w4.getBoundingClientRect().bottom - new DOMMatrix(getComputedStyle(w4).transform).m42 - big.getBoundingClientRect().top + 24) + 'px');
+      big.style.setProperty('--sun-h', Math.round(sun.getBoundingClientRect().height) + 'px');
+    } else { big.style.removeProperty('--sun-top'); big.style.removeProperty('--sun-h'); }
     var hr = hero.getBoundingClientRect(), box = hero.querySelector('.in').getBoundingClientRect(), html = '', last = 0;
     var l = Math.round(box.left - hr.left), w = Math.round(box.width);
     hero.querySelectorAll('.big .ln').forEach(function (ln) { var ws = ln.querySelectorAll('.word'), w0 = ws[ws.length - 1], m = document.createElement('i'); m.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline'; w0.appendChild(m); last = m.getBoundingClientRect().bottom - hr.top - new DOMMatrix(getComputedStyle(w0).transform).m42; m.remove(); html += '<div style="top:' + Math.round(last) + 'px;left:' + l + 'px;width:' + w + 'px"></div>'; });
     rulesEl.innerHTML = html;
     // the caption of the (*) note sits exactly on the last rule
     var sb = side.querySelector('.sb'), lastBl = hero.querySelectorAll('.big .bl'); lastBl = lastBl[lastBl.length - 1];
-    var sameRow = sb && side.getBoundingClientRect().left > hero.querySelector('.l4 .word').getBoundingClientRect().left;
+    var sameRow = sb && side.getBoundingClientRect().left > hero.querySelector('.l4 .word').getBoundingClientRect().right;
     if (sameRow) {
       // size the note so it spans exactly the height of the "b": top of the b to the baseline
       var word = hero.querySelector('.l4 .word'), cs = getComputedStyle(word), cx = document.createElement('canvas').getContext('2d');
