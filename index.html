@@ -188,7 +188,9 @@ a { color: inherit; }
 .soon { padding-block: clamp(130px, 20vh, 200px) clamp(70px, 12vh, 130px); }
 .soon .in { position: relative; }
 .soon-h { font-family: var(--display); font-weight: 400; font-size: clamp(3.2rem, 11vw, 10.4rem); letter-spacing: -0.06em; line-height: 1.02; margin: 26px 0 0; }
-.soon-h > span { display: block; } .soon-h .s2 { padding-left: 1.1em; color: var(--orange); } .soon-h .cur { height: .78em; vertical-align: -.04em; }
+.soon-h > span { display: block; } .soon-h .s2 { padding-left: 1.1em; color: var(--orange); }
+/* phones: each line stays whole; the second line sits flush right instead of indented */
+@media (max-width: 760px) { .soon-h { font-size: min(3.2rem, 14.2vw); } .soon-h > span { white-space: nowrap; } .soon-h .s2 { padding-left: 0; text-align: right; } } .soon-h .cur { height: .78em; vertical-align: -.04em; }
 .soon-p { font-family: var(--display); font-weight: 300; font-size: clamp(1.1rem, 1.7vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.45; max-width: 34ch; margin: 34px 0 0; }
 .soon-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 28px); margin-top: clamp(50px, 8vh, 90px); }
 .soon-card { position: relative; border: 1px dashed color-mix(in srgb, var(--accent-ink) 55%, transparent); border-radius: 6px; padding: 26px 24px 30px; min-height: 230px; display: flex; flex-direction: column; overflow: hidden; }
