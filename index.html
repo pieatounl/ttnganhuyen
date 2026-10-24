@@ -724,7 +724,9 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .post-cover { margin: 0 0 clamp(32px, 6vh, 56px); }
 .post-cover img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; border-radius: 4px; }
 .post-text p { font-size: clamp(1.02rem, 1.2vw, 1.14rem); line-height: 1.8; margin: 0 0 1.15em; color: #2c2c30; text-align: justify; hyphens: auto; }
-.post-text p:first-child::first-letter { font-family: var(--display); font-size: 3.4em; line-height: .85; float: left; padding: .06em .08em 0 0; color: var(--accent-ink); }
+/* raised initial: the S sits on the first line's baseline, and that opening line runs the full width */
+.post-text p:first-child::first-letter { font-family: var(--display); font-size: 3.4em; line-height: 1; vertical-align: baseline; padding-right: .02em; color: var(--accent-ink); }
+@media (min-width: 761px) { .post-text p:first-child { text-align-last: justify; } }
 .post-back { display: inline-block; margin-top: 28px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--orange); }
 a.sb-cta { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; } a.sb-cta:hover { color: var(--accent-ink); border-bottom-color: var(--orange); }
 </style>
