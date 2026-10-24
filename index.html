@@ -664,7 +664,8 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .stage .sticky small { font-size: .85rem; margin-top: 12px; }
 .stage .notes.spread .sticky.in { transform: translateX(calc(var(--dx, 0) * var(--sw) * .6)) rotate(0deg); transition: transform .45s cubic-bezier(.3,1.4,.5,1); }
 @media (max-width: 760px) { .stage .notes.spread .sticky, .stage .notes.spread .sticky.in { transform: translateX(calc(var(--dx, 0) * 36px)) rotate(0deg); transition: transform .45s cubic-bezier(.3,1.4,.5,1); } }
-.stage .hint { position: absolute; left: 4%; bottom: 30%; pointer-events: auto; color: var(--ink); text-decoration: none; transition: color .3s; } .stage .hint:hover { color: var(--accent-ink); }
+.stage .hint { position: absolute; left: auto; right: max(calc(50% + clamp(170px, 15vw, 230px) * 2.05 + 36px), 0px); text-align: right; bottom: 30%; pointer-events: auto; color: var(--ink); text-decoration: none; transition: color .3s; } .stage .hint:hover { color: var(--accent-ink); }
+@media (min-width: 1200px) { .stage .hint { white-space: nowrap; } }
 @media (max-width: 760px) { .stage { margin-bottom: 0; } .stage .hint { display: none; } .stage .notes { position: static; height: auto; margin-top: 18px; } .stage .sticky, .stage .sticky.in { margin: 0 auto; left: auto; width: min(270px, 82vw); justify-self: center; } .stage .sticky { transform: rotate(var(--r, 0deg)); opacity: 1; } }
 
 /* ---------- v17 ---------- */
