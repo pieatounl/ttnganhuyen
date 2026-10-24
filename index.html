@@ -129,7 +129,7 @@ a { color: inherit; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
-.book .bt { flex: none; margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
+.book .bt { flex: none; margin-top: auto; text-wrap: balance; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
 .book.t-u .bt { text-transform: uppercase; font-weight: 500; font-size: min(calc(var(--w) * .4), 2.8rem); }
 .book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .42), 2.4rem); }
 .book .by { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -8px); white-space: nowrap; font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); opacity: 0; transition: opacity .3s; pointer-events: none; }
@@ -1704,13 +1704,17 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   }).join('');
   function fitBooks() {
     shelf.querySelectorAll('.book').forEach(function (bk) {
-      var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg'); t.style.removeProperty('font-size');
-      // measure the text itself, not its box: Safari can squeeze a vertical spine's box and let the words run out of the book
-      var avail = bk.clientHeight - lg.offsetHeight - 64, rg = document.createRange(); rg.selectNodeContents(t);
-      for (var k = 0; k < 3; k++) {
-        var len = Math.max(t.getBoundingClientRect().height, t.scrollHeight, rg.getBoundingClientRect().height);
-        if (!(len > avail && avail > 40)) break;
-        t.style.setProperty('font-size', (parseFloat(getComputedStyle(t).fontSize) * avail / len * .98).toFixed(1) + 'px', 'important');
+      var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg'); t.style.removeProperty('font-size'); t.style.removeProperty('white-space'); t.style.removeProperty('max-height');
+      // the spine never shrinks (flex: none), so its box is the full length of the words, Safari included
+      var avail = bk.clientHeight - lg.offsetHeight - 64;
+      function len() { return t.getBoundingClientRect().height; }
+      if (!(len() > avail && avail > 40)) return;
+      // a title a little too long shrinks a touch; a much longer one folds onto a second spine line instead of turning tiny
+      if (avail / len() < .8) { t.style.whiteSpace = 'normal'; t.style.maxHeight = avail + 'px'; }
+      var room = bk.clientWidth - 8;
+      for (var k = 0; k < 4 && (len() > avail || t.getBoundingClientRect().width > room); k++) {
+        var f = parseFloat(getComputedStyle(t).fontSize), r = Math.min(avail / len(), room / t.getBoundingClientRect().width, .97);
+        t.style.setProperty('font-size', (f * r).toFixed(1) + 'px', 'important');
       }
     });
   }
