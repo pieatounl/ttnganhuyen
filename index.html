@@ -432,6 +432,7 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .tale em { font-style: italic; }
 .tale .ast { font-style: normal; font-weight: 600; margin-right: 2px; }
 .sp-box:has(.specimen.on) .tale, .spec.hieu.on .tale { opacity: 1; } .spec.hieu .tale { transition-delay: .9s; }
+.nc-reset, .nc-reset * { transition: none !important; }
 .spec.hieu { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .spec.hieu .tale { width: min(420px, 100%); margin-bottom: .6em; }
 .margot { font-family: var(--display); font-weight: 200; font-style: italic; color: #96959b; font-size: clamp(3rem, 8.6vw, 8.2rem); line-height: 1; letter-spacing: -0.02em; margin-left: auto; white-space: nowrap; }
@@ -1415,6 +1416,22 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     if (reduce) { svg.classList.add('on'); return; }
     setTimeout(function () { svg.classList.add('on'); }, 150);
   }
+  // Margot Tran types itself in; called again whenever its slide comes back into view
+  function typeMargot() {
+    var m = document.getElementById('margot-t'), mfull = m.dataset.full || m.textContent; m.dataset.full = mfull;
+    if (reduce) return;
+    clearTimeout(m._t); if (!m.parentNode.querySelector('.cur')) { var cur = document.createElement('span'); cur.className = 'cur'; m.parentNode.appendChild(cur); }
+    m.textContent = ''; var i = 0; (function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); })();
+  }
+  // replay a name's animation from the start (each swipe in the carousel)
+  function replaySpec(slide) {
+    if (!slide || reduce) return;
+    slide.classList.add('nc-reset');
+    var svg = slide.querySelector('.specimen');
+    if (svg) svg.classList.remove('on'); else { slide.classList.remove('on'); document.getElementById('margot-t').textContent = ''; }
+    void slide.offsetWidth; slide.classList.remove('nc-reset');
+    setTimeout(function () { if (svg) svg.classList.add('on'); else { slide.classList.add('on'); typeMargot(); } }, 450);
+  }
   var specsReady = false;
   function initSpecs() {
     specsReady = true;
@@ -1428,7 +1445,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
         if (!en.isIntersecting) return; specIO.unobserve(en.target);
         if (en.target.id === 'sp-danh') playSpec(en.target, specs.danh);
         else if (en.target.id === 'sp-tu') playSpec(en.target, specs.tu);
-        else { document.querySelector('.spec.hieu').classList.add('on'); } if (en.target.classList.contains('margot') && !reduce) { var cur = document.createElement('span'); cur.className = 'cur'; m.textContent = ''; m.parentNode.appendChild(cur); var i = 0; (function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) setTimeout(st, 110); })(); }
+        else { document.querySelector('.spec.hieu').classList.add('on'); } if (en.target.classList.contains('margot')) typeMargot();
       });
     }, { threshold: .2 });
     specIO.observe(document.getElementById('sp-danh')); specIO.observe(document.getElementById('sp-tu')); specIO.observe(document.querySelector('.margot'));
@@ -1503,7 +1520,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   (function () {
     var car = document.getElementById('names-car'); if (!car) return;
     var track = car.querySelector('.nc-track'), dots = car.querySelectorAll('.nc-dots button'), n = dots.length, at = 0;
-    function go(k) { at = (k + n) % n; track.style.transform = 'translateX(' + (-100 * at) + '%)'; dots.forEach(function (d, i) { d.classList.toggle('on', i === at); }); }
+    function go(k) { var was = at; at = (k + n) % n; track.style.transform = 'translateX(' + (-100 * at) + '%)'; dots.forEach(function (d, i) { d.classList.toggle('on', i === at); }); if (at !== was) replaySpec(track.children[at]); }
+    var x0 = null; track.addEventListener('touchstart', function (e) { var sc = e.target.closest('.spec-scroll'); x0 = sc && sc.scrollWidth > sc.clientWidth + 4 ? null : e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(at + (dx < 0 ? 1 : -1)); });
     car.querySelector('.nc-next').addEventListener('click', function () { go(at + 1); });
     car.querySelector('.nc-prev').addEventListener('click', function () { go(at - 1); });
     dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
