@@ -292,6 +292,7 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .slides { position: absolute; inset: 0; }
 .slide { position: absolute; inset: 0; display: grid; align-content: end; padding: 0.08em 0.1em; opacity: 0; transition: opacity .8s; }
 .slide.on { opacity: 1; }
+.shot { cursor: pointer; } .shot.quick .slide { transition: opacity .25s; }
 .slide b, .slide i { display: block; line-height: 1.35; }
 .slide b { white-space: normal; max-width: 92%; } /* long names fold onto a second line */
 .slide b { font-family: var(--body); font-size: 0.09em; letter-spacing: .04em; text-transform: uppercase; color: #fff; font-weight: 700; }
@@ -1515,7 +1516,10 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
   // Hero photo box: cycle places
   var slides = document.querySelectorAll('.slide'), si = 0;
-  setInterval(function () { slides[si].classList.remove('on'); si = (si + 1) % slides.length; slides[si].classList.add('on'); }, 2200);
+  function nextSlide() { slides[si].classList.remove('on'); si = (si + 1) % slides.length; slides[si].classList.add('on'); }
+  var slideT = setInterval(nextSlide, 2200), shot = document.querySelector('.shot');
+  // Click / tap: jump to the next card right away, with a quicker fade, then resume the timer
+  if (shot) shot.addEventListener('click', function () { shot.classList.add('quick'); nextSlide(); clearInterval(slideT); slideT = setInterval(function () { shot.classList.remove('quick'); nextSlide(); }, 2200); });
 
   // About: the names take turns, Ngân Huyền > Pie At Ounl > Margot Tran
   (function () {
