@@ -1496,7 +1496,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
           'Prepping, stocking and keeping the glasses moving, while watching how good bartenders read a room. Hosting turns out to be another kind of <b>consulting</b>.'],
       caps: ['Hospitality', 'Bar craft', 'Teamwork under pressure', 'Guest care'],
       slides: ['Prep before service', 'Behind the counter', 'Last call'] },
-    { id: 'mom', mark: 'UHasselt', yr: '2026–now', role: 'Master of Management', sc: 'sc8', title: 'learning to govern',
+    { id: 'mom', mark: 'UHasselt', yr: '2026–now', role: 'Master of Management', sc: 'sc8', title: 'learning to start up',
       p: ['Hasselt, Belgium. A <b>Master of Management</b> at Hasselt University, specialising in <b>Entrepreneurial Governance</b>.',
           'After years of building, analysing and selling, a step back to study how organisations are steered, and who gets a say.'],
       caps: ['Entrepreneurial governance', 'Strategy', 'Research', 'International classroom'],
@@ -1526,7 +1526,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
           'We co-organised <b>SoloCode</b>, <b>Innovation Hackathon 2021</b> and <b>Game Maker\'s Week</b>, and I was named <b>Dedicated Member</b> of 2021.'],
       caps: ['Partnerships', 'Public relations', 'Event organisation', 'Mentor network'],
       slides: ['SoloCode', 'Innovation Hackathon 2021', 'Game Maker\'s Week'] },
-    { id: 'tedx', mark: 'TEDxBachkhoa', yr: '2020–2022', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'the unveiled & reset',
+    { id: 'tedx', mark: 'TEDxBachkhoa', yr: '2020–2022', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'The Unveiled\n& Reset',
       p: ['A TEDx chapter we started from zero at Hanoi University of Science and Technology. I led a communications team of <b>15–25 people</b>.',
           'The <b>EX series</b> (EXistence, EXposure, EXploration) ran 24 articles and grew organic reach by <b>210%</b>. The <b>RE series</b> (dREaming, insecuRE, REady) added 18 more, and our event <b>Reset</b> lifted engagement by <b>250%</b>.'],
       caps: ['Brand & storytelling', 'Content series', 'Team leadership', 'Event communications'],
@@ -1583,7 +1583,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   var shelfWork = WORK.slice().reverse();
   shelf.innerHTML = shelfWork.map(function (w, i) {
     var b = BOOK[w.id];
-    return '<a class="book t-' + b[3] + '" href="#/work/' + w.id + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '" aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title + '</b><i class="by">' + w.yr + '</i></a>';
+    return '<a class="book t-' + b[3] + '" href="#/work/' + w.id + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '" aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title.replace('\n', '<br>') + '</b><i class="by">' + w.yr + '</i></a>';
   }).join('');
   function fitBooks() {
     shelf.querySelectorAll('.book').forEach(function (bk) {
