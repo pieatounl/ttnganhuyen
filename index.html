@@ -41,7 +41,8 @@ a { color: inherit; }
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 .band { padding-left: max(16px, env(safe-area-inset-left, 0px), 4vw); padding-right: max(16px, env(safe-area-inset-right, 0px), 4vw); }
 .in { max-width: 1240px; margin: 0 auto; }
-.cur { display: inline-block; width: 0.06em; min-width: 1.5px; height: 0.95em; background: currentColor; margin-left: 0.06em; vertical-align: -0.1em; animation: blink 1s steps(1) infinite; }
+/* carets stay solid; they only move while text is being typed (Margot) */
+.cur { display: inline-block; width: 0.06em; min-width: 1.5px; height: 0.95em; background: currentColor; margin-left: 0.06em; vertical-align: -0.1em; }
 @keyframes blink { 50% { opacity: 0; } }
 .label { font-family: var(--body); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; text-transform: uppercase; }
 .label::before { content: "( "; color: var(--mute); font-weight: 400; }
@@ -223,7 +224,7 @@ nav.main a .cur { height: 1.05em; width: 1px; min-width: 1px; margin-left: 1px; 
 nav.main a { position: relative; color: var(--mute); transition: color .3s; }
 nav.main a:hover { color: var(--ink); }
 nav.main a.on { color: var(--accent-ink); }
-nav.main a .cur { visibility: hidden; } nav.main a.on .cur { visibility: visible; animation: blink 1.06s steps(1) infinite; }
+nav.main a .cur { visibility: hidden; } nav.main a.on .cur { visibility: visible; }
 .en-only #lang svg, .en-only #lang ul, .en-only #menu .pill button[data-set="vi"] { display: none; }
 .en-only #langbtn { cursor: default; }
 #langbtn .p { color: var(--mute); font-weight: 400; }
@@ -350,11 +351,9 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 .hero .side { display: block; align-self: flex-end; margin: 0 0 0.12em 0.5em; position: relative; padding: 0 0 0 .95em; font-family: var(--body); font-size: clamp(.9rem, 1.08vw, 1.1rem); line-height: 1.55; letter-spacing: 0; white-space: normal; max-width: 380px; }
 @media (min-width: 900px) { .hero .scroll { right: max(calc((100% - 100vw) / 2 + 14px), -64px); } }
 .hero .side .sb { display: inline-block; width: 0; height: 0; }
-/* the rule beside the note is a blinking caret, as tall as the b of "by night" */
 .hero .side { padding-left: 0; }
-/* the headline ends in a blinking caret, as tall as the b of "by night" */
+/* the headline ends in a caret, as tall as the b of "night" */
 .big .hcaret { flex: none; align-self: baseline; display: inline-block; width: max(2px, .025em); height: .74em; margin-left: .1em; background: var(--ink); }
-body.ready .big .hcaret { animation: blink 1s steps(1) infinite; }
 @media (min-width: 761px) { .hero .side { max-width: none; } .hero .side em, .hero .side .src { white-space: nowrap; } }
 .hero .side .src { display: block; color: var(--mute); font-size: .82em; letter-spacing: .02em; }
 .hero .cta { margin-top: clamp(28px, 5vh, 56px); display: flex; justify-content: center; align-items: center; gap: 18px; }
@@ -402,14 +401,14 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .specimen .guides line { stroke: #8facd8; stroke-width: 1.4; }
 .specimen .guides .dash { stroke-dasharray: 7 6; }
 .specimen .guides .hot { stroke: #8facd8; stroke-width: 1.4; }
-.specimen .scaret { fill: var(--ink); animation: blink 1s steps(1) infinite; }
+.specimen .scaret { fill: var(--ink); }
 .specimen:not(.on) .scaret { display: none; }
 .specimen .lead { fill: none; stroke-width: 1.5; }
 .specimen .lead.o, .specimen .head.o { stroke: #4d6f9f; fill: none; } .specimen .lead.b, .specimen .head.b { stroke: #252528; fill: none; }
 .specimen .head { stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .specimen .dot.o { fill: rgba(143, 172, 216, .42); stroke: #4d6f9f; stroke-width: 1.2; }
 .specimen .dot.b { fill: rgba(37, 37, 40, .18); stroke: #252528; stroke-width: 1.2; }
-.specimen .cur2 { fill: var(--ink); animation: blink 1s steps(1) infinite; }
+.specimen .cur2 { fill: var(--ink); }
 /* the drawing-in, in the same rhythm as the headline */
 /* step 1: guides and the name are there from the start; step 2: hatch, circles, arrows, notes; step 3: the tale */
 .specimen .guides { clip-path: none; }
@@ -725,15 +724,14 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .book .lgi { height: min(calc(58px / var(--sq)), calc(var(--w) * .8 / var(--ar))); }
 @media (max-width: 760px) { .book .lgi { height: min(calc(36px / var(--sq)), calc(var(--w) * .5 / var(--ar))); } }
 
-/* Home: grey pencil-hatched maps of Vietnam and Belgium (after untold's map); each place is a * with a text cursor beside it, all blinking together, no labels */
+/* Home: grey pencil-hatched maps of Vietnam and Belgium (after untold's map); each place is a * with a text cursor beside it, no labels */
 .maps { display: flex; justify-content: center; align-items: flex-end; gap: clamp(24px, 6vw, 96px); margin: 40px auto 36px; max-width: 820px; }
 .maps figure { margin: 0; }
 .maps .m-vn { width: min(56%, 408px); } .maps .m-be { width: min(36%, 240px); }
 .maps .map { display: block; width: 100%; height: auto; overflow: visible; }
 .map .scrib { filter: url(#pencil); } .map .scrib path { fill: none; stroke: #bcbdc1; stroke-linecap: round; stroke-linejoin: round; }
-.map .mdot .tick { stroke: var(--ink); stroke-width: .8; animation: mblink 1.06s steps(1) infinite; }
+.map .mdot .tick { stroke: var(--ink); stroke-width: .8; }
 .map .mdot .ast { font: 400 21px var(--body); fill: var(--orange); }
-@keyframes mblink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .map .mdot .tick { animation: none; } }
 @media (max-width: 720px) { .maps { gap: 18px; margin: 28px auto 24px; } .maps .m-vn { width: 62%; } .maps .m-be { width: 34%; } }
 /* Wide screens: the maps flank the headline, Vietnam on the left and Belgium on the right, behind the text */
@@ -901,7 +899,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
       <!-- Hieu -->
       <div class="spec hieu">
-        <p class="tale"><span class="ast">(Hiệu)</span> <em data-vi="Mình đi làm, và đôi khi cần dùng một cái tên tiếng Anh. Đó là lí do cái tên này được viết màu xám. Vì chẳng biết lúc nào nó sẽ được thay đổi đâu.">I go to work, and sometimes I need an English name. That's why this one is written in grey: who knows when it will change.</em></p>
+        <p class="tale"><span class="ast">(Hiệu)</span> <em data-vi="Mình đi làm, và đôi khi cần dùng một cái tên tiếng Anh.">I go to work, and sometimes I need an English name.</em></p>
         <div class="margot" aria-label="Margot Tran"><span id="margot-t">Margot Tran</span></div>
       </div>
       </div>
@@ -1343,7 +1341,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       else mk(gg, 'line', { x1: x1, x2: x2, y1: y, y2: y, 'class': 'dash' });
     });
   }
-  // the typing caret stays after the name once it has been typed, blinking
+  // the typing caret stays after the name once it has been typed
   function caret(g, t, x, F, dx) { var bb = t.getBBox(); mk(g, 'rect', { 'class': 'scaret', x: x + t.getComputedTextLength() + 6 + (dx || 0), y: bb.y + bb.height * .12, width: 2.5, height: F * .9 }); }
   function buildDanh(svg, T) {
     svg.innerHTML = '';
