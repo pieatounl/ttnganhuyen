@@ -1579,7 +1579,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   var baseTitle = document.title;
   // Home shelf, after untold's: tall books, a logo on top, the story's title down the spine
   var shelf = document.getElementById('shelf2'), ticks = document.getElementById('sb-ticks'), sbN = document.getElementById('sb-n');
-  var BOOK = { hust: [74, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u'], base: [58, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
+  var BOOK = { hust: [74, 100, 0, 'u'], sinno: [64, 92, -1.2, 'u'], tedx: [150, 70, 0, 'm'], yln: [84, 80, 0, 'm'], msb: [74, 96, 0, 'u'], base: [96, 86, .8, 'l'], fti: [70, 98, 0, 'u'], orangerie: [60, 88, 0, 'l'], mom: [112, 100, 0, 'm'] };
   var shelfWork = WORK.slice().reverse();
   shelf.innerHTML = shelfWork.map(function (w, i) {
     var b = BOOK[w.id];
