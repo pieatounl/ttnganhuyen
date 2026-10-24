@@ -48,22 +48,6 @@ a { color: inherit; }
 .label::after { content: " )"; color: var(--mute); font-weight: 400; }
 .ast { color: var(--orange); }
 
-/* ---------- Loader: the signature ---------- */
-#loader {
-  position: fixed; inset: 0; z-index: 100; background: var(--orange);
-  display: grid; place-items: center;
-  animation: lift .6s cubic-bezier(.7,0,.2,1) 2.2s forwards;
-}
-#loader svg { width: min(460px, 72vw); height: auto; overflow: visible; }
-#loader path { fill: none; stroke: #fff; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
-#loader .s1 { animation: sign 1.4s cubic-bezier(.45,.05,.4,1) .2s forwards; }
-#loader .s2 { stroke-width: 6; animation: sign .47s ease-out 1.63s forwards; }
-@keyframes sign { to { stroke-dashoffset: 0; } }
-@keyframes lift { to { transform: translateY(-100%); visibility: hidden; } }
-@media (prefers-reduced-motion: reduce) {
-  #loader { animation-delay: .2s; animation-duration: .3s; }
-  #loader path { stroke-dashoffset: 0; animation: none !important; }
-}
 
 /* ---------- Work page (untold /work) ---------- */
 .wk-intro { padding-top: clamp(120px, 18vh, 180px); padding-bottom: clamp(40px, 8vh, 90px); }
@@ -691,12 +675,6 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 <body>
 
 <!-- Loader: Margot's "h" signature, drawn -->
-<div id="loader" aria-hidden="true">
-  <svg viewBox="60 100 1840 860">
-    <path class="s1" pathLength="1" d="M95 510 C 100 650 200 750 310 748 C 500 745 720 560 840 385 C 880 320 912 200 900 150 C 893 118 872 118 872 140 C 868 250 832 420 830 578 C 828 540 860 420 895 403 C 905 400 905 470 925 540 C 950 610 990 635 1040 632 C 1200 620 1500 520 1820 413"/>
-    <path class="s2" pathLength="1" d="M350 920 C 900 790 1400 650 1865 582"/>
-  </svg>
-</div>
 
 <div id="dot" aria-hidden="true"></div>
 <canvas id="trail" aria-hidden="true"></canvas>
@@ -1035,13 +1013,12 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   try { lang = localStorage.getItem('lang') || 'en'; } catch (e) {}
   if (!VI_ON) { lang = 'en'; document.documentElement.lang = 'en'; document.documentElement.classList.add('en-only'); }
 
-  // Loader: release the page when the signature has lifted
-  var loader = document.getElementById('loader');
+  // Start: unlock the page and type the headline
   document.body.classList.add('locked');
   var started = false;
   function ready() {
     if (started) return; started = true;
-    document.body.classList.remove('locked'); document.body.classList.add('ready'); if (loader) loader.remove();
+    document.body.classList.remove('locked'); document.body.classList.add('ready');
     typeHeadline();
   }
   // Hero flower: drawn stroke by stroke, then the moon behind its face turns into the sun
@@ -1085,8 +1062,8 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
       } else setTimeout(step, 55);
     })();
   }
-  loader.addEventListener('animationend', function (e) { if (e.animationName === 'lift') ready(); });
-  setTimeout(ready, 3400);
+  // no loader: the headline starts typing as soon as the page is up
+  setTimeout(ready, 250);
 
   // i18n: store English, swap with data-vi
   var tr = document.querySelectorAll('[data-vi]');
