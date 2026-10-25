@@ -88,6 +88,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
     - Chữ "margot tran".
     - Liên kết tới các trang trong site.
     - LinkedIn, Instagram, Facebook.
+    - Dòng "EST. 2002 · Margot · Ngân Huyền · pie.at.ounl" (năm sinh của Margot, thay cho ©).
 
 ## Ảnh
 
