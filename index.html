@@ -638,7 +638,7 @@ footer.dark .wm.sur { color: var(--orange); margin-top: -.12em; }
 footer.dark { background: var(--orange); color: var(--ink); }
 footer.dark .wm, footer.dark .fnav a, footer.dark .fnav .n, footer.dark .follow a { color: var(--ink); }
 footer.dark .wm.sur { color: #fff; }
-footer.dark .now { font-family: var(--display); font-weight: 300; font-size: clamp(1.15rem, 1.9vw, 1.6rem); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; white-space: nowrap; margin-top: -8px; }
+footer.dark .now { justify-self: start; font-family: var(--display); font-weight: 300; font-size: clamp(1.7rem, 3.2vw, 2.8rem); letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; background: #fff; color: var(--ink); padding: .08em .14em .12em; margin-top: -4px; }
 footer.dark .fnav li { border-bottom-color: color-mix(in srgb, var(--ink) 18%, transparent); }
 footer.dark .fnav a:hover, footer.dark .follow a:hover { color: #fff; }
 footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
@@ -1858,11 +1858,11 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     if (v === 'home') { setTimeout(function () { ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
   }
   window.addEventListener('hashchange', route);
-  // footer: date, time and GMT offset of the device's own time zone, ticking live (follows the device when it travels)
+  // footer: time and GMT offset of the device's own time zone, ticking live (follows the device when it travels)
   var hereNow = document.getElementById('here-now');
   if (hereNow) (function tick() {
     var n = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; }, o = -n.getTimezoneOffset();
-    hereNow.textContent = p(n.getDate()) + '.' + p(n.getMonth() + 1) + ' ' + p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
+    hereNow.textContent = p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
     setTimeout(tick, 1000 - Date.now() % 1000);
   })();
   // clicking a link to the page you're already on goes back to its top
