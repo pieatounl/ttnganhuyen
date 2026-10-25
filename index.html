@@ -137,7 +137,7 @@ a { color: inherit; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
-.book .bt { flex: none; margin: auto 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; font-size: min(calc(var(--w) * .3), 1.3rem); }
+.book .bt { flex: none; margin: auto 0 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; font-size: min(calc(var(--w) * .3), 1.3rem); }
 .book.t-u .bt { text-transform: uppercase; font-weight: 500; letter-spacing: .06em; font-size: min(calc(var(--w) * .26), 1rem); }
 .book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .3), 1.3rem); }
 .book .by { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -8px); white-space: nowrap; font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); opacity: 0; transition: opacity .3s; pointer-events: none; }
@@ -783,9 +783,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
 <header class="site band" id="hdr">
   <div class="in">
-    <a class="logo" href="#top">Huyen Tran<span class="sl">/</span><span class="mg">Margot</span><span class="cur"></span></a>
+    <a class="logo" href="#/about">Huyen Tran<span class="sl">/</span><span class="mg">Margot</span><span class="cur"></span></a>
     <nav class="main" aria-label="Sections">
-      <a href="#/" data-full="About" data-vi="Giới thiệu">About</a>
+      <a href="#/about" data-full="About" data-vi="Giới thiệu">About</a>
       <a href="#/my-journey" data-full="My journey" data-vi="Hành trình">My journey</a>
       <a href="#/use-cases" data-full="Use Cases" data-vi="Tình huống">Use Cases</a>
       <a href="#/blog" data-full="Blog" data-vi="Blog">Blog</a>
@@ -809,7 +809,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     <svg class="thread" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
       <path pathLength="1" d="M0 130 C 160 120 260 150 330 175 C 420 210 470 290 520 330 C 600 400 680 420 760 460 C 860 500 940 505 1000 505 M0 330 C 200 340 330 345 420 320 C 470 300 520 240 530 150 C 540 80 470 40 430 70 C 380 110 420 170 470 175 C 560 180 700 150 1000 150 M0 525 C 260 525 400 540 470 560 C 520 572 560 520 560 470 C 560 400 590 375 640 360 C 720 330 800 345 1000 350"/>
     </svg>
-    <a href="#/" data-vi="giới thiệu">about</a>
+    <a href="#/about" data-vi="giới thiệu">about</a>
     <a href="#/my-journey" data-vi="hành trình">my journey</a>
     <a href="#/use-cases" data-vi="tình huống">use cases</a>
     <a href="#/blog" data-vi="blog">blog</a>
@@ -1131,11 +1131,11 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 <footer class="band dark">
   <div class="in">
     <div class="fl">
-      <a class="wm" href="#/">margot<span class="cur"></span></a>
+      <a class="wm" href="#/about">margot<span class="cur"></span></a>
       <span class="wm sur" aria-hidden="true">tran</span>
     </div>
     <ol class="fnav">
-      <li><a href="#/"><span class="n">01</span><span class="t" data-vi="Giới thiệu">About</span></a></li>
+      <li><a href="#/about"><span class="n">01</span><span class="t" data-vi="Giới thiệu">About</span></a></li>
       <li><a href="#/my-journey"><span class="n">02</span><span class="t" data-vi="Hành trình">My journey</span></a></li>
       <li><a href="#/use-cases"><span class="n">03</span><span class="t" data-vi="Tình huống">Use Cases</span></a></li>
       <li><a href="#/blog"><span class="n">04</span><span class="t" data-vi="Blog">Blog</span></a></li>
@@ -1428,6 +1428,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var w = nameW + .45 * f, svg = box.querySelector('.mg-guides');
     if (!svg) { svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'mg-guides'); svg.setAttribute('aria-hidden', 'true'); box.insertBefore(svg, box.firstChild); }
     svg.setAttribute('width', w); svg.style.width = w + 'px';
+    // the lines run along with the letters as they are typed (see typeMargot)
+    box._reveal = function (n) { var r = n >= full.length ? 0 : Math.max(0, w - .2 * f - (n ? cx.measureText(full.slice(0, n)).width + ls * n : 0) - .25 * f); svg.style.clipPath = r ? 'inset(0 ' + r.toFixed(1) + 'px 0 0)' : 'none'; };
     svg.innerHTML = ys.map(function (y, i) { y = y.toFixed(1); return '<line x1="0" x2="' + w.toFixed(1) + '" y1="' + y + '" y2="' + y + '"' + (i === 3 ? '' : ' class="dash"') + '/>'; }).join('');
   }
   window.addEventListener('resize', margotGuides); if (document.fonts && document.fonts.ready) document.fonts.ready.then(margotGuides);
@@ -1437,8 +1439,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     margotGuides();
     if (reduce) return;
     clearTimeout(m._t); if (!m.parentNode.querySelector('.cur')) { var cur = document.createElement('span'); cur.className = 'cur'; m.parentNode.appendChild(cur); }
-    // the ruled lines show first, then the name types itself onto them
-    m.textContent = ''; var i = 0; m._t = setTimeout(function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); }, 800);
+    // a short stub of the ruled lines shows first, then they run along with the name as it types
+    var box = m.parentNode, reveal = box._reveal || function () {};
+    m.textContent = ''; reveal(0); var i = 0; m._t = setTimeout(function st() { m.textContent = mfull.slice(0, ++i); reveal(i); if (i < mfull.length) m._t = setTimeout(st, 110); }, 800);
   }
   // replay a name's animation from the start (each swipe in the carousel)
   function replaySpec(slide) {
@@ -1842,18 +1845,21 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var h = location.hash, om = h.match(/^#\/(work|consulting|stories)(\/.*)?$/);
     if (om) { history.replaceState(null, '', '#/' + PUB[om[1]] + (om[2] || '')); h = location.hash; }
     h = h.replace(/^#\/(my-journey|use-cases|blog)/, function (x, k) { return '#/' + VIEW[k]; });
+    if (/^#\/about\/?$/.test(h)) h = '#/'; // About is the home page
     var m = h.match(/^#\/(\w+)/), v = m && document.getElementById('v-' + m[1]) ? m[1] : 'home';
     var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
     if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
     views.forEach(function (el) { el.hidden = el.id !== 'v-' + shown; });
     document.body.setAttribute('data-view', v);
-    navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/' : '#/' + (PUB[v] || v))); renderNav(a); });
+    navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/about' : '#/' + (PUB[v] || v))); renderNav(a); });
     if (v !== 'home' || h === '#/' || h === '') window.scrollTo(0, 0);
     else { var t = document.getElementById(h.slice(1)); if (t) setTimeout(function () { t.scrollIntoView(); }, 0); }
     setTimeout(baselineRules, 0);
     if (v === 'home') { setTimeout(function () { ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
   }
   window.addEventListener('hashchange', route);
+  // clicking a link to the page you're already on goes back to its top
+  document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="#/"]'); if (a && a.getAttribute('href') === location.hash) window.scrollTo({ top: 0, behavior: 'smooth' }); });
   route();
 
   // Lines that type themselves when they scroll into view

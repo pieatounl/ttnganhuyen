@@ -35,11 +35,11 @@ Khẩu hiệu: "consulting by day, blooming by night".
 
 ## Các trang (router theo hash, hàm `route()`)
 
-Đường dẫn trùng tên tab: `#/my-journey`, `#/use-cases`, `#/blog`. Tên view bên trong vẫn là `work`, `consulting`, `stories` (bảng `PUB`/`VIEW` trong `route()`); link cũ `#/work`, `#/consulting`, `#/stories` tự chuyển sang tên mới. Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **About, My journey (`#/work`), Use Cases (`#/consulting`), Blog, contact**. Tiếng Việt: Giới thiệu, Hành trình, Tình huống, Blog.
+Đường dẫn trùng tên tab: `#/about` (trang chủ; bấm vào tên ở góc trái cũng về đây), `#/my-journey`, `#/use-cases`, `#/blog`. Tên view bên trong vẫn là `work`, `consulting`, `stories` (bảng `PUB`/`VIEW` trong `route()`); link cũ `#/work`, `#/consulting`, `#/stories` tự chuyển sang tên mới. Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **About, My journey (`#/work`), Use Cases (`#/consulting`), Blog, contact**. Tiếng Việt: Giới thiệu, Hành trình, Tình huống, Blog.
 
 | Hash | View | Nội dung |
 | --- | --- | --- |
-| `#/` | `v-home` | Trang About (trang chủ), chi tiết ở phần dưới |
+| `#/about` (hoặc `#/`) | `v-home` | Trang About (trang chủ), chi tiết ở phần dưới |
 | `#/my-journey` | `v-work` | Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
 | `#/my-journey/<id>` | `v-case` | Trang chi tiết, `fillCase(id)` lấy dữ liệu từ `WORK`: tên đơn vị, năm, vai trò, các đoạn `p`, năng lực `caps`, các slide tạm `slides` |
 | `#/use-cases` | `v-consulting` | "use cases coming soon": 01 Strategy, 02 Data, 03 Process |
@@ -74,10 +74,10 @@ Khẩu hiệu: "consulting by day, blooming by night".
 4. **About** `#about`: "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt:
    - Ngân Huyền (Danh, do ông nội đặt; chú thích "The Cosmic Origin of Carbonado")
    - Pie At Ounl (Tự, bắt nguồn từ "Enigma")
-   - Margot Tran (Hiệu): các đường kẻ hiện ra trước (giống Pie At Ounl: đỉnh dấu, đỉnh chữ hoa, đỉnh chữ thường, chân chữ, chân chữ g; chỉ dài vừa tên, `margotGuides`), rồi tên mới gõ từng chữ
+   - Margot Tran (Hiệu): một đoạn ngắn của các đường kẻ hiện ra trước (giống Pie At Ounl: đỉnh dấu, đỉnh chữ hoa, đỉnh chữ thường, chân chữ, chân chữ g; `margotGuides`), rồi các đường chạy dài theo từng chữ khi tên được gõ, dừng ở cuối tên
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
 5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
-6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ và nằm giữa phần gáy còn trống (không dồn sát đáy); hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
+6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ, căn lề dưới; hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
 7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
