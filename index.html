@@ -437,7 +437,7 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .margot .cur { width: 2px; min-width: 2px; }
 .margot { position: relative; }
 .margot .mg-guides { position: absolute; left: -.2em; top: 0; height: 100%; overflow: visible; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .6s .2s; }
-.spec.hieu.on .margot .mg-guides { opacity: 1; }
+.spec.hieu.on .margot .mg-guides { opacity: 1; transition-delay: 0s; }
 .mg-guides line { stroke: #8facd8; stroke-width: 1.2; vector-effect: non-scaling-stroke; } .mg-guides .dash { stroke-dasharray: 7 6; }
 @media (max-width: 720px) {
   .spec-scroll { margin: 0 -16px; padding: 0 16px; }
@@ -1422,12 +1422,13 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var ls = parseFloat(cs.letterSpacing) || 0, nameW = cx.measureText(full).width + ls * full.length;
     var mm = cx.measureText('M'), lh = box.offsetHeight / Math.max(1, Math.round(box.offsetHeight / (parseFloat(cs.lineHeight) || f)));
     var base = (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 + mm.fontBoundingBoxAscent;
-    var ys = [base - mm.actualBoundingBoxAscent, base - cx.measureText('x').actualBoundingBoxAscent, base, base + cx.measureText('g').actualBoundingBoxDescent];
-    m.style.display = 'inline-block'; m.style.minWidth = Math.ceil(nameW) + 'px';
+    // same lines as Pie At Ounl: accent top (as on ề), capital top, x-height, baseline, descender
+    var ys = [base - cx.measureText('\u1EC1').actualBoundingBoxAscent, base - mm.actualBoundingBoxAscent, base - cx.measureText('x').actualBoundingBoxAscent, base, base + cx.measureText('g').actualBoundingBoxDescent];
+    box.style.minWidth = Math.ceil(nameW + .1 * f) + 'px'; // room for the whole name, so the lines don't move while it types
     var w = nameW + .45 * f, svg = box.querySelector('.mg-guides');
     if (!svg) { svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'mg-guides'); svg.setAttribute('aria-hidden', 'true'); box.insertBefore(svg, box.firstChild); }
     svg.setAttribute('width', w); svg.style.width = w + 'px';
-    svg.innerHTML = ys.map(function (y, i) { y = y.toFixed(1); return '<line x1="0" x2="' + w.toFixed(1) + '" y1="' + y + '" y2="' + y + '"' + (i === 2 ? '' : ' class="dash"') + '/>'; }).join('');
+    svg.innerHTML = ys.map(function (y, i) { y = y.toFixed(1); return '<line x1="0" x2="' + w.toFixed(1) + '" y1="' + y + '" y2="' + y + '"' + (i === 3 ? '' : ' class="dash"') + '/>'; }).join('');
   }
   window.addEventListener('resize', margotGuides); if (document.fonts && document.fonts.ready) document.fonts.ready.then(margotGuides);
   // Margot Tran types itself in; called again whenever its slide comes back into view
@@ -1436,7 +1437,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     margotGuides();
     if (reduce) return;
     clearTimeout(m._t); if (!m.parentNode.querySelector('.cur')) { var cur = document.createElement('span'); cur.className = 'cur'; m.parentNode.appendChild(cur); }
-    m.textContent = ''; var i = 0; (function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); })();
+    // the ruled lines show first, then the name types itself onto them
+    m.textContent = ''; var i = 0; m._t = setTimeout(function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); }, 800);
   }
   // replay a name's animation from the start (each swipe in the carousel)
   function replaySpec(slide) {
