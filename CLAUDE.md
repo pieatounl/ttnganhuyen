@@ -35,7 +35,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 
 ## Các trang (router theo hash, hàm `route()`)
 
-Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **about, work, consulting, blog, contact**.
+Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **About, My journey (`#/work`), Use Cases (`#/consulting`), Blog, contact**. Tiếng Việt: Giới thiệu, Hành trình, Tình huống, Blog.
 
 | Hash | View | Nội dung |
 | --- | --- | --- |
@@ -56,7 +56,7 @@ Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong 
    - Nút ngôn ngữ dạng "( EN, VI )": bấm EN hoặc VI để đổi, ngôn ngữ đang chọn in đậm.
    - Nút hamburger mở menu xanh toàn màn hình.
 3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
-   - **Thẻ ảnh** `.shot` gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
+   - **Thẻ ảnh** `.shot` tỉ lệ 16:9 (máy tính 2.133em × 1.2em; điện thoại giữ chiều rộng 1.95em) gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
      - sc2 HUST · Business Analytics
      - sc6 TEDxBachkhoa · Communications
      - sc5 SoICT Innovation Club · Public Relations

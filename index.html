@@ -281,11 +281,12 @@ nav.main a:hover::before { transform: scale(1); }
 .reveal .word, .reveal .pop { opacity: 0; transform: translateY(.25em); transition: opacity .7s, transform .9s cubic-bezier(.2,.7,.2,1); }
 body.ready .reveal .word, body.ready .reveal .pop { opacity: 1; transform: none; }
 body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { transition-delay: .15s; } body.ready .reveal .d3 { transition-delay: .25s; } body.ready .reveal .d4 { transition-delay: .35s; } body.ready .reveal .d5 { transition-delay: .5s; }
-.shot { width: 1.95em; height: 1em; border-radius: 4px; overflow: hidden; position: relative; flex: none; background: var(--orange); }
+.shot { width: 2.133em; height: 1.2em; border-radius: 4px; overflow: hidden; position: relative; flex: none; background: var(--orange); }
 .slides { position: absolute; inset: 0; }
 .slide { position: absolute; inset: 0; display: grid; align-content: end; padding: 0.08em 0.1em; opacity: 0; transition: opacity .8s; }
 .slide.on { opacity: 1; }
 .shot { cursor: pointer; } .shot.quick .slide { transition: opacity .25s; }
+@media (max-width: 600px) { .big .shot { width: 1.95em; height: 1.097em; } }
 .slide b, .slide i { display: block; line-height: 1.35; }
 .slide b { white-space: normal; max-width: 92%; } /* long names fold onto a second line */
 .slide b { font-family: var(--body); font-size: 0.09em; letter-spacing: .04em; text-transform: uppercase; color: #fff; font-weight: 700; }
@@ -780,8 +781,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     <a class="logo" href="#top">Huyen Tran<span class="sl">/</span>Margot<span class="cur"></span></a>
     <nav class="main" aria-label="Sections">
       <a href="#/" data-full="About" data-vi="Giới thiệu">About</a>
-      <a href="#/work" data-full="Work" data-vi="Công việc">Work</a>
-      <a href="#/consulting" data-full="Consulting" data-vi="Tư vấn">Consulting</a>
+      <a href="#/work" data-full="My journey" data-vi="Hành trình">My journey</a>
+      <a href="#/consulting" data-full="Use Cases" data-vi="Tình huống">Use Cases</a>
       <a href="#/stories" data-full="Blog" data-vi="Blog">Blog</a>
     </nav>
     <div class="right">
@@ -804,8 +805,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       <path pathLength="1" d="M0 130 C 160 120 260 150 330 175 C 420 210 470 290 520 330 C 600 400 680 420 760 460 C 860 500 940 505 1000 505 M0 330 C 200 340 330 345 420 320 C 470 300 520 240 530 150 C 540 80 470 40 430 70 C 380 110 420 170 470 175 C 560 180 700 150 1000 150 M0 525 C 260 525 400 540 470 560 C 520 572 560 520 560 470 C 560 400 590 375 640 360 C 720 330 800 345 1000 350"/>
     </svg>
     <a href="#/" data-vi="giới thiệu">about</a>
-    <a href="#/work" data-vi="công việc">work</a>
-    <a href="#/consulting" data-vi="tư vấn">consulting</a>
+    <a href="#/work" data-vi="hành trình">my journey</a>
+    <a href="#/consulting" data-vi="tình huống">use cases</a>
     <a href="#/stories" data-vi="blog">blog</a>
     <a href="#contact" class="talk-open m-right" data-mode="contact" data-vi="liên hệ">contact</a>
   </div>
@@ -1130,8 +1131,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     </div>
     <ol class="fnav">
       <li><a href="#/"><span class="n">01</span><span class="t" data-vi="Giới thiệu">About</span></a></li>
-      <li><a href="#/work"><span class="n">02</span><span class="t" data-vi="Công việc">Work</span></a></li>
-      <li><a href="#/consulting"><span class="n">03</span><span class="t" data-vi="Tư vấn">Consulting</span></a></li>
+      <li><a href="#/work"><span class="n">02</span><span class="t" data-vi="Hành trình">My journey</span></a></li>
+      <li><a href="#/consulting"><span class="n">03</span><span class="t" data-vi="Tình huống">Use Cases</span></a></li>
       <li><a href="#/stories"><span class="n">04</span><span class="t" data-vi="Blog">Blog</span></a></li>
     </ol>
     <div class="fb">
