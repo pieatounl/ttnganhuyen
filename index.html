@@ -171,9 +171,9 @@ a { color: inherit; }
 .eco-dots i:nth-child(1) { width: 22vw; height: 22vw; opacity: .55; } .eco-dots i:nth-child(2) { width: 38vw; height: 38vw; opacity: .3; } .eco-dots i:nth-child(3) { width: 56vw; height: 56vw; opacity: .14; }
 .eco-rings { position: absolute; inset: 0; pointer-events: none; }
 .eco-rings span { position: absolute; left: 0; top: 0; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; border: 1px solid var(--orange); background: color-mix(in srgb, #fff calc(var(--g, 1) * 40%), transparent); -webkit-backdrop-filter: blur(calc(var(--g, 1) * 5px)); backdrop-filter: blur(calc(var(--g, 1) * 5px)); display: grid; place-items: center; overflow: hidden; pointer-events: auto; transition: color .3s; --d: clamp(96px, min(11.2vw, 21vh), 170px); }
-.eco-rings span::before { content: ""; position: absolute; inset: 0; border-radius: 50%; opacity: 0; transform: scale(1.25); transition: opacity .45s, transform .9s cubic-bezier(.2,.7,.2,1); }
+.eco-rings span::before { content: ""; position: absolute; inset: 0; border-radius: 50%; opacity: var(--ph, 0); transform: scale(calc(1.25 - .25 * var(--ph, 0))); transition: opacity .45s, transform .9s cubic-bezier(.2,.7,.2,1); }
 .eco-rings span b { opacity: var(--lb, 1); transition: opacity .2s; position: relative; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-.eco-rings span:hover { color: #fff; } .eco-rings span:hover::before { opacity: 1; transform: none; } .eco-rings .ph-sk:hover { color: var(--ink); }
+.eco-rings span:hover, .eco-rings span.lit { color: #fff; } .eco-rings .ph-sk.lit { color: var(--ink); } .eco-rings span:hover::before { opacity: 1; transform: none; } .eco-rings .ph-sk:hover { color: var(--ink); }
 @media (max-width: 760px) {
   .eco { height: auto; } .eco-pin { position: static; height: auto; overflow: visible; padding: 70px 0; }
   .eco-a, .eco-b { position: static; opacity: 1 !important; transform: none !important; pointer-events: auto; }
@@ -249,7 +249,7 @@ nav.main a:hover::before { transform: scale(1); }
 .close { width: 64px; height: 64px; border-radius: 50%; background: #fff; border: 0; cursor: pointer; display: grid; place-items: center; color: var(--orange); font-size: 1.4rem; transition: transform .3s; }
 .close:hover { transform: rotate(90deg); }
 #menu .grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-content: center; gap: 2vh 6vw; }
-#menu .grid a { font-family: var(--display); font-weight: 300; font-size: clamp(2.6rem, 8.5vw, 8rem); line-height: 1.05; letter-spacing: -0.045em; text-decoration: none; position: relative; z-index: 1; padding-bottom: .08em; transition: color .25s, transform .35s; }
+#menu .grid a { white-space: nowrap; font-family: var(--display); font-weight: 300; font-size: clamp(2.2rem, min(6.6vw, 11vh), 7rem); line-height: 1.05; letter-spacing: -0.045em; text-decoration: none; position: relative; z-index: 1; padding-bottom: .08em; transition: color .25s, transform .35s; }
 #menu .grid a:nth-of-type(even), #menu .grid a.m-right { text-align: right; } #menu .grid a.m-right { grid-column: 2; }
 #menu .grid a.m-right:hover { transform: translateX(-12px); }
 #menu .grid a:hover { color: #fff; transform: translateX(12px); }
@@ -817,7 +817,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   </div>
   <div class="in bottom" style="width:100%">
     <p class="tagline" data-vi="ngày tư vấn, đêm nở hoa">consulting by day, blooming by night</p>
-    <div class="pill"><span>LANG</span><button type="button" data-set="en" aria-pressed="true">( EN )</button><button type="button" data-set="vi" aria-pressed="false">( VI )</button></div>
+    <div class="pill"><span>LANG</span><button type="button" data-set="en" aria-pressed="true">( EN, VI )</button><button type="button" data-set="vi" aria-pressed="false">( VI )</button></div>
   </div>
 </div>
 
@@ -1821,6 +1821,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       el.style.zIndex = e < .02 ? (i === 3 ? 2 : 1) : '';
       el.style.opacity = ''; el.style.setProperty('--lb', Math.min(1, e * 2.5).toFixed(3));
       el.style.setProperty('--g', ((1 - t) * Math.min(1, e * 3)).toFixed(3));
+      // once the circles have spread into a row their photos show; scrolling on, they fade back to white
+      var ph = ease((e - .75) / .25) * (1 - ease(t / .35)); el.style.setProperty('--ph', ph.toFixed(3)); el.classList.toggle('lit', ph > .5);
     });
   }
   window.addEventListener('scroll', ecoFrame, { passive: true }); window.addEventListener('resize', ecoFrame);

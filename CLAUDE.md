@@ -54,7 +54,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Góc trái là "Huyen Tran / Margot"; "Margot" và dấu nháy màu xanh.
    - Nav có nhãn thu lại còn chữ cái đầu.
    - Nhãn "( EN, VI )" (chỉ để hiển thị, không bấm được).
-   - Nút hamburger mở menu xanh toàn màn hình.
+   - Nút hamburger mở menu xanh toàn màn hình; mỗi tên trong menu nằm trên một dòng (cỡ chữ tự nhỏ lại khi thiếu chỗ).
 3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
    - **Thẻ ảnh** `.shot` tỉ lệ 16:9 (máy tính 2.133em × 1.2em; điện thoại giữ chiều rộng 1.95em) gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
      - sc2 HUST · Business Analytics
@@ -78,7 +78,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
 5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
 6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ, căn lề dưới; hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
-7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Nút "Let's connect!".
+7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Khi cuộn tới, các vòng dàn thành hàng thì ảnh tự hiện (như lúc rê chuột); cuộn tiếp, vòng dạt ra hai bên thì trở lại nền trắng đục (`--ph` trong `ecoFrame`). Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
    - Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra, nên không bị che.
