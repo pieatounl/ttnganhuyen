@@ -443,7 +443,7 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 @media (min-width: 761px) and (max-width: 1000px) { #names-car .sp-box .tale { position: static; width: auto !important; max-width: 560px; margin: 0 0 14px; } }
 .tale em { font-style: italic; }
 .tale .ast { font-style: normal; font-weight: 600; margin-right: 2px; }
-.sp-box:has(.specimen.on) .tale, .spec.hieu.on .tale { opacity: 1; } .spec.hieu .tale { transition-delay: .9s; }
+.sp-box:has(.specimen.on) .tale, .spec.hieu.told .tale { opacity: 1; } .spec.hieu .tale { transition-delay: .2s; }
 .nc-reset, .nc-reset * { transition: none !important; }
 .spec.hieu { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .spec.hieu .tale { width: min(420px, 100%); margin-bottom: .6em; }
@@ -1457,17 +1457,18 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   function typeMargot() {
     var m = document.getElementById('margot-t'), mfull = m.dataset.full || m.textContent; m.dataset.full = mfull;
     margotGuides();
-    if (reduce) return;
+    var hz = document.querySelector('.spec.hieu'); hz.classList.remove('told');
+    if (reduce) { hz.classList.add('told'); return; }
     clearTimeout(m._t); if (!m.parentNode.querySelector('.cur')) { var cur = document.createElement('span'); cur.className = 'cur'; m.parentNode.appendChild(cur); }
     // the ruled lines are always there in full; the name types itself onto them
-    m.textContent = ''; var i = 0; m._t = setTimeout(function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); }, 400);
+    m.textContent = ''; var i = 0; m._t = setTimeout(function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); else hz.classList.add('told'); }, 400);
   }
   // replay a name's animation from the start (each swipe in the carousel)
   function replaySpec(slide) {
     if (!slide || reduce) return;
     slide.classList.add('nc-reset');
     var svg = slide.querySelector('.specimen');
-    if (svg) svg.classList.remove('on'); else { slide.classList.remove('on'); document.getElementById('margot-t').textContent = ''; }
+    if (svg) svg.classList.remove('on'); else { slide.classList.remove('on', 'told'); document.getElementById('margot-t').textContent = ''; }
     void slide.offsetWidth; slide.classList.remove('nc-reset');
     setTimeout(function () { if (svg) svg.classList.add('on'); else { slide.classList.add('on'); typeMargot(); } }, 450);
   }
