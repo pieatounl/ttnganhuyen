@@ -1393,7 +1393,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var fx = x0 - 30; note(g, fx + 40, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx, ys[4] + 104, fx, ys[4] + 6, 'b');
     // dimension + label
     var ax = x0 - 46; dimArrow(g, ax, ys[1], ys[4], 'b');
-    note(g, ax - 14, B - M.xh * F * .62, T.dl, 'b', 'end').setAttribute('style', 'font-size:24px');
+    note(g, ax - 14, B - M.xh * F * .62, T.dl, 'b', 'end');
     [d1, d3, d4].forEach(function (d) { mk(g, 'circle', { cx: d.x, cy: d.y, r: d.r, 'class': 'dot o' }); });
     mk(g, 'circle', { cx: d5.x, cy: d5.y, r: d5.r, 'class': 'dot b' });
     // the fourth name, selected like text
