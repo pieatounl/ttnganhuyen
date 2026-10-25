@@ -184,7 +184,7 @@ a { color: inherit; }
 .eco-dots i { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid var(--orange); transform: translate(-50%, -50%) scale(var(--e, 1)); }
 .eco-dots i:nth-child(1) { width: 22vw; height: 22vw; opacity: .55; } .eco-dots i:nth-child(2) { width: 38vw; height: 38vw; opacity: .3; } .eco-dots i:nth-child(3) { width: 56vw; height: 56vw; opacity: .14; }
 .eco-rings { position: absolute; inset: 0; pointer-events: none; }
-.eco-rings span { position: absolute; left: 0; top: 0; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; border: 0; background: color-mix(in srgb, #fff calc(var(--g, 1) * 40%), transparent); -webkit-backdrop-filter: blur(calc(var(--g, 1) * 5px)); backdrop-filter: blur(calc(var(--g, 1) * 5px)); display: grid; place-items: center; overflow: hidden; pointer-events: auto; transition: color .3s; --d: clamp(96px, min(11.2vw, 21vh), 170px); }
+.eco-rings span { position: absolute; left: 0; top: 0; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; border: 0; background: color-mix(in srgb, #fff calc(var(--g, 1) * 92%), transparent); display: grid; place-items: center; overflow: hidden; pointer-events: auto; transition: color .3s; --d: clamp(96px, min(11.2vw, 21vh), 170px); }
 .eco-rings span::before { content: ""; position: absolute; inset: 0; border-radius: 50%; opacity: var(--ph, 0); transform: scale(calc(1.25 - .25 * var(--ph, 0))); transition: opacity .45s, transform .9s cubic-bezier(.2,.7,.2,1); }
 .eco-rings span::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--orange); pointer-events: none; --on: calc(10deg - 5deg * var(--q, 0)); -webkit-mask-image: conic-gradient(from 90deg, transparent 0 90deg, #000 90deg 360deg), repeating-conic-gradient(from 90deg, #000 0 var(--on), transparent var(--on) 10deg); mask-image: conic-gradient(from 90deg, transparent 0 90deg, #000 90deg 360deg), repeating-conic-gradient(from 90deg, #000 0 var(--on), transparent var(--on) 10deg); }
 .eco-rings span b { opacity: var(--lb, 1); transition: opacity .2s; position: relative; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
@@ -1840,8 +1840,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       ax = ox + (ax - ox) * e; ay = oy + (ay - oy) * e;
       el.style.transform = 'translate(' + (ax + (bx - ax) * t) + 'px,' + (ay + (by - ay) * t) + 'px) scale(' + (s0 + (1 - s0) * e).toFixed(3) + ')';
       el.style.zIndex = e < .02 ? (i === 3 ? 2 : 1) : '';
-      el.style.opacity = ''; el.style.setProperty('--lb', Math.min(1, e * 2.5).toFixed(3));
-      el.style.setProperty('--g', ((1 - t) * Math.min(1, e * 3)).toFixed(3));
+      el.style.opacity = ''; el.style.setProperty('--lb', ease((e - .35) / .4).toFixed(3));
+      el.style.setProperty('--g', ((1 - t) * ease((e - .3) / .5)).toFixed(3));
       // while the circles are stacked on the second "e", a quarter of each ring is dashed to follow the letter's opening; it closes as they unstack
       el.style.setProperty('--q', (1 - e).toFixed(3));
       // once the circles have spread into a row their photos show; scrolling on, they fade back to white
