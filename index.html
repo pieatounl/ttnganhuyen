@@ -1333,9 +1333,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   var SPEC_TXT = {
     en: {
       d1: ['(Sino-Vietnamese) Silver or wealth;', 'figuratively, something deeply precious.'],
-      d2: ['A pairing with my', 'paternal aunt’s name:', '“Ngân Nga” (meaning a', 'resonant, lingering melody)'],
+      d2: ['A pairing with my paternal aunt’s', 'name: “Ngân Nga” (meaning a', 'resonant, lingering melody)'],
       d3: ['Sharing an initial with my father: “Hùng”.'],
-      d4: ['(Chinese root) An instrument’s string;', 'the color black.', '(The vision) A girl with a magnetic,', 'mesmerising presence, mysterious', 'and dreamlike.'],
+      d4: ['(Chinese root) An instrument’s string; the color black.', '(The vision) A girl with a magnetic, mesmerising', 'presence, mysterious and dreamlike.'],
       d5: ['Grandpa initially chose “<tspan class="sel">Minh Nguyệt</tspan>”,', 'but Mom vetoed it, fearing the name would bring a life of hardship.'],
       d6: ['The true origin: Inspired by', '“The Cosmic Origin of Carbonado”.'],
       dl: ['(Danh)', 'My birth name, a gift from my grandfather.'],
@@ -1386,7 +1386,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     // notes and leaders
     var top = ys[0];
     var n3 = note(g, d3.x - 24, top - 92, T.d3, 'o'), n1 = note(g, d1.x + 330, top - 92, T.d1, 'o', 'end'), gap = n1.getBBox().x + n1.getBBox().width - n3.getBBox().x + 30; if (gap > 0) n1.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d1.x + 330 - gap); }); lead(g, d1.x + 40, top - 52, d1.x + 6, d1.y - d1.r - 4, 'o');
-    note(g, hx - 190, ys[4] + 72, T.d2, 'o'); lead(g, hx, ys[4] + 46, hx, B + 4, 'o');
+    note(g, hx - 200, ys[4] + 72, T.d2, 'o'); lead(g, hx, ys[4] + 46, hx, B + 4, 'o');
     lead(g, d3.x, top - 80, d3.x, d3.y - d3.r - 4, 'o');
     note(g, 1648, B + 108, T.d4, 'o', 'end'); lead(g, d4.x - 50, B + 86, d4.x - d4.r * .6, d4.y + d4.r * .8 + 3, 'o');
     var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 30, ys[4] + 156, d5.x - 3, d5.y + d5.r + 4, 'b');
@@ -1418,7 +1418,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     note(g, db.x - 115, ys[0] - 78, T.t1, 'b'); lead(g, db.x, ys[0] - 40, db.x, db.y - db.r - 4, 'b');
     note(g, dor.x - 96, ys[4] + 78, T.t2, 'o'); lead(g, dor.x, ys[4] + 56, dor.x, dor.y + dor.r + 4, 'o');
     var ax = Math.max(right + 60, 980); dimArrow(g, ax, ys[1], ys[4], 'o');
-    note(g, ax + 22, ys[2] + Math.max(24, (xh - 25) / 2 + 8), T.tl, 'o').setAttribute('style', 'font-size:22px');
+    note(g, ax + 22, ys[2] + Math.max(24, (xh - 25) / 2 + 8), T.tl, 'o');
     mk(g, 'circle', { cx: db.x, cy: db.y, r: db.r, 'class': 'dot b' });
     mk(g, 'circle', { cx: dor.x, cy: dor.y, r: dor.r, 'class': 'dot o' });
     return { t: t, full: name, F: F };
