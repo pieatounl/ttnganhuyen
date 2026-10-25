@@ -1140,7 +1140,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       <li><a href="#/blog"><span class="n">04</span><span class="t" data-vi="Blog">Blog</span></a></li>
     </ol>
     <div class="fb">
-      <span>EST. 2002 · Margot · Ngân Huyền · pie.at.ounl · <span id="here-now">Hasselt</span></span>
+      <span>EST. 2002 · Margot · Ngân Huyền · pie.at.ounl · <span id="here-now"></span></span>
       <span class="follow"><span data-vi="THEO DÕI">FOLLOW</span> <a href="https://www.linkedin.com/in/ttnganhuyen" target="_blank" rel="noopener">linkedin</a> <a href="https://www.instagram.com/pie.at.ounl/" target="_blank" rel="noopener">instagram</a> <a href="https://www.facebook.com/pie.at.ounl/" target="_blank" rel="noopener">facebook</a></span>
     </div>
   </div>
@@ -1856,13 +1856,11 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     if (v === 'home') { setTimeout(function () { ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
   }
   window.addEventListener('hashchange', route);
-  // footer: the date and time where she is right now (Hasselt, Belgium), ticking live
+  // footer: date, time and GMT offset of the device's own time zone, ticking live (follows the device when it travels)
   var hereNow = document.getElementById('here-now');
   if (hereNow) (function tick() {
-    try {
-      var d = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Brussels', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).formatToParts(new Date()).forEach(function (x) { d[x.type] = x.value; });
-      hereNow.textContent = 'Hasselt ' + d.day + '.' + d.month + '.' + d.year + ' ' + d.hour + ':' + d.minute + ':' + d.second;
-    } catch (e) {}
+    var n = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; }, o = -n.getTimezoneOffset();
+    hereNow.textContent = p(n.getDate()) + '.' + p(n.getMonth() + 1) + '.' + n.getFullYear() + ' ' + p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
     setTimeout(tick, 1000 - Date.now() % 1000);
   })();
   // clicking a link to the page you're already on goes back to its top

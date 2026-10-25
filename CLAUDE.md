@@ -88,7 +88,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
     - Chữ "margot tran".
     - Liên kết tới các trang trong site.
     - LinkedIn, Instagram, Facebook.
-    - Dòng "EST. 2002 · Margot · Ngân Huyền · pie.at.ounl · Hasselt DD.MM.YYYY HH:MM:SS" (năm sinh của Margot, thay cho ©). Phần cuối `#here-now` là ngày giờ thực ở Hasselt (múi giờ Europe/Brussels), cập nhật mỗi giây.
+    - Dòng "EST. 2002 · Margot · Ngân Huyền · pie.at.ounl · DD.MM.YYYY HH:MM:SS GMT+X" (năm sinh của Margot, thay cho ©). Phần cuối `#here-now` là ngày giờ theo múi giờ của chính thiết bị đang xem, cập nhật mỗi giây và tự đổi khi thiết bị sang múi giờ khác (người xem ở nơi khác sẽ thấy giờ của họ).
 
 ## Ảnh
 
