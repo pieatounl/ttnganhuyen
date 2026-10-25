@@ -174,6 +174,7 @@ a { color: inherit; }
 .eco { height: 260vh; position: relative; }
 .eco-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .eco-a, .eco-b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; will-change: transform, opacity; }
+section[hidden] { display: none !important; }
 .eco-word { font-family: var(--display); font-weight: 400; font-size: clamp(6rem, 25vw, 23rem); letter-spacing: -0.075em; line-height: .9; margin: 18px 0 26px; padding-right: .06em; }
 .eco-a .caption { margin: 0; }
 .eco-word .o { color: var(--orange); }
@@ -970,14 +971,14 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       </div>
       <div class="eco-b">
         <h2 class="eco-h"><span class="e1"><span>I</span><span>connect</span></span><span class="e2">unlikely</span><span class="e3">dots</span></h2>
-        <a class="btn talk-open" href="#" data-mode="contact" data-vi="Nhìn bức tranh lớn!">See the big picture!</a>
+        <a class="btn" href="#/blog" data-vi="Nhìn bức tranh lớn!">See the big picture!</a>
       </div>
       <div class="eco-dots" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="eco-rings crafts"><span class="ph-biz"><b data-vi="Kinh doanh">Business</b></span><span class="ph-flo"><b data-vi="Cắm hoa">Flowers</b></span><span class="ph-nat"><b data-vi="Thiên nhiên">Nature</b></span><span class="ph-ckt"><b data-vi="Pha chế">Cocktails</b></span><span class="ph-tech"><b data-vi="Công nghệ">Technology</b></span><span class="ph-sk"><b data-vi="Ký hoạ">Sketching</b></span></div>
     </div>
   </section>
 
-  <section class="s band tz ruled" id="t-stories">
+  <section class="s band tz ruled" id="t-stories" hidden>
     <div class="in center">
       <span class="label" data-vi="Câu chuyện phía sau">The story behind it all</span>
       <div class="stage">
