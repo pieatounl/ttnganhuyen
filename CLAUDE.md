@@ -22,6 +22,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 | `favicon.ico`, `apple-touch-icon.png` | Hình bông hoa trong ly coupe, nét trắng trên nền xanh `#8FACD8` |
 | `img/chuyen-ke.jpg` | Ảnh bìa bài blog "Chuyện kể" |
 | `img/flower-*.png` | Hình vẽ tay gốc của bông hoa ở hero |
+| `img/og-image.png` | Ảnh xem trước khi gửi link (1200×630, mẫu B Margot duyệt): "consulting by day & blooming by night" trên nền trắng, 3 đường kẻ nằm đúng chân chữ, ly hoa màu xanh. Khai báo bằng thẻ `og:*` và `twitter:*` trong `<head>`. Nguồn HTML để vẽ lại: `/mnt/project-files/website/thumbnail/og-b.html` |
 
 ## Hệ thống thiết kế
 
