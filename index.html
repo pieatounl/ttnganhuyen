@@ -137,9 +137,9 @@ a { color: inherit; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
-.book .bt { flex: none; margin-top: auto; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.03em; line-height: 1; font-size: min(calc(var(--w) * .44), 3.2rem); }
-.book.t-u .bt { text-transform: uppercase; font-weight: 500; font-size: min(calc(var(--w) * .4), 2.8rem); }
-.book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .42), 2.4rem); }
+.book .bt { flex: none; margin: auto 0; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; font-size: min(calc(var(--w) * .3), 1.3rem); }
+.book.t-u .bt { text-transform: uppercase; font-weight: 500; letter-spacing: .06em; font-size: min(calc(var(--w) * .26), 1rem); }
+.book.t-l .bt { font-weight: 300; font-size: min(calc(var(--w) * .3), 1.3rem); }
 .book .by { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -8px); white-space: nowrap; font-style: normal; font-size: .64rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); opacity: 0; transition: opacity .3s; pointer-events: none; }
 .book:hover .by, .book.on .by { opacity: 1; }
 .book:hover, .book.on { transform: translateY(-12px) rotate(0deg); background: var(--orange); }
@@ -154,7 +154,7 @@ a { color: inherit; }
 .sb-count { font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; } .sb-count b { color: var(--accent-ink); } .sb-count a { color: var(--ink); margin-left: 6px; border-bottom: 1px solid var(--orange); text-decoration: none; }
 .sb-cta { grid-column: 3; justify-self: end; font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; } .sb-cta a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--orange); padding-bottom: 2px; } .sb-cta .dash { color: var(--mute); }
 @media (max-width: 1000px) { .shelf-bar { grid-template-columns: 1fr; justify-items: center; } .sb-nav, .sb-cta { grid-column: 1; justify-self: center; } }
-@media (max-width: 760px) { .shelf2 { justify-content: flex-start; height: 440px; gap: 8px; } .book { width: calc(var(--w) * .72); } .book .bt { font-size: min(calc(var(--w) * .3), 2rem) !important; } .sb-ticks { display: none; } }
+@media (max-width: 760px) { .shelf2 { justify-content: flex-start; height: 440px; gap: 8px; } .book { width: calc(var(--w) * .72); } .book .bt { font-size: min(calc(var(--w) * .2), 1.1rem) !important; } .sb-ticks { display: none; } }
 
 /* ---------- Circles, after untold's ecosystem: a row over the word, then they part to frame a headline ---------- */
 .eco { height: 260vh; position: relative; }
@@ -434,6 +434,10 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .spec.hieu .tale { width: min(420px, 100%); margin-bottom: .6em; }
 .margot { font-family: var(--display); font-weight: 200; font-style: italic; color: #96959b; font-size: clamp(3rem, 8.6vw, 8.2rem); line-height: 1; letter-spacing: -0.02em; margin-left: auto; white-space: nowrap; }
 .margot .cur { width: 2px; min-width: 2px; }
+.margot { position: relative; }
+.margot .mg-guides { position: absolute; left: -.2em; top: 0; height: 100%; overflow: visible; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .6s .2s; }
+.spec.hieu.on .margot .mg-guides { opacity: 1; }
+.mg-guides line { stroke: #8facd8; stroke-width: 1.2; vector-effect: non-scaling-stroke; } .mg-guides .dash { stroke-dasharray: 7 6; }
 @media (max-width: 720px) {
   .spec-scroll { margin: 0 -16px; padding: 0 16px; }
   .sp-box { min-width: 900px; }
@@ -1409,9 +1413,26 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     if (reduce) { svg.classList.add('on'); return; }
     setTimeout(function () { svg.classList.add('on'); }, 150);
   }
+  // Margot Tran gets the same ruled guides as the other names, only as wide as the name itself
+  function margotGuides() {
+    var box = document.querySelector('.margot'), m = document.getElementById('margot-t'); if (!box || !box.offsetHeight) return;
+    var cs = getComputedStyle(box), f = parseFloat(cs.fontSize), full = m.dataset.full || m.textContent;
+    var cx = document.createElement('canvas').getContext('2d'); cx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + f + 'px ' + cs.fontFamily;
+    var ls = parseFloat(cs.letterSpacing) || 0, nameW = cx.measureText(full).width + ls * full.length;
+    var mm = cx.measureText('M'), lh = box.offsetHeight / Math.max(1, Math.round(box.offsetHeight / (parseFloat(cs.lineHeight) || f)));
+    var base = (lh - (mm.fontBoundingBoxAscent + mm.fontBoundingBoxDescent)) / 2 + mm.fontBoundingBoxAscent;
+    var ys = [base - mm.actualBoundingBoxAscent, base - cx.measureText('x').actualBoundingBoxAscent, base, base + cx.measureText('g').actualBoundingBoxDescent];
+    m.style.display = 'inline-block'; m.style.minWidth = Math.ceil(nameW) + 'px';
+    var w = nameW + .45 * f, svg = box.querySelector('.mg-guides');
+    if (!svg) { svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'mg-guides'); svg.setAttribute('aria-hidden', 'true'); box.insertBefore(svg, box.firstChild); }
+    svg.setAttribute('width', w); svg.style.width = w + 'px';
+    svg.innerHTML = ys.map(function (y, i) { y = y.toFixed(1); return '<line x1="0" x2="' + w.toFixed(1) + '" y1="' + y + '" y2="' + y + '"' + (i === 2 ? '' : ' class="dash"') + '/>'; }).join('');
+  }
+  window.addEventListener('resize', margotGuides); if (document.fonts && document.fonts.ready) document.fonts.ready.then(margotGuides);
   // Margot Tran types itself in; called again whenever its slide comes back into view
   function typeMargot() {
     var m = document.getElementById('margot-t'), mfull = m.dataset.full || m.textContent; m.dataset.full = mfull;
+    margotGuides();
     if (reduce) return;
     clearTimeout(m._t); if (!m.parentNode.querySelector('.cur')) { var cur = document.createElement('span'); cur.className = 'cur'; m.parentNode.appendChild(cur); }
     m.textContent = ''; var i = 0; (function st() { m.textContent = mfull.slice(0, ++i); if (i < mfull.length) m._t = setTimeout(st, 110); })();
@@ -1735,7 +1756,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       var avail = bk.clientHeight - lg.offsetHeight - 64; if (avail < 40) return;
       var cs = getComputedStyle(t), f = parseFloat(cs.fontSize), up = cs.textTransform === 'uppercase';
       bookCx.font = cs.fontWeight + ' 100px ' + cs.fontFamily;
-      function w(x) { x = up ? x.toUpperCase() : x; return (bookCx.measureText(x).width / 100 - .03 * x.length) * f; }
+      var ls = (parseFloat(cs.letterSpacing) || 0) / f;
+      function w(x) { x = up ? x.toUpperCase() : x; return (bookCx.measureText(x).width / 100 + ls * x.length) * f; }
       var lines = t.dataset.html.split(/<br\s*\/?>/).map(function (x) { var d = document.createElement('i'); d.innerHTML = x; return d.textContent; });
       var len = Math.max.apply(null, lines.map(w));
       // a title a little too long shrinks a touch; a much longer one folds onto a second spine line instead of turning tiny

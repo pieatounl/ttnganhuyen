@@ -74,10 +74,10 @@ Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong 
 4. **About** `#about`: "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt:
    - Ngân Huyền (Danh, do ông nội đặt; chú thích "The Cosmic Origin of Carbonado")
    - Pie At Ounl (Tự, bắt nguồn từ "Enigma")
-   - Margot Tran (Hiệu)
+   - Margot Tran (Hiệu): gõ từng chữ, phía sau có các đường kẻ (nét đứt và chân chữ) chỉ dài vừa tên (`margotGuides`)
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
 5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
-6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Hàm `fitBooks` chỉnh cỡ chữ cho vừa gáy sách. Dòng "Every step has a story" dẫn tới `#/work`.
+6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ và nằm giữa phần gáy còn trống (không dồn sát đáy); hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/work`.
 7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
