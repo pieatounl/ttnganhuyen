@@ -439,7 +439,7 @@ section.s { padding-block: clamp(26px, 4.5vh, 54px); position: relative; }
 .sp-box { position: relative; }
 .tale { margin: 0; border-left: 1px solid var(--ink); padding: 2px 0 2px 14px; font-size: clamp(.74rem, .8vw, .84rem); line-height: 1.55; color: #444; max-width: 420px; text-wrap: pretty; opacity: 0; transition: opacity .6s 1.25s; }
 .sp-box .tale { position: absolute; }
-@media (min-width: 1001px) and (max-width: 1240px) { #names-car .sp-box .tale { width: 39.5% !important; max-width: none; font-size: .7rem; top: 0 !important; } #names-car .sp-box .tale[style*="left:1.2%"] { width: 31% !important; } }
+@media (min-width: 1001px) and (max-width: 1240px) { #names-car .sp-box .tale { width: 39.5% !important; max-width: none; font-size: .7rem; top: 0 !important; } #names-car .sp-box .tale[style*="left:1.2%"] { width: 35% !important; } }
 @media (min-width: 761px) and (max-width: 1000px) { #names-car .sp-box .tale { position: static; width: auto !important; max-width: 560px; margin: 0 0 14px; } }
 .tale em { font-style: italic; }
 .tale .ast { font-style: normal; font-weight: 600; margin-right: 2px; }
@@ -910,7 +910,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       <div class="spec">
         <div class="spec-scroll"><div class="sp-box">
           <svg class="specimen" id="sp-danh" viewBox="0 0 1660 600" role="img" aria-label="Ngân Huyền, annotated"></svg>
-          <p class="tale" style="left:1.2%;top:2%;width:29%;max-width:380px"><span class="ast">(Danh)</span> <span class="ast" data-vi="Nguồn gốc:">The Origin:</span> <em data-vi="Bằng một cách kỳ diệu nào đó, mặc dù mình được sinh vào thời điểm ánh Mặt trời đã lên cao, rực rỡ, toả sáng và đầy sức sống, nhưng Ông nội lại đặt tên cho mình hết “Nguyệt: mặt trăng” lại đến “Huyền: màu đen, màn đêm”. Mình siêu biết ơn tâm huyết của Ông khi cho mình cái tên này. Mình chưa bao giờ gặp một ai trùng tên với mình ngoài đời thật. Và mình yêu ý nghĩa gửi gắm của Ông vào mình.">Even though I was born into a bright, sunlit morning, my grandfather chose to name me after the night. First came “Nguyệt” – The Moon, and then “Huyền” – The Dark Sky. Despite this beautiful paradox, I am endlessly grateful for the thought he poured into my birth name. It is wonderfully rare; I have yet to meet another “Ngân Huyền”, and I deeply cherish the legacy he left within it.</em></p>
+          <p class="tale" style="left:1.2%;top:2%;width:35%;max-width:456px"><span class="ast">(Danh)</span> <span class="ast" data-vi="Nguồn gốc:">The Origin:</span> <em data-vi="Bằng một cách kỳ diệu nào đó, mặc dù mình được sinh vào thời điểm ánh Mặt trời đã lên cao, rực rỡ, toả sáng và đầy sức sống, nhưng Ông nội lại đặt tên cho mình hết “Nguyệt: mặt trăng” lại đến “Huyền: màu đen, màn đêm”. Mình siêu biết ơn tâm huyết của Ông khi cho mình cái tên này. Mình chưa bao giờ gặp một ai trùng tên với mình ngoài đời thật. Và mình yêu ý nghĩa gửi gắm của Ông vào mình.">Even though I was born into a bright, sunlit morning, my grandfather chose to name me after the night. First came “Nguyệt” – The Moon, and then “Huyền” – The Dark Sky. Despite this beautiful paradox, I am endlessly grateful for the thought he poured into my birth name. It is wonderfully rare; I have yet to meet another “Ngân Huyền”, and I deeply cherish the legacy he left within it.</em></p>
         </div></div>
       </div>
 
@@ -1341,7 +1341,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       dl: ['(Danh)', 'My birth name, a gift from my grandfather.'],
       t1: ['Starting with “Enigma”, I searched for an English, Latin, or Greek synonym,', 'rearranging its letters into something entirely my own.'],
       t2: ['The exact Latin or English phrase behind it has since been lost to time,', 'making it a true Enigma...'],
-      tl: ['(Tự) A moniker I crafted,', '<tspan class="em">anchored in the meaning of my true name</tspan>']
+      tl: ['(Tự) A moniker I crafted,', '<tspan class="em">anchored in the meaning of my true name</tspan>.']
     },
     vi: {
       d1: ['(nghĩa Hán Việt) tiền bạc, của cải', '(dịch nghĩa bóng) vật quý giá'],
@@ -1392,7 +1392,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 30, ys[4] + 156, d5.x - 3, d5.y + d5.r + 4, 'b');
     var fx = x0 - 30; note(g, fx + 40, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx, ys[4] + 104, fx, ys[4] + 6, 'b');
     // dimension + label
-    var ax = x0 - 92; dimArrow(g, ax, ys[1], ys[4], 'b');
+    var ax = x0 - 46; dimArrow(g, ax, ys[1], ys[4], 'b');
     note(g, ax - 14, B - M.xh * F * .62, T.dl, 'b', 'end').setAttribute('style', 'font-size:24px');
     [d1, d3, d4].forEach(function (d) { mk(g, 'circle', { cx: d.x, cy: d.y, r: d.r, 'class': 'dot o' }); });
     mk(g, 'circle', { cx: d5.x, cy: d5.y, r: d5.r, 'class': 'dot b' });
