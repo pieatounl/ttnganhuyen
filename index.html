@@ -755,7 +755,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 @media (max-width: 760px) { .book .lgi { height: min(calc(36px / var(--sq)), calc(var(--w) * .5 / var(--ar))); } }
 
 /* Home: grey pencil-hatched maps of Vietnam and Belgium (after untold's map); each place is a * with a text cursor beside it, no labels */
-.maps { display: flex; justify-content: center; align-items: flex-end; gap: clamp(24px, 6vw, 96px); margin: 40px auto 36px; max-width: 820px; }
+.maps { display: flex; justify-content: center; align-items: center; gap: clamp(24px, 6vw, 96px); margin: 40px auto 36px; max-width: 820px; }
 .maps figure { margin: 0; }
 .maps .m-vn { width: min(56%, 408px); } .maps .m-be { width: min(36%, 240px); }
 .maps .map { display: block; width: 100%; height: auto; overflow: visible; }
@@ -769,8 +769,8 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   #t-work .in { position: relative; }
   #t-work .in > :not(.maps) { position: relative; z-index: 1; }
   .maps { position: absolute; inset: 0; margin: 0; max-width: none; display: block; pointer-events: none; z-index: 0; }
-  .maps .m-vn { position: absolute; left: max(-3%, calc(50% - 630px)); top: -6%; width: clamp(288px, 28.8vw, 396px); }
-  .maps .m-be { position: absolute; right: max(-3%, calc(50% - 630px)); top: 18%; width: clamp(200px, 20vw, 270px); }
+  .maps .m-vn { position: absolute; left: max(-3%, calc(50% - 630px)); top: 50%; transform: translateY(-50%); width: clamp(288px, 28.8vw, 396px); }
+  .maps .m-be { position: absolute; right: max(-3%, calc(50% - 630px)); top: 50%; transform: translateY(-50%); width: clamp(200px, 20vw, 270px); }
 }
 
 /* Blog post: a real card on the blog page and its own reading page */
