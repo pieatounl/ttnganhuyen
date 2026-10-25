@@ -71,7 +71,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Thẻ tự chuyển sau mỗi 2,2 giây. Bấm hoặc chạm vào thẻ thì chuyển ngay sang thẻ tiếp theo với hiệu ứng mờ nhanh hơn, và bộ đếm giờ chạy lại từ đầu.
    - **Chồng thẻ** (Flowers / Bartender / Sketching): xoè ra khi rê chuột. Trên màn hình cảm ứng thì chạm để mở hoặc đóng.
    - **Ly coupe** `.sun`: bông hoa mọc lên từ ly cocktail, vẽ dần từng nét. Phía sau đầu hoa, mặt trăng và mặt trời thay nhau xuất hiện.
-   - **Bài thơ** (*): thơ của ông nội, chú thích "- Words from my grandfather. Nghệ An, 07 Jan 2006." (Margot gõ "07 Jun"; mình giữ ngày cũ 07/01 là 7 tháng 1, đã hỏi lại Margot).
+   - **Bài thơ** (*): thơ của ông nội, chú thích "- Words from my grandfather. Nghệ An, 07/01/2006." (ngày/tháng/năm, Margot chốt).
    - **CTA**: "Grab a drink with me!". Nút cuộn "SCROLL!".
 4. **About** `#about`: nhãn "Identity", tiêu đề "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt. Mỗi tên có một đoạn tiếng Anh do Margot tự viết (nhãn xanh: "The Origin:", "The Chosen Self:", "The Persona:"); không sửa câu chữ này. Các chú thích có mũi tên quanh chữ cũng do Margot viết (`SPEC_TXT`); câu dài được bẻ dòng để không đè nhau hay bị đường kẻ cắt qua:
    - Ngân Huyền (Danh, do ông nội đặt; chú thích "The Cosmic Origin of Carbonado")
