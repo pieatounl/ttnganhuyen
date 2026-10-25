@@ -1333,9 +1333,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   var SPEC_TXT = {
     en: {
       d1: ['(Sino-Vietnamese) Silver or wealth;', 'figuratively, something deeply precious.'],
-      d2: ['A pairing with my paternal', 'aunt’s name: “Ngân Nga”', '(meaning a resonant,', 'lingering melody)'],
+      d2: ['A pairing with my', 'paternal aunt’s name:', '“Ngân Nga” (meaning a', 'resonant, lingering melody)'],
       d3: ['Sharing an initial with my father: “Hùng”.'],
-      d4: ['(Chinese root) An instrument’s string;', 'the color black.', '(The vision) A girl with a magnetic,', 'mesmerising presence,', 'mysterious and dreamlike.'],
+      d4: ['(Chinese root) An instrument’s string;', 'the color black.', '(The vision) A girl with a magnetic,', 'mesmerising presence, mysterious', 'and dreamlike.'],
       d5: ['Grandpa initially chose “<tspan class="sel">Minh Nguyệt</tspan>”,', 'but Mom vetoed it, fearing the name would bring a life of hardship.'],
       d6: ['The true origin: Inspired by', '“The Cosmic Origin of Carbonado”.'],
       dl: ['(Danh)', 'My birth name, a gift from my grandfather.'],
@@ -1385,10 +1385,10 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     var d5 = { x: H.x + H.w * .17, y: B - M.cap * F * .5, r: F * .09 };
     // notes and leaders
     var top = ys[0];
-    var n3 = note(g, 1640, top - 92, T.d3, 'o', 'end'), n1 = note(g, d1.x + 330, top - 92, T.d1, 'o', 'end'), gap = n1.getBBox().x + n1.getBBox().width - n3.getBBox().x + 30; if (gap > 0) n1.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d1.x + 330 - gap); }); lead(g, d1.x + 40, top - 52, d1.x + 6, d1.y - d1.r - 4, 'o');
-    note(g, hx, ys[4] + 72, T.d2, 'o', 'middle'); lead(g, hx, ys[4] + 46, hx, B + 4, 'o');
+    var n3 = note(g, d3.x - 24, top - 92, T.d3, 'o'), n1 = note(g, d1.x + 330, top - 92, T.d1, 'o', 'end'), gap = n1.getBBox().x + n1.getBBox().width - n3.getBBox().x + 30; if (gap > 0) n1.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d1.x + 330 - gap); }); lead(g, d1.x + 40, top - 52, d1.x + 6, d1.y - d1.r - 4, 'o');
+    note(g, hx - 190, ys[4] + 72, T.d2, 'o'); lead(g, hx, ys[4] + 46, hx, B + 4, 'o');
     lead(g, d3.x, top - 80, d3.x, d3.y - d3.r - 4, 'o');
-    note(g, 1648, B + 88, T.d4, 'o', 'end'); lead(g, d4.x - 50, B + 82, d4.x - d4.r * .6, d4.y + d4.r * .8 + 3, 'o');
+    note(g, 1648, B + 108, T.d4, 'o', 'end'); lead(g, d4.x - 50, B + 86, d4.x - d4.r * .6, d4.y + d4.r * .8 + 3, 'o');
     var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 30, ys[4] + 156, d5.x - 3, d5.y + d5.r + 4, 'b');
     var fx = x0 - 30; note(g, fx + 40, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx, ys[4] + 104, fx, ys[4] + 6, 'b');
     // dimension + label
