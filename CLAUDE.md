@@ -59,7 +59,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Nhãn "( EN, VI )" (chỉ để hiển thị, không bấm được).
    - Nút hamburger mở menu xanh toàn màn hình; mỗi tên trong menu nằm trên một dòng (cỡ chữ tự nhỏ lại khi thiếu chỗ).
 3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
-   - **Thẻ ảnh** `.shot` tỉ lệ 16:9 (máy tính 2.133em × 1.2em; điện thoại giữ chiều rộng 1.95em) gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
+   - **Thẻ ảnh** `.shot` tỉ lệ 16:9 (máy tính 2.133em × 1.2em; điện thoại giữ chiều rộng 1.95em) gồm 8 thẻ `.slide.scN` (chỉ các vị trí consulting; De Orangerie là việc thuộc horeca nên không có ở đây, chỉ có ở My journey và kệ sách). Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
      - sc2 HUST · Business Analytics
      - sc6 TEDxBachkhoa · Communications
      - sc5 SoICT Innovation Club · Public Relations
@@ -68,23 +68,22 @@ Khẩu hiệu: "consulting by day, blooming by night".
      - sc1 Base.vn · Business Analyst
      - sc3 FPT Telecom International · Account Manager
      - sc8 Hasselt University · Entrepreneurial Governance
-     - sc9 De Orangerie · Barback
    - Thẻ tự chuyển sau mỗi 2,2 giây. Bấm hoặc chạm vào thẻ thì chuyển ngay sang thẻ tiếp theo với hiệu ứng mờ nhanh hơn, và bộ đếm giờ chạy lại từ đầu.
    - **Chồng thẻ** (Flowers / Bartender / Sketching): xoè ra khi rê chuột. Trên màn hình cảm ứng thì chạm để mở hoặc đóng.
    - **Ly coupe** `.sun`: bông hoa mọc lên từ ly cocktail, vẽ dần từng nét. Phía sau đầu hoa, mặt trăng và mặt trời thay nhau xuất hiện.
-   - **Bài thơ** (*): thơ của ông nội, chú thích "My grandfather, Nghệ An, 07/01/2006".
-   - **CTA**: "Grab a drink with me!".
-4. **About** `#about`: "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt:
+   - **Bài thơ** (*): thơ của ông nội, chú thích "- Words from my grandfather. Nghệ An, 07 Jan 2006." (Margot gõ "07 Jun"; mình giữ ngày cũ 07/01 là 7 tháng 1, đã hỏi lại Margot).
+   - **CTA**: "Grab a drink with me!". Nút cuộn "SCROLL!".
+4. **About** `#about`: nhãn "Identity", tiêu đề "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt. Mỗi tên có một đoạn tiếng Anh do Margot tự viết (nhãn xanh: "The Origin:", "The Chosen Self:", "The Persona:"); không sửa câu chữ này. Các chú thích có mũi tên quanh chữ cũng do Margot viết (`SPEC_TXT`); câu dài được bẻ dòng để không đè nhau hay bị đường kẻ cắt qua:
    - Ngân Huyền (Danh, do ông nội đặt; chú thích "The Cosmic Origin of Carbonado")
    - Pie At Ounl (Tự, bắt nguồn từ "Enigma")
    - Margot Tran (Hiệu): các đường kẻ luôn hiện sẵn đủ dài ngay từ đầu, không hiện dần (giống Pie At Ounl: đỉnh dấu, đỉnh chữ hoa, đỉnh chữ thường, chân chữ, chân chữ g; chỉ dài vừa tên; `margotGuides`), rồi tên gõ từng chữ lên đó
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
-5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
+5. **Footprints** `#t-work` (nhãn cũ "Where I've lived"): Nghệ An → Hà Nội → Sài Gòn → Hasselt, kèm cờ, dòng "and many more bases to build…" và nút "Give me some advice!". Hai bản đồ Việt Nam và Bỉ nằm hai bên tiêu đề, đã căn đối xứng hai bên màn hình ở mọi chiều rộng từ 981px (đo phần nét vẽ, lệch ≤3px).
 6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ, căn lề dưới; hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
 7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Khi cuộn tới, các vòng dàn thành hàng thì ảnh tự hiện (như lúc rê chuột); cuộn tiếp, vòng dạt ra hai bên thì trở lại nền trắng đục (`--ph` trong `ecoFrame`). Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
-   - Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra, nên không bị che.
+   - Từ 761px trở lên các tờ giấy note luôn xoè quạt và căn giữa (chỉ xếp dọc trên điện thoại ≤760px). Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra khi cửa sổ ≥1200px, nên không bị che; hẹp hơn thì nằm dưới các tờ giấy, căn giữa.
    - Nút "Read the stories!".
 9. Câu **I believe…**, rồi phần **Contact** ("let's grab the next drink", nút "Ready when you are!").
 10. **Footer** (nền tối):
@@ -110,5 +109,5 @@ Khẩu hiệu: "consulting by day, blooming by night".
 
 ## Kiểm tra trước khi commit
 
-- Không có bộ test. Trước khi commit, mở `index.html` bằng Playwright (đã có sẵn Chromium) ở hai khổ rộng 390px và 1440px.
+- Không có bộ test. Trước khi commit, mở `index.html` bằng Playwright (đã có sẵn Chromium) ở hai khổ rộng 390px và 1440px, và thêm các cỡ cửa sổ giữa chừng khi sửa bố cục (ví dụ 768×1024, 918×693, 1024×768, 1180×640): web phải co giãn liền mạch khi Margot kéo đổi kích thước cửa sổ trên máy tính, không chồng chữ, không tràn mép, bản đồ và giấy note luôn căn giữa.
 - Kiểm tra không có `pageerror`, và chụp màn hình phần vừa sửa.
