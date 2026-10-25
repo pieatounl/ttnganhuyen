@@ -53,7 +53,7 @@ Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong 
 2. **Header**:
    - Góc trái là "Huyen Tran / Margot" kèm dấu nháy.
    - Nav có nhãn thu lại còn chữ cái đầu.
-   - Nút đổi EN/VI.
+   - Nút ngôn ngữ dạng "( EN, VI )": bấm EN hoặc VI để đổi, ngôn ngữ đang chọn in đậm.
    - Nút hamburger mở menu xanh toàn màn hình.
 3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
    - **Thẻ ảnh** `.shot` gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:

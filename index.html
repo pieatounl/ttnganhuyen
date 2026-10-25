@@ -227,20 +227,13 @@ nav.main a:hover { color: var(--ink); }
 nav.main a.on { color: var(--accent-ink); }
 nav.main a .cur { visibility: hidden; } nav.main a.on .cur { visibility: visible; }
 .en-only #lang svg, .en-only #lang ul, .en-only #menu .pill button[data-set="vi"] { display: none; }
-.en-only #langbtn { cursor: default; }
-#langbtn .p { color: var(--mute); font-weight: 400; }
 nav.main a::before { content: ""; position: absolute; left: -8px; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: var(--orange); transform: scale(0); transition: transform .25s; }
 nav.main a:hover::before { transform: scale(1); }
 .right { display: flex; align-items: center; gap: 18px; }
-.lang { position: relative; }
-.lang > button { font: inherit; font-weight: 700; font-size: 0.8rem; background: none; border: 0; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 6px 2px; }
-.lang > button .p { color: var(--mute); font-weight: 400; }
-.lang > button svg { transition: transform .25s; }
-.lang.open > button svg { transform: rotate(180deg); }
-.lang ul { position: absolute; top: 100%; left: 0; right: 0; list-style: none; margin: 0; padding: 8px 0 0; border-top: 1px solid var(--rule); display: none; }
-.lang.open ul { display: block; }
-.lang ul button { font: inherit; font-weight: 700; font-size: 0.8rem; background: none; border: 0; padding: 4px 10px; cursor: pointer; color: var(--ink); }
-.lang ul button:hover { color: var(--orange); }
+.lang { display: flex; align-items: center; font-size: 0.8rem; padding: 6px 2px; white-space: nowrap; }
+.lang .p { color: var(--mute); font-weight: 400; white-space: pre; }
+.lang button { font: inherit; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: var(--mute); transition: color .2s; }
+.lang button[aria-pressed="true"] { color: var(--ink); } .lang button:hover { color: var(--orange); }
 .burger { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); border: 0; cursor: pointer; display: grid; place-items: center; transition: transform .3s; }
 .burger:hover { transform: scale(1.06) rotate(-8deg); }
 .burger span, .burger span::before, .burger span::after { display: block; width: 20px; height: 1.5px; background: #fff; position: relative; content: ""; }
@@ -614,7 +607,6 @@ footer.dark .follow a { color: #fff; margin-left: 14px; }
 }
 @media (max-width: 600px) {
   .burger, .close { width: 52px; height: 52px; }
-  .lang > button .p { display: none; }
   .hero { min-height: 0; }
   .big { font-size: clamp(2.6rem, 14vw, 5rem); }
   .big .ln { flex-wrap: wrap; white-space: normal; }
@@ -794,9 +786,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     </nav>
     <div class="right">
       <div class="lang" id="lang">
-        <button type="button" id="langbtn" aria-haspopup="true" aria-expanded="false"><span><span class="p">( </span><span id="langcur">EN</span><span class="p"> )</span></span>
-          <svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-        <ul><li><button type="button" id="langalt" data-set="vi">VI</button></li></ul>
+        <span class="p">( </span><button type="button" data-set="en" aria-pressed="true">EN</button><span class="p">, </span><button type="button" data-set="vi" aria-pressed="false">VI</button><span class="p"> )</span>
       </div>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span></button>
     </div>
@@ -1155,7 +1145,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 (function () {
   var lang = 'en';
   // Vietnamese is written but locked for now; set VI_ON = true to offer it again
-  var VI_ON = false;
+  var VI_ON = true;
   try { lang = localStorage.getItem('lang') || 'en'; } catch (e) {}
   if (!VI_ON) { lang = 'en'; document.documentElement.lang = 'en'; document.documentElement.classList.add('en-only'); }
 
@@ -1222,16 +1212,12 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
       if (el.dataset.full !== undefined) { el.dataset.cur = l === 'vi' ? el.dataset.vi : el.dataset.full; renderNav(el); return; }
       el.innerHTML = l === 'vi' ? el.dataset.vi : el.dataset.en;
     });
-    document.getElementById('langcur').textContent = l.toUpperCase();
-    var alt = document.getElementById('langalt'); alt.textContent = l === 'vi' ? 'EN' : 'VI'; alt.dataset.set = l === 'vi' ? 'en' : 'vi';
-    document.querySelectorAll('#menu .pill button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false'); });
+    document.querySelectorAll('#lang button, #menu .pill button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === l ? 'true' : 'false'); });
     rotI = 0; document.getElementById('rot').textContent = ROT[l][0];
     if (typeof layoutHero === 'function') layoutHero();
     if (specs.danh) buildSpecs();
   }
-  var langEl = document.getElementById('lang'), langBtn = document.getElementById('langbtn');
-  langBtn.addEventListener('click', function () { if (!VI_ON) return; var o = langEl.classList.toggle('open'); langBtn.setAttribute('aria-expanded', o); });
-  document.querySelectorAll('[data-set]').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); langEl.classList.remove('open'); langBtn.setAttribute('aria-expanded', false); }); });
+  document.querySelectorAll('[data-set]').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
 
   // Nav: labels type themselves down to one letter once you scroll, and back on hover
   var navLinks = document.querySelectorAll('nav.main a'), hdr = document.getElementById('hdr'), compact = false;
