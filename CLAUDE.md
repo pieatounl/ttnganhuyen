@@ -1,58 +1,62 @@
-# ttnganhuyen.com — Margot's personal website
+# ttnganhuyen.com — Website cá nhân của Margot
 
-Personal site of Trần Thị Ngân Huyền (Huyen Tran / Margot), closely modelled on untold.site/en.
-Tagline: "consulting by day, blooming by night".
+Website cá nhân của Trần Thị Ngân Huyền (Huyen Tran / Margot), bám sát phong cách của untold.site/en.
+Khẩu hiệu: "consulting by day, blooming by night".
 
-## Owner rules (always follow)
+## Quy tắc của chủ site (luôn tuân theo)
 
-- Margot writes in Vietnamese; reply to her in Vietnamese.
-- Commit straight to `main`. Do not create new branches and do not delete other files in the repo.
-- Cloudflare Pages deploys `main` automatically; there is no build step.
-- Never print the contact email anywhere in the page or in messages. The form sends via Web3Forms, and the visitor only sees "Submitted".
-- Never change the wording of her blog posts (`#/stories/...`).
-- Keep `<meta charset="utf-8">` in `index.html`. `_headers` also forces UTF-8; without it, Vietnamese turns into mojibake.
-- English name is **Margot** (never "Hailey").
+- Margot viết tiếng Việt, nên trả lời Margot bằng tiếng Việt.
+- Commit thẳng lên `main`. Không tạo nhánh mới và không xoá file khác trong repo.
+- Cloudflare Pages tự deploy từ `main`, không có bước build.
+- Không bao giờ in email liên hệ ra trang hay trong tin nhắn. Form gửi qua Web3Forms, người xem chỉ thấy "Submitted".
+- Không sửa câu chữ trong các bài blog của Margot (`#/stories/...`).
+- Giữ `<meta charset="utf-8">` trong `index.html`. File `_headers` cũng ép UTF-8. Thiếu khai báo này thì tiếng Việt bị lỗi font.
+- Tên tiếng Anh là **Margot** (không dùng "Hailey").
 
-## Files
+## Các file
 
-| Path | What it is |
+| Đường dẫn | Nội dung |
 | --- | --- |
-| `index.html` | The whole site: one file with inline CSS and JS, and base64 images (~1.2 MB) |
-| `_headers` | Cloudflare header rules (UTF-8) |
-| `favicon.ico`, `apple-touch-icon.png` | Flower-in-coupe-glass drawing, white lines on blue `#8FACD8` |
-| `img/chuyen-ke.jpg` | Cover photo of the blog post "Chuyện kể" |
-| `img/flower-*.png` | Source doodles for the hero flower |
+| `index.html` | Toàn bộ site trong một file: CSS và JS viết trong file, ảnh nhúng base64 (khoảng 1,2 MB) |
+| `_headers` | Quy tắc header cho Cloudflare (UTF-8) |
+| `favicon.ico`, `apple-touch-icon.png` | Hình bông hoa trong ly coupe, nét trắng trên nền xanh `#8FACD8` |
+| `img/chuyen-ke.jpg` | Ảnh bìa bài blog "Chuyện kể" |
+| `img/flower-*.png` | Hình vẽ tay gốc của bông hoa ở hero |
 
-## Design system
+## Hệ thống thiết kế
 
-- Background: pure white. Accent blue: `#8FACD8`. The CSS var is still named `--orange` for historical reasons. Small accent text uses `--accent-ink` `#4d6f9f`.
-- Spacing is like untold: wide gutters, compact sections, and mostly headlines on scroll.
-- Thin faint rules sit exactly on text baselines; they are computed in JS (`layoutHero`, `baselineRules`). Annotation text is never crossed by a rule.
-- Buttons (`.btn`) are compact. **Every CTA label ends with "!"** in both EN and VI.
-- Carets (`|`) never blink. They only show while text is typing, then stop.
-- EN/VI toggle: English is in the markup, and Vietnamese is in a `data-vi` attribute on the same element (`setLang`).
-- Mobile (≤720px) must fit the screen width with no sideways scroll.
+- Nền trắng tinh. Màu nhấn xanh `#8FACD8`. Biến CSS của màu này vẫn tên là `--orange` vì lý do lịch sử. Chữ nhỏ màu nhấn dùng `--accent-ink` `#4d6f9f`.
+- Khoảng cách giống untold: lề hai bên rộng, các phần gọn, khi cuộn chủ yếu là tiêu đề lớn.
+- Các đường kẻ mảnh, mờ nằm đúng trên chân chữ (baseline). JS tính vị trí các đường này (`layoutHero`, `baselineRules`). Đường kẻ không bao giờ cắt qua chữ chú thích.
+- Nút (`.btn`) nhỏ gọn. **Mọi nút CTA đều kết thúc bằng "!"**, cả tiếng Anh lẫn tiếng Việt.
+- Dấu nháy (`|`) không nhấp nháy. Nó chỉ hiện trong lúc chữ đang gõ, gõ xong thì dừng.
+- Nút đổi EN/VI: tiếng Anh nằm trong HTML, tiếng Việt nằm trong thuộc tính `data-vi` của cùng phần tử (`setLang`).
+- Trên điện thoại (≤720px), mọi thứ phải vừa chiều ngang màn hình, không cuộn ngang.
 
-## Routes (hash router, `route()`)
+## Các trang (router theo hash, hàm `route()`)
 
-Each route maps to a `<div class="view" id="v-…">`. Nav and menu order: **about, work, consulting, blog, contact**.
+Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **about, work, consulting, blog, contact**.
 
-| Hash | View | Content |
+| Hash | View | Nội dung |
 | --- | --- | --- |
-| `#/` | `v-home` | About page (home); see below |
-| `#/work` | `v-work` | Text-only list of roles from the `WORK` array (no photos, no logos yet; outputs will be added later) |
-| `#/work/<id>` | `v-case` | Case page filled by `fillCase(id)` from `WORK` (mark, years, role, paragraphs `p`, capabilities `caps`, placeholder `slides`) |
+| `#/` | `v-home` | Trang About (trang chủ), chi tiết ở phần dưới |
+| `#/work` | `v-work` | Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
+| `#/work/<id>` | `v-case` | Trang chi tiết, `fillCase(id)` lấy dữ liệu từ `WORK`: tên đơn vị, năm, vai trò, các đoạn `p`, năng lực `caps`, các slide tạm `slides` |
 | `#/consulting` | `v-consulting` | "use cases coming soon": 01 Strategy, 02 Data, 03 Process |
-| `#/stories` | `v-stories` | Blog index ("coming soon", Follow me on Instagram) |
-| `#/stories/<id>` | `v-post` | Blog posts, e.g. `post-chuyen-ke` (Vietnamese, 24.10.2026) |
-| contact | `#talk` dialog | Contact / "advice" form (`.talk-open` buttons, `data-mode="contact"`/`"advice"`) |
+| `#/stories` | `v-stories` | Trang blog ("coming soon", nút Follow me on Instagram) |
+| `#/stories/<id>` | `v-post` | Các bài blog, ví dụ `post-chuyen-ke` (tiếng Việt, 24.10.2026) |
+| contact | hộp thoại `#talk` | Form liên hệ / xin lời khuyên (các nút `.talk-open`, `data-mode="contact"` hoặc `"advice"`) |
 
-## Home page (`v-home`), top to bottom
+## Trang chủ (`v-home`), từ trên xuống
 
-1. **Loader**: her signature "h" drawn on a blue background.
-2. **Header**: "Huyen Tran / Margot" at the top left with a caret, a nav whose labels collapse to their first letter, the EN/VI toggle, and a hamburger that opens a full blue menu.
-3. **Hero** `#hero`: the headline "consulting ( card stack ) by day & blooming ( stack ) by ( stack ) night |".
-   - **Photo card** `.shot` with nine `.slide.scN` cards. Each card shows a spinning `*`, an organisation, a role and years:
+1. **Màn hình chờ**: chữ "h" chữ ký của Margot được vẽ dần trên nền xanh.
+2. **Header**:
+   - Góc trái là "Huyen Tran / Margot" kèm dấu nháy.
+   - Nav có nhãn thu lại còn chữ cái đầu.
+   - Nút đổi EN/VI.
+   - Nút hamburger mở menu xanh toàn màn hình.
+3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
+   - **Thẻ ảnh** `.shot` gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
      - sc2 HUST · Business Analytics
      - sc6 TEDxBachkhoa · Communications
      - sc5 SoICT Innovation Club · Public Relations
@@ -62,41 +66,44 @@ Each route maps to a `<div class="view" id="v-…">`. Nav and menu order: **abou
      - sc3 FPT Telecom International · Account Manager
      - sc8 Hasselt University · Entrepreneurial Governance
      - sc9 De Orangerie · Barback
-   - The cards auto-rotate every 2.2s. A click or tap jumps to the next card with a quick fade and restarts the timer.
-   - **Stacks** (Flowers / Bartender / Sketching): fan out on hover, or toggle on tap on touch screens.
-   - **Coupe glass** `.sun`: a flower rising from a cocktail glass, drawn stroke by stroke, with a moon/sun swap behind the flower head.
-   - **Poem** (*): her grandfather's poem, caption "My grandfather, Nghệ An, 07/01/2006".
+   - Thẻ tự chuyển sau mỗi 2,2 giây. Bấm hoặc chạm vào thẻ thì chuyển ngay sang thẻ tiếp theo với hiệu ứng mờ nhanh hơn, và bộ đếm giờ chạy lại từ đầu.
+   - **Chồng thẻ** (Flowers / Bartender / Sketching): xoè ra khi rê chuột. Trên màn hình cảm ứng thì chạm để mở hoặc đóng.
+   - **Ly coupe** `.sun`: bông hoa mọc lên từ ly cocktail, vẽ dần từng nét. Phía sau đầu hoa, mặt trăng và mặt trời thay nhau xuất hiện.
+   - **Bài thơ** (*): thơ của ông nội, chú thích "My grandfather, Nghệ An, 07/01/2006".
    - **CTA**: "Grab a drink with me!".
-4. **About** `#about`: "four names, one person". A carousel (`replaySpec`, `typeMargot`, swipe) of type specimens:
-   - Ngân Huyền (Danh, from her grandfather; caption "The Cosmic Origin of Carbonado")
-   - Pie At Ounl (Tự, from "Enigma")
+4. **About** `#about`: "four names, one person". Đây là một carousel các mẫu chữ tên, dùng các hàm `replaySpec`, `typeMargot` và hỗ trợ vuốt:
+   - Ngân Huyền (Danh, do ông nội đặt; chú thích "The Cosmic Origin of Carbonado")
+   - Pie At Ounl (Tự, bắt nguồn từ "Enigma")
    - Margot Tran (Hiệu)
-   - Each swipe replays the animation.
-5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, with flags, and a "Give me some advice!" CTA.
-6. **Where I've worked** `#t-projects`: a draggable book shelf in time order (`fitBooks` fits the spine text). "Every step has a story" links to `#/work`.
-7. **The circles of my life** `#t-community`: six circles: Business, Flowers, Nature, Cocktails, Technology, Sketching. The four craft circles use her blue-duotone photos. CTA "Let's connect!".
-8. **My untold stories** `#t-stories`: three sticky notes (4 names / 4 loves / 4 cities).
-   - A click spreads them sideways, then they settle back in place.
-   - The "Click to uncover more!" hint sits left of the spread-out notes.
-   - CTA "Read the stories!".
-9. **I believe…** line, then **Contact** ("let's grab the next drink", CTA "Ready when you are!").
-10. **Footer** (dark): "margot tran" wordmark, section links, and LinkedIn, Instagram and Facebook.
+   - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
+5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
+6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Hàm `fitBooks` chỉnh cỡ chữ cho vừa gáy sách. Dòng "Every step has a story" dẫn tới `#/work`.
+7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Nút "Let's connect!".
+8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
+   - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
+   - Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra, nên không bị che.
+   - Nút "Read the stories!".
+9. Câu **I believe…**, rồi phần **Contact** ("let's grab the next drink", nút "Ready when you are!").
+10. **Footer** (nền tối):
+    - Chữ "margot tran".
+    - Liên kết tới các trang trong site.
+    - LinkedIn, Instagram, Facebook.
 
-## Images
+## Ảnh
 
-- Photos are Margot's own, embedded as base64 data URIs.
-- Use her crops as they are; do not re-crop them.
-- Hero and circle photos get a blue duotone, made with PIL: `ImageOps.colorize(autocontrast(gray, cutoff=1), black='#1d2a40', mid='#8facd8', white='#f2f6fc', midpoint=110)`.
-- Hero cards add a dark gradient overlay so the text stays readable.
+- Ảnh là ảnh của Margot, nhúng dạng base64 data URI.
+- Dùng nguyên khung ảnh Margot đã cắt, không tự cắt lại.
+- Ảnh ở hero và ở các vòng tròn được phủ màu xanh (duotone) bằng PIL: `ImageOps.colorize(autocontrast(gray, cutoff=1), black='#1d2a40', mid='#8facd8', white='#f2f6fc', midpoint=110)`.
+- Thẻ ảnh ở hero có thêm lớp gradient tối để chữ dễ đọc.
 
-## Identity links
+## Liên kết cá nhân
 
 - Substack: https://substack.com/@lofopmartii
 - LinkedIn: https://www.linkedin.com/in/ttnganhuyen
 - Instagram: https://www.instagram.com/pie.at.ounl
 - Facebook: https://www.facebook.com/pie.at.ounl/
 
-## Checking changes
+## Kiểm tra trước khi commit
 
-- No test suite. Before committing, open `index.html` with Playwright (Chromium is preinstalled) at 390px and 1440px wide.
-- Confirm there are no `pageerror`s, and screenshot the part you changed.
+- Không có bộ test. Trước khi commit, mở `index.html` bằng Playwright (đã có sẵn Chromium) ở hai khổ rộng 390px và 1440px.
+- Kiểm tra không có `pageerror`, và chụp màn hình phần vừa sửa.
