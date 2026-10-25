@@ -23,6 +23,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 | `img/chuyen-ke.jpg` | Ảnh bìa bài blog "Chuyện kể" |
 | `img/flower-*.png` | Hình vẽ tay gốc của bông hoa ở hero |
 | `img/og-image.png` | Ảnh xem trước khi gửi link (1200×630, mẫu B Margot duyệt): "consulting by day & blooming by night" trên nền trắng, 3 đường kẻ nằm đúng chân chữ, ly hoa màu xanh. Khai báo bằng thẻ `og:*` và `twitter:*` trong `<head>`. Nguồn HTML để vẽ lại: `/mnt/project-files/website/thumbnail/og-b.html` |
+| `about.html`, `my-journey.html`, `use-cases.html`, `blog.html`, `blog/<id>.html`, `my-journey/<id>.html` | Trang chia sẻ: mỗi trang chỉ chứa thẻ `og:*` riêng rồi chuyển ngay sang `/#/…`. Ảnh xem trước là ảnh đầu tiên của bài (blog: `<img>` đầu trong `<article class="post">`; my journey: trường `img: '…'` trong `WORK` nếu có), không có ảnh thì dùng `img/og-image.png`. Tạo bằng `python3 tools/make-share-pages.py`, **chạy lại mỗi khi thêm hoặc sửa bài**. Link gửi đi có ảnh riêng phải ở dạng không có `#`, ví dụ `ttnganhuyen.com/blog/chuyen-ke` (link có `#/` luôn hiện thumbnail gốc, vì các app bỏ qua phần sau `#`) |
 
 ## Hệ thống thiết kế
 

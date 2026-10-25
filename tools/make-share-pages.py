@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""Make one small HTML page per post so shared links get their own preview.
+
+Link previews (Facebook, Zalo, Messenger, LinkedIn...) ignore everything after "#",
+so ttnganhuyen.com/#/blog/x always shows the site thumbnail. A page at
+ttnganhuyen.com/blog/x carries that post's own og:image (its first photo, or the
+site thumbnail when it has none) and sends visitors straight on to /#/blog/x.
+
+Run from the repo root after adding or changing a post:  python3 tools/make-share-pages.py
+"""
+import html, os, re
+
+SITE = 'https://ttnganhuyen.com'
+DEFAULT_IMG = '/img/og-image.png'
+SITE_NAME = 'Huyen Tran / Margot'
+TAGLINE = 'consulting by day, blooming by night'
+
+src = open('index.html', encoding='utf-8').read()
+
+
+def page(path, title, desc, img, target):
+    e = lambda s: html.escape(s, quote=True)
+    url, image = SITE + '/' + path, SITE + (img if img.startswith('/') else '/' + img)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<meta property="og:type" content="{'article' if '/' in path else 'website'}">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{image}">
+<link rel="canonical" href="{url}">
+<link rel="icon" href="/favicon.ico">
+<meta http-equiv="refresh" content="0; url=/{target}">
+<script>location.replace('/{target}')</script>
+</head>
+<body><a href="/{target}">{e(title)}</a></body>
+</html>
+'''
+
+
+def text(s):
+    return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', s))).strip()
+
+
+def clip(s, n=160):
+    return s if len(s) <= n else s[:n].rsplit(' ', 1)[0] + '…'
+
+
+pages = {
+    'about': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/about'),
+    'my-journey': ('My journey · Margot Tran', TAGLINE, DEFAULT_IMG, '#/my-journey'),
+    'use-cases': ('Use Cases · Margot Tran', TAGLINE, DEFAULT_IMG, '#/use-cases'),
+    'blog': ('Blog · Margot Tran', TAGLINE, DEFAULT_IMG, '#/blog'),
+}
+
+# Blog posts: <article class="post" id="post-ID"> … <h1> … first <img> … first <p>
+for m in re.finditer(r'<article class="post" id="post-([\w-]+)"(.*?)</article>', src, re.S):
+    pid, body = m.group(1), m.group(2)
+    title = text(re.search(r'<h1[^>]*>(.*?)</h1>', body, re.S).group(1))
+    img = re.search(r'<img[^>]+src="([^"]+)"', body)
+    p = re.search(r'<p[^>]*>(.*?)</p>', body, re.S)
+    pages['blog/' + pid] = (title + ' · Margot Tran', clip(text(p.group(1))) if p else TAGLINE,
+                            img.group(1) if img and not img.group(1).startswith('data:') else DEFAULT_IMG, '#/blog/' + pid)
+
+# My journey: entries of the WORK array; an optional img: '…' field becomes the preview
+for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
+    wid, mark, role, rest = m.group(1), m.group(2).replace("\\'", "'"), m.group(3).replace("\\'", "'"), m.group(4)
+    img = re.search(r"\bimg: '([^']+)'", rest)
+    p = re.search(r"p: \['((?:[^'\\]|\\.)*)'", rest)
+    pages['my-journey/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
+                                  img.group(1) if img else DEFAULT_IMG, '#/my-journey/' + wid)
+
+for path, (title, desc, img, target) in pages.items():
+    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+    with open(path + '.html', 'w', encoding='utf-8') as f:
+        f.write(page(path, title, desc, img, target))
+    print(f'{path}.html  ->  {img}')
