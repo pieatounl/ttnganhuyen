@@ -78,8 +78,8 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Pie At Ounl (Tự, bắt nguồn từ "Enigma")
    - Margot Tran (Hiệu): các đường kẻ luôn hiện sẵn đủ dài ngay từ đầu, không hiện dần (giống Pie At Ounl: đỉnh dấu, đỉnh chữ hoa, đỉnh chữ thường, chân chữ, chân chữ g; chỉ dài vừa tên; `margotGuides`), rồi tên gõ từng chữ lên đó
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
-5. **Footprints** `#t-work` (nhãn cũ "Where I've lived"): Nghệ An → Hà Nội → Sài Gòn → Hasselt, kèm cờ, dòng "and many more bases to build…" và nút "Give me some advice!". Hai bản đồ Việt Nam và Bỉ nằm hai bên tiêu đề, đã căn đối xứng hai bên màn hình ở mọi chiều rộng từ 981px (đo phần nét vẽ, lệch ≤3px).
-6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ, căn lề dưới; hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
+5. **Footprints** `#t-work` (nhãn cũ "Where I've lived"): Nghệ An → Hà Nội → Sài Gòn → Hasselt, kèm cờ, dòng "and many more bases to build…" và nút "Your guide to starting fresh!" (Margot đổi từ "Give me some advice!", đuôi "!" giữ theo quy tắc CTA). Hai bản đồ Việt Nam và Bỉ nằm hai bên tiêu đề, đã căn đối xứng hai bên màn hình ở mọi chiều rộng từ 981px (đo phần nét vẽ, lệch ≤3px).
+6. **The Craft** (nhãn cũ "Where I've worked") `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ, căn lề dưới; hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
 7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Khi cuộn tới, các vòng dàn thành hàng thì ảnh tự hiện (như lúc rê chuột); cuộn tiếp, vòng dạt ra hai bên thì trở lại nền trắng đục (`--ph` trong `ecoFrame`). Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
