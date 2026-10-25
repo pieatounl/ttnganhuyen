@@ -88,7 +88,8 @@ Khẩu hiệu: "consulting by day, blooming by night".
     - Chữ "margot tran".
     - Liên kết tới các trang trong site.
     - LinkedIn, Instagram, Facebook.
-    - Dòng "EST. 2002 · Margot · Ngân Huyền · pie.at.ounl · DD.MM.YYYY HH:MM:SS GMT+X" (năm sinh của Margot, thay cho ©). Phần cuối `#here-now` là ngày giờ theo múi giờ của chính thiết bị đang xem, cập nhật mỗi giây và tự đổi khi thiết bị sang múi giờ khác (người xem ở nơi khác sẽ thấy giờ của họ).
+    - Ngay dưới chữ "margot tran" là đồng hồ `#here-now` cỡ chữ lớn: "DD.MM.YYYY HH:MM:SS GMT+X", theo múi giờ của chính thiết bị đang xem, cập nhật mỗi giây, tự đổi khi thiết bị sang múi giờ khác. Không ghi tên địa điểm.
+    - Dòng nhỏ "EST. 2002 · Margot · Ngân Huyền · pie.at.ounl" (năm sinh của Margot, thay cho ©).
 
 ## Ảnh
 
