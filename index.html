@@ -1862,7 +1862,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
   var hereNow = document.getElementById('here-now');
   if (hereNow) (function tick() {
     var n = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; }, o = -n.getTimezoneOffset();
-    hereNow.textContent = p(n.getDate()) + '.' + p(n.getMonth() + 1) + '.' + n.getFullYear() + ' ' + p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
+    hereNow.textContent = p(n.getDate()) + '.' + p(n.getMonth() + 1) + ' ' + p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
     setTimeout(tick, 1000 - Date.now() % 1000);
   })();
   // clicking a link to the page you're already on goes back to its top
