@@ -12,6 +12,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 - Không sửa câu chữ trong các bài blog của Margot (`#/blog/...`).
 - Giữ `<meta charset="utf-8">` trong `index.html`. File `_headers` cũng ép UTF-8. Thiếu khai báo này thì tiếng Việt bị lỗi font.
 - Tên tiếng Anh là **Margot** (không dùng "Hailey").
+- **Luôn cập nhật thumbnail xem trước link khi site thay đổi** (Margot dặn 25.10.2026): đổi headline của trang chủ hoặc của tab My journey / Use Cases / Blog thì vẽ lại `img/og-*.png` tương ứng (mẫu ở `/mnt/project-files/website/thumbnail/`); thêm, sửa bài hoặc đổi ảnh bài thì chạy lại `python3 tools/make-share-pages.py`. Commit chung với thay đổi đó.
 
 ## Các file
 
