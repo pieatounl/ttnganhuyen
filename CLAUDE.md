@@ -9,7 +9,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 - Commit thẳng lên `main`. Không tạo nhánh mới và không xoá file khác trong repo.
 - Cloudflare Pages tự deploy từ `main`, không có bước build.
 - Không bao giờ in email liên hệ ra trang hay trong tin nhắn. Form gửi qua Web3Forms, người xem chỉ thấy "Submitted".
-- Không sửa câu chữ trong các bài blog của Margot (`#/stories/...`).
+- Không sửa câu chữ trong các bài blog của Margot (`#/blog/...`).
 - Giữ `<meta charset="utf-8">` trong `index.html`. File `_headers` cũng ép UTF-8. Thiếu khai báo này thì tiếng Việt bị lỗi font.
 - Tên tiếng Anh là **Margot** (không dùng "Hailey").
 
@@ -30,30 +30,30 @@ Khẩu hiệu: "consulting by day, blooming by night".
 - Các đường kẻ mảnh, mờ nằm đúng trên chân chữ (baseline). JS tính vị trí các đường này (`layoutHero`, `baselineRules`). Đường kẻ không bao giờ cắt qua chữ chú thích.
 - Nút (`.btn`) nhỏ gọn. **Mọi nút CTA đều kết thúc bằng "!"**, cả tiếng Anh lẫn tiếng Việt.
 - Dấu nháy (`|`) không nhấp nháy. Nó chỉ hiện trong lúc chữ đang gõ, gõ xong thì dừng.
-- Nút đổi EN/VI: tiếng Anh nằm trong HTML, tiếng Việt nằm trong thuộc tính `data-vi` của cùng phần tử (`setLang`).
+- Header ghi "( EN, VI )" nghĩa là web dùng cả tiếng Anh lẫn tiếng Việt, **không phải nút chuyển ngôn ngữ**. Chức năng chuyển đổi sẽ làm sau: tiếng Việt đã soạn sẵn trong thuộc tính `data-vi` (`setLang`), đang khoá bằng `VI_ON = false`.
 - Trên điện thoại (≤720px), mọi thứ phải vừa chiều ngang màn hình, không cuộn ngang.
 
 ## Các trang (router theo hash, hàm `route()`)
 
-Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **About, My journey (`#/work`), Use Cases (`#/consulting`), Blog, contact**. Tiếng Việt: Giới thiệu, Hành trình, Tình huống, Blog.
+Đường dẫn trùng tên tab: `#/my-journey`, `#/use-cases`, `#/blog`. Tên view bên trong vẫn là `work`, `consulting`, `stories` (bảng `PUB`/`VIEW` trong `route()`); link cũ `#/work`, `#/consulting`, `#/stories` tự chuyển sang tên mới. Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong nav và menu: **About, My journey (`#/work`), Use Cases (`#/consulting`), Blog, contact**. Tiếng Việt: Giới thiệu, Hành trình, Tình huống, Blog.
 
 | Hash | View | Nội dung |
 | --- | --- | --- |
 | `#/` | `v-home` | Trang About (trang chủ), chi tiết ở phần dưới |
-| `#/work` | `v-work` | Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
-| `#/work/<id>` | `v-case` | Trang chi tiết, `fillCase(id)` lấy dữ liệu từ `WORK`: tên đơn vị, năm, vai trò, các đoạn `p`, năng lực `caps`, các slide tạm `slides` |
-| `#/consulting` | `v-consulting` | "use cases coming soon": 01 Strategy, 02 Data, 03 Process |
-| `#/stories` | `v-stories` | Trang blog ("coming soon", nút Follow me on Instagram) |
-| `#/stories/<id>` | `v-post` | Các bài blog, ví dụ `post-chuyen-ke` (tiếng Việt, 24.10.2026) |
+| `#/my-journey` | `v-work` | Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
+| `#/my-journey/<id>` | `v-case` | Trang chi tiết, `fillCase(id)` lấy dữ liệu từ `WORK`: tên đơn vị, năm, vai trò, các đoạn `p`, năng lực `caps`, các slide tạm `slides` |
+| `#/use-cases` | `v-consulting` | "use cases coming soon": 01 Strategy, 02 Data, 03 Process |
+| `#/blog` | `v-stories` | Trang blog ("coming soon", nút Follow me on Instagram) |
+| `#/blog/<id>` | `v-post` | Các bài blog, ví dụ `post-chuyen-ke` (tiếng Việt, 24.10.2026) |
 | contact | hộp thoại `#talk` | Form liên hệ / xin lời khuyên (các nút `.talk-open`, `data-mode="contact"` hoặc `"advice"`) |
 
 ## Trang chủ (`v-home`), từ trên xuống
 
 1. **Màn hình chờ**: chữ "h" chữ ký của Margot được vẽ dần trên nền xanh.
 2. **Header**:
-   - Góc trái là "Huyen Tran / Margot" kèm dấu nháy.
+   - Góc trái là "Huyen Tran / Margot"; "Margot" và dấu nháy màu xanh.
    - Nav có nhãn thu lại còn chữ cái đầu.
-   - Nút ngôn ngữ dạng "( EN, VI )": bấm EN hoặc VI để đổi, ngôn ngữ đang chọn in đậm.
+   - Nhãn "( EN, VI )" (chỉ để hiển thị, không bấm được).
    - Nút hamburger mở menu xanh toàn màn hình.
 3. **Hero** `#hero`: tiêu đề "consulting ( thẻ ảnh ) by day & blooming ( chồng thẻ ) by ( ly ) night |".
    - **Thẻ ảnh** `.shot` tỉ lệ 16:9 (máy tính 2.133em × 1.2em; điện thoại giữ chiều rộng 1.95em) gồm 9 thẻ `.slide.scN`. Mỗi thẻ có dấu `*` xoay tròn, tên đơn vị, vai trò và năm:
@@ -77,7 +77,7 @@ Mỗi route ứng với một `<div class="view" id="v-…">`. Thứ tự trong 
    - Margot Tran (Hiệu): gõ từng chữ, phía sau có các đường kẻ (nét đứt và chân chữ) chỉ dài vừa tên (`margotGuides`)
    - Mỗi lần vuốt, hiệu ứng chạy lại từ đầu.
 5. **Where I've lived** `#t-work`: Nghệ An → Hà Nội → Thành phố Hồ Chí Minh → Hasselt, kèm cờ, và nút "Give me some advice!".
-6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ và nằm giữa phần gáy còn trống (không dồn sát đáy); hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/work`.
+6. **Where I've worked** `#t-projects`: kệ sách kéo ngang được, xếp theo thời gian. Tên gáy sách nhỏ, nhẹ và nằm giữa phần gáy còn trống (không dồn sát đáy); hàm `fitBooks` chỉ thu nhỏ hoặc bẻ 2 dòng khi tên quá dài. Dòng "Every step has a story" dẫn tới `#/my-journey`.
 7. **The circles of my life** `#t-community`: sáu vòng tròn Business, Flowers, Nature, Cocktails, Technology, Sketching. Bốn vòng sở thích dùng ảnh của Margot đã phủ màu xanh. Nút "Let's connect!".
 8. **My untold stories** `#t-stories`: ba tờ giấy note (4 names / 4 loves / 4 cities).
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
