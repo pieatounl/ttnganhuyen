@@ -3,8 +3,8 @@
 
 Link previews (Facebook, Zalo, Messenger, LinkedIn...) ignore everything after "#",
 so ttnganhuyen.com/#/blog/x always shows the site thumbnail. A page at
-ttnganhuyen.com/blog/x carries that post's own og:image (its first photo, or the
-site thumbnail when it has none) and sends visitors straight on to /#/blog/x.
+ttnganhuyen.com/blog/x carries that post's own og:image (its first photo, or its tab's
+thumbnail when it has none) and sends visitors straight on to /#/blog/x.
 
 Run from the repo root after adding or changing a post:  python3 tools/make-share-pages.py
 """
@@ -55,11 +55,16 @@ def clip(s, n=160):
     return s if len(s) <= n else s[:n].rsplit(' ', 1)[0] + '…'
 
 
+def tab_img(tab):
+    # each tab has its own thumbnail (img/og-<tab>.png, same look as the site one); posts without a photo use it too
+    return '/img/og-%s.png' % tab if os.path.exists('img/og-%s.png' % tab) else DEFAULT_IMG
+
+
 pages = {
     'about': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/about'),
-    'my-journey': ('My journey · Margot Tran', TAGLINE, DEFAULT_IMG, '#/my-journey'),
-    'use-cases': ('Use Cases · Margot Tran', TAGLINE, DEFAULT_IMG, '#/use-cases'),
-    'blog': ('Blog · Margot Tran', TAGLINE, DEFAULT_IMG, '#/blog'),
+    'my-journey': ('My journey · Margot Tran', TAGLINE, tab_img('my-journey'), '#/my-journey'),
+    'use-cases': ('Use Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/use-cases'),
+    'blog': ('Blog · Margot Tran', TAGLINE, tab_img('blog'), '#/blog'),
 }
 
 # Blog posts: <article class="post" id="post-ID"> … <h1> … first <img> … first <p>
@@ -69,7 +74,7 @@ for m in re.finditer(r'<article class="post" id="post-([\w-]+)"(.*?)</article>',
     img = re.search(r'<img[^>]+src="([^"]+)"', body)
     p = re.search(r'<p[^>]*>(.*?)</p>', body, re.S)
     pages['blog/' + pid] = (title + ' · Margot Tran', clip(text(p.group(1))) if p else TAGLINE,
-                            img.group(1) if img and not img.group(1).startswith('data:') else DEFAULT_IMG, '#/blog/' + pid)
+                            img.group(1) if img and not img.group(1).startswith('data:') else tab_img('blog'), '#/blog/' + pid)
 
 # My journey: entries of the WORK array; an optional img: '…' field becomes the preview
 for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
@@ -77,7 +82,7 @@ for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?
     img = re.search(r"\bimg: '([^']+)'", rest)
     p = re.search(r"p: \['((?:[^'\\]|\\.)*)'", rest)
     pages['my-journey/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
-                                  img.group(1) if img else DEFAULT_IMG, '#/my-journey/' + wid)
+                                  img.group(1) if img else tab_img('my-journey'), '#/my-journey/' + wid)
 
 for path, (title, desc, img, target) in pages.items():
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
