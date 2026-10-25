@@ -10,7 +10,7 @@ Run from the repo root after adding or changing a post:  python3 tools/make-shar
 """
 import html, os, re
 
-SITE = 'https://ttnganhuyen.com'
+SITE = 'https://www.ttnganhuyen.com'
 DEFAULT_IMG = '/img/og-image.png'
 SITE_NAME = 'Huyen Tran / Margot'
 TAGLINE = 'consulting by day, blooming by night'
