@@ -1884,11 +1884,18 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     if (v === 'home') { setTimeout(function () { ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
   }
   window.addEventListener('hashchange', route);
-  // footer: time and GMT offset of the device's own time zone, ticking live (follows the device when it travels)
+  // footer: Margot's own local time (not the viewer's), ticking live; change HOME_TZ if she moves
+  var HOME_TZ = 'Europe/Brussels';
   var hereNow = document.getElementById('here-now');
   if (hereNow) (function tick() {
-    var n = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; }, o = -n.getTimezoneOffset();
-    hereNow.textContent = p(n.getHours()) + ':' + p(n.getMinutes()) + ':' + p(n.getSeconds()) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
+    var n = new Date(), p = function (x) { return (x < 10 ? '0' : '') + x; }, h, m, s, o;
+    try {
+      var f = new Intl.DateTimeFormat('en-GB', { timeZone: HOME_TZ, hourCycle: 'h23', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(n), g = {};
+      f.forEach(function (x) { g[x.type] = x.value; }); h = +g.hour; m = +g.minute; s = +g.second;
+      o = Math.round((Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate(), h, m, s) - Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate(), n.getUTCHours(), n.getUTCMinutes(), n.getUTCSeconds())) / 60000);
+      if (o > 840) o -= 1440; else if (o < -720) o += 1440;
+    } catch (e) { h = n.getHours(); m = n.getMinutes(); s = n.getSeconds(); o = -n.getTimezoneOffset(); }
+    hereNow.textContent = p(h) + ':' + p(m) + ':' + p(s) + ' GMT' + (o < 0 ? '−' : '+') + Math.floor(Math.abs(o) / 60) + (Math.abs(o) % 60 ? ':' + p(Math.abs(o) % 60) : '');
     setTimeout(tick, 1000 - Date.now() % 1000);
   })();
   // clicking a link to the page you're already on goes back to its top
