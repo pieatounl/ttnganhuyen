@@ -31,7 +31,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 - Nền trắng tinh. Màu nhấn xanh `#8FACD8`. Biến CSS của màu này vẫn tên là `--orange` vì lý do lịch sử. Chữ nhỏ màu nhấn dùng `--accent-ink` `#4d6f9f`.
 - Khoảng cách giống untold: lề hai bên rộng, các phần gọn, khi cuộn chủ yếu là tiêu đề lớn.
 - Các đường kẻ mảnh, mờ nằm đúng trên chân chữ (baseline). JS tính vị trí các đường này (`layoutHero`, `baselineRules`). Đường kẻ không bao giờ cắt qua chữ chú thích.
-- Nút (`.btn`) nhỏ gọn. **Mọi nút CTA đều kết thúc bằng "!"**, cả tiếng Anh lẫn tiếng Việt. Ngoại lệ do Margot tự viết: "Your guide to starting fresh?" và nút trang Cases "Have a similar puzzle on your desk? Let's brainstorm." (kết thúc bằng dấu chấm, 26.10.2026).
+- Nút (`.btn`) nhỏ gọn. **Mọi nút CTA đều kết thúc bằng "!"**, cả tiếng Anh lẫn tiếng Việt. Ngoại lệ do Margot tự viết: "Your guide to starting fresh?". Nút trang Cases: "Have a similar puzzle on your desk? Let's brainstorm!" trong đó "Let's brainstorm!" màu trắng (26.10.2026).
 - Dấu nháy (`|`) không nhấp nháy. Nó chỉ hiện trong lúc chữ đang gõ, gõ xong thì dừng.
 - Header ghi "( EN, VI )" nghĩa là web dùng cả tiếng Anh lẫn tiếng Việt, **không phải nút chuyển ngôn ngữ**. Chức năng chuyển đổi sẽ làm sau: tiếng Việt đã soạn sẵn trong thuộc tính `data-vi` (`setLang`), đang khoá bằng `VI_ON = false`.
 - Trên điện thoại (≤720px), mọi thứ phải vừa chiều ngang màn hình, không cuộn ngang.
