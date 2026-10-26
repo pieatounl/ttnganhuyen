@@ -2,9 +2,9 @@
 """Make one small HTML page per post so shared links get their own preview.
 
 Link previews (Facebook, Zalo, Messenger, LinkedIn...) ignore everything after "#",
-so ttnganhuyen.com/#/blog/x always shows the site thumbnail. A page at
-ttnganhuyen.com/blog/x carries that post's own og:image (its first photo, or its tab's
-thumbnail when it has none) and sends visitors straight on to /#/blog/x.
+so ttnganhuyen.com/#/words/x always shows the site thumbnail. A page at
+ttnganhuyen.com/words/x carries that post's own og:image (its first photo, or its tab's
+thumbnail when it has none) and sends visitors straight on to /#/words/x (old /blog/x pages stay and do the same).
 
 Run from the repo root after adding or changing a post:  python3 tools/make-share-pages.py
 """
@@ -18,9 +18,9 @@ TAGLINE = 'consulting by day, blooming by night'
 src = open('index.html', encoding='utf-8').read()
 
 
-def page(path, title, desc, img, target):
+def page(path, title, desc, img, target, canon=None):
     e = lambda s: html.escape(s, quote=True)
-    url, image = SITE + '/' + path, SITE + (img if img.startswith('/') else '/' + img)
+    url, image = SITE + '/' + (canon or path), SITE + (img if img.startswith('/') else '/' + img)
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -61,10 +61,10 @@ def tab_img(tab):
 
 
 pages = {
-    'about': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/about'),
-    'my-journey': ('Trajectory · Margot Tran', TAGLINE, tab_img('my-journey'), '#/my-journey'),
-    'use-cases': ('Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/use-cases'),
-    'blog': ('Words · Margot Tran', TAGLINE, tab_img('blog'), '#/blog'),
+    'profile': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/profile'),
+    'chapters': ('Chapters · Margot Tran', TAGLINE, tab_img('my-journey'), '#/chapters'),
+    'cases': ('Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/cases'),
+    'words': ('Words · Margot Tran', TAGLINE, tab_img('blog'), '#/words'),
 }
 
 # Blog posts: <article class="post" id="post-ID"> … <h1> … first <img> … first <p>
@@ -73,19 +73,25 @@ for m in re.finditer(r'<article class="post" id="post-([\w-]+)"(.*?)</article>',
     title = text(re.search(r'<h1[^>]*>(.*?)</h1>', body, re.S).group(1))
     img = re.search(r'<img[^>]+src="([^"]+)"', body)
     p = re.search(r'<p[^>]*>(.*?)</p>', body, re.S)
-    pages['blog/' + pid] = (title + ' · Margot Tran', clip(text(p.group(1))) if p else TAGLINE,
-                            img.group(1) if img and not img.group(1).startswith('data:') else tab_img('blog'), '#/blog/' + pid)
+    pages['words/' + pid] = (title + ' · Margot Tran', clip(text(p.group(1))) if p else TAGLINE,
+                            img.group(1) if img and not img.group(1).startswith('data:') else tab_img('blog'), '#/words/' + pid)
 
 # My journey: entries of the WORK array; an optional img: '…' field becomes the preview
 for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
     wid, mark, role, rest = m.group(1), m.group(2).replace("\\'", "'"), m.group(3).replace("\\'", "'"), m.group(4)
     img = re.search(r"\bimg: '([^']+)'", rest)
     p = re.search(r"p: \['((?:[^'\\]|\\.)*)'", rest)
-    pages['my-journey/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
-                                  img.group(1) if img else tab_img('my-journey'), '#/my-journey/' + wid)
+    pages['chapters/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
+                                  img.group(1) if img else tab_img('my-journey'), '#/chapters/' + wid)
+
+# links already shared under the old tab names (about, my-journey, use-cases, blog) keep working:
+# those pages stay, point their canonical URL at the new name and send visitors to the new hash
+LEGACY = {'profile': 'about', 'chapters': 'my-journey', 'cases': 'use-cases', 'words': 'blog'}
 
 for path, (title, desc, img, target) in pages.items():
-    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
-    with open(path + '.html', 'w', encoding='utf-8') as f:
-        f.write(page(path, title, desc, img, target))
-    print(f'{path}.html  ->  {img}')
+    head, _, rest = path.partition('/')
+    for out, canon in ((path, None), (LEGACY[head] + ('/' + rest if rest else ''), path)):
+        os.makedirs(os.path.dirname(out) or '.', exist_ok=True)
+        with open(out + '.html', 'w', encoding='utf-8') as f:
+            f.write(page(out, title, desc, img, target, canon))
+        print(f'{out}.html  ->  {img}')
