@@ -207,6 +207,7 @@ section[hidden] { display: none !important; }
 .soon-h > span { display: block; } .soon-h .s2 { padding-left: 1.1em; color: var(--orange); }
 /* phones: each line stays whole; the second line sits flush right instead of indented */
 @media (max-width: 760px) { .soon-h { font-size: min(3.2rem, 14.2vw); } .soon-h > span { white-space: nowrap; } .soon-h .s2 { padding-left: 0; text-align: right; } } .soon-h .cur { height: .78em; vertical-align: -.04em; }
+#v-consulting .soon-h { font-size: clamp(2rem, 9vw, 9.2rem); } /* longer headline than the other tabs */
 .soon-p { font-family: var(--display); font-weight: 300; font-size: clamp(1.1rem, 1.7vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.45; max-width: 34ch; margin: 34px 0 0; }
 .soon-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 28px); margin-top: clamp(50px, 8vh, 90px); }
 .soon-card { position: relative; border: 1px dashed color-mix(in srgb, var(--accent-ink) 55%, transparent); border-radius: 6px; padding: 26px 24px 30px; min-height: 230px; display: flex; flex-direction: column; overflow: hidden; }
@@ -1089,9 +1090,8 @@ the best ones bloom over a drink</p>
 <div class="view" id="v-consulting" hidden>
   <section class="band soon ruled-soon">
     <div class="in">
-      <span class="label">Consulting · use cases</span>
-      <h1 class="soon-h"><span>use cases</span><span class="s2">coming soon<span class="cur"></span></span></h1>
-      <p class="soon-p">Strategy, data and process work from real projects, written up as short cases. I'm putting them together now.</p>
+      <span class="label">In practice</span>
+      <h1 class="soon-h"><span>putting the pieces</span><span class="s2">together<span class="cur"></span></span></h1>
       <div class="soon-grid">
         <div class="soon-card"><span class="k">( 01 ) Strategy</span><h3>Digital transformation, step by step</h3><p>How a team moves from spreadsheets and habits to tools people actually use.</p><span class="tag">Coming soon</span></div>
         <div class="soon-card"><span class="k">( 02 ) Data</span><h3>Dashboards that get read</h3><p>From raw rows to a few numbers leaders trust and check every morning.</p><span class="tag">Coming soon</span></div>
