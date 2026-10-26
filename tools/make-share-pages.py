@@ -61,7 +61,7 @@ def tab_img(tab):
 
 
 pages = {
-    'profile': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/profile'),
+    'me': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/me'),
     'chapters': ('Chapters · Margot Tran', TAGLINE, tab_img('my-journey'), '#/chapters'),
     'cases': ('Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/cases'),
     'words': ('Words · Margot Tran', TAGLINE, tab_img('blog'), '#/words'),
@@ -86,11 +86,11 @@ for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?
 
 # links already shared under the old tab names (about, my-journey, use-cases, blog) keep working:
 # those pages stay, point their canonical URL at the new name and send visitors to the new hash
-LEGACY = {'profile': 'about', 'chapters': 'my-journey', 'cases': 'use-cases', 'words': 'blog'}
+LEGACY = {'me': ['about', 'profile'], 'chapters': ['my-journey'], 'cases': ['use-cases'], 'words': ['blog']}
 
 for path, (title, desc, img, target) in pages.items():
     head, _, rest = path.partition('/')
-    for out, canon in ((path, None), (LEGACY[head] + ('/' + rest if rest else ''), path)):
+    for out, canon in [(path, None)] + [(o + ('/' + rest if rest else ''), path) for o in LEGACY[head]]:
         os.makedirs(os.path.dirname(out) or '.', exist_ok=True)
         with open(out + '.html', 'w', encoding='utf-8') as f:
             f.write(page(out, title, desc, img, target, canon))
