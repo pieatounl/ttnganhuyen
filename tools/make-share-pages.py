@@ -64,7 +64,7 @@ pages = {
     'about': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/about'),
     'my-journey': ('Trajectory · Margot Tran', TAGLINE, tab_img('my-journey'), '#/my-journey'),
     'use-cases': ('Playbook · Margot Tran', TAGLINE, tab_img('use-cases'), '#/use-cases'),
-    'blog': ('Off Script · Margot Tran', TAGLINE, tab_img('blog'), '#/blog'),
+    'blog': ('Words · Margot Tran', TAGLINE, tab_img('blog'), '#/blog'),
 }
 
 # Blog posts: <article class="post" id="post-ID"> … <h1> … first <img> … first <p>
