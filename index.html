@@ -1870,6 +1870,20 @@ the best ones bloom over a drink</p>
       var ph = ease((e - .75) / .25) * (1 - ease(t / .35)); el.style.setProperty('--ph', ph.toFixed(3)); el.classList.toggle('lit', ph > .5);
     });
   }
+  // the gap from the last thing of The Spectrum (button; on phones the circles) to the "The Conversation" label matches the other section gaps (~96px)
+  function evenEcoGap() {
+    var bl = document.querySelector('.believe'), lab = bl && bl.querySelector('.bl-label'); if (!lab || eco.offsetParent === null) return;
+    eco.style.marginBottom = '';
+    var pull, phone = window.innerWidth <= 760;
+    if (phone) { pull = lab.getBoundingClientRect().top - eco.querySelector('.eco-rings').getBoundingClientRect().bottom - 96; }
+    else {
+      var pin = eco.querySelector('.eco-pin'), btn = ecoB.querySelector('.btn'), gapA = pin.offsetHeight - (btn.offsetTop + btn.offsetHeight), gapB = lab.getBoundingClientRect().top - bl.getBoundingClientRect().top;
+      pull = Math.min(gapA - 20, gapA + gapB - 96);
+    }
+    eco.style.marginBottom = (-Math.round(pull)) + 'px';
+  }
+  window.addEventListener('resize', evenEcoGap); window.addEventListener('load', evenEcoGap); evenEcoGap();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(evenEcoGap);
   window.addEventListener('scroll', ecoFrame, { passive: true }); window.addEventListener('resize', ecoFrame);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(ecoFrame);
   // Page headlines: one hairline exactly on each line's baseline (Work, Consulting, Blog)
@@ -1904,7 +1918,7 @@ the best ones bloom over a drink</p>
     if (v !== 'home' || h === '#/' || h === '') window.scrollTo(0, 0);
     else { var t = document.getElementById(h.slice(1)); if (t) setTimeout(function () { t.scrollIntoView(); }, 0); }
     setTimeout(baselineRules, 0);
-    if (v === 'home') { setTimeout(function () { ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
+    if (v === 'home') { setTimeout(function () { evenEcoGap(); ecoFrame(); fitBooks(); }, 0); layoutHero(); if (specs.danh) buildSpecs(); else if (specsReady) initSpecs(); }
   }
   window.addEventListener('hashchange', route);
   // footer: Margot's own local time (not the viewer's), ticking live; change HOME_TZ if she moves
