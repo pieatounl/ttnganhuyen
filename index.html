@@ -68,6 +68,7 @@ a { color: inherit; }
 .wk-intro .in { position: relative; }
 .wk-h { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 9.4vw, 9rem); letter-spacing: -0.055em; line-height: 1.12; margin: 26px 0 0; }
 .wk-h > span { display: block; }
+@media (max-width: 760px) { .wk-h { font-size: min(3rem, 11vw); } .wk-h > span { white-space: nowrap; } }
 .wk-h .cur { height: .8em; vertical-align: -.04em; }
 .wk-scroll { right: 0; bottom: 6px; }
 .wk-list .in { border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
@@ -1043,7 +1044,7 @@ the best ones bloom over a drink</p>
   <section class="band wk-intro">
     <div class="in">
       <span class="label">Tracing the dots</span>
-      <h1 class="wk-h" id="wk-h"><span>some stories</span><span>I've recently told<span class="cur"></span></span></h1>
+      <h1 class="wk-h" id="wk-h"><span>making sense of</span><span>the moving parts<span class="cur"></span></span></h1>
       <a class="scroll wk-scroll" href="#wk-list" aria-label="Scroll to the stories"><span>SCROLL</span><i><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></i></a>
     </div>
   </section>

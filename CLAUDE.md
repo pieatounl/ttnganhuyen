@@ -45,7 +45,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
 | Hash | View | Nội dung |
 | --- | --- | --- |
 | `#/me` (hoặc `#/`) | `v-home` | Trang About (trang chủ), chi tiết ở phần dưới |
-| `#/chapters` | `v-work` | Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
+| `#/chapters` | `v-work` | Nhãn "Tracing the dots", tiêu đề "making sense of / the moving parts" (Margot viết 26.10.2026; thumbnail `img/og-my-journey.png` đã vẽ lại). Danh sách vị trí, chỉ có chữ, lấy từ mảng `WORK`. Chưa có ảnh hay logo, sau này sẽ thêm output từng dự án |
 | `#/chapters/<id>` | `v-case` | Trang chi tiết, `fillCase(id)` lấy dữ liệu từ `WORK`: tên đơn vị, năm, vai trò, các đoạn `p`, năng lực `caps`, các slide tạm `slides` |
 | `#/cases` | `v-consulting` | Nhãn "In practice", tiêu đề "putting the pieces / together" (Margot viết 26.10.2026, bỏ đoạn mô tả bên dưới; thumbnail `img/og-use-cases.png` đã vẽ lại theo tiêu đề này): 01 Strategy, 02 Data, 03 Process |
 | `#/words` | `v-stories` | Trang blog ("coming soon", nút Follow me on Instagram) |
