@@ -90,6 +90,8 @@ a { color: inherit; }
 .wk-pic { transition: transform .6s cubic-bezier(.2,.7,.2,1); } .wk-pic:hover { transform: scale(1.02); }
 .wk-next { padding-block: clamp(70px, 14vh, 150px); }
 .wk-next .headline { margin: 24px 0 34px; }
+.wk-next .headline[data-type] { white-space: pre-line; min-height: 2.3em; }
+.wk-next .headline.hold:not(.typed-on) { visibility: hidden; }
 .cs-head { padding-top: clamp(130px, 20vh, 200px); }
 .cs-head .in { position: relative; border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); padding-bottom: 20px; }
 .cs-back { position: absolute; left: 0; top: -64px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--orange); display: grid; place-items: center; text-decoration: none; color: var(--accent-ink); }
@@ -1053,7 +1055,8 @@ the best ones bloom over a drink</p>
   <section class="band wk-next">
     <div class="in center">
       <span class="label">Turning the page</span>
-      <h2 class="headline">let's dive into<br>the real puzzles</h2>
+      <h2 class="headline" data-type>let's dive into
+the puzzles</h2>
       <a class="btn" href="#/cases">Peek at the cases!</a>
     </div>
   </section>
@@ -1084,7 +1087,8 @@ the best ones bloom over a drink</p>
   <section class="band wk-next">
     <div class="in center">
       <span class="label">Turning the page</span>
-      <h2 class="headline">let's dive into<br>the real puzzles</h2>
+      <h2 class="headline" data-type>let's dive into
+the puzzles</h2>
       <a class="btn" href="#/cases">Peek at the cases!</a>
     </div>
   </section>
@@ -1945,13 +1949,13 @@ the best ones bloom over a drink</p>
   var typeIO = 'IntersectionObserver' in window && !reduce ? new IntersectionObserver(function (es) {
     es.forEach(function (en) {
       if (!en.isIntersecting) return; typeIO.unobserve(en.target);
-      var el = en.target, full = el.textContent, i = 0;
+      var el = en.target, full = el.textContent, i = 0; el.classList.add('typed-on');
       el.innerHTML = '<span class="cur"></span>';
       (function st() { i += 1; el.innerHTML = full.slice(0, i) + '<span class="cur"></span>'; if (i < full.length) setTimeout(st, 32); })();
     });
   }, { threshold: .6 }) : null;
   // on phones the stories lede simply shows, without typing
-  if (typeIO) document.querySelectorAll('[data-type]').forEach(function (el) { if (el.classList.contains('lede') && window.matchMedia('(max-width: 760px)').matches) return; typeIO.observe(el); });
+  if (typeIO) document.querySelectorAll('[data-type]').forEach(function (el) { if (el.classList.contains('headline')) el.classList.add('hold'); if (el.classList.contains('lede') && window.matchMedia('(max-width: 760px)').matches) return; typeIO.observe(el); });
 
   // Second rotating line, on the projects summary
   var rot2 = document.getElementById('rot2'), ROT2 = { en: ['untangles complexity', 'sparks conversations', 'bridges borders'], vi: ['gỡ rối sự phức tạp', 'khơi mở đối thoại', 'bắc cầu qua biên giới'] }, r2 = 0;
