@@ -62,7 +62,7 @@ def tab_img(tab):
 
 pages = {
     'about': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/about'),
-    'my-journey': ('My journey · Margot Tran', TAGLINE, tab_img('my-journey'), '#/my-journey'),
+    'my-journey': ('Trajectory · Margot Tran', TAGLINE, tab_img('my-journey'), '#/my-journey'),
     'use-cases': ('Use Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/use-cases'),
     'blog': ('Blog · Margot Tran', TAGLINE, tab_img('blog'), '#/blog'),
 }
