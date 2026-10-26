@@ -672,6 +672,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 #talk label { display: grid; gap: 6px; font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 #talk input, #talk textarea { font: inherit; font-size: 1rem; font-weight: 400; letter-spacing: 0; text-transform: none; border: 0; border-bottom: 1px solid var(--rule); padding: 8px 0; background: transparent; color: var(--ink); resize: vertical; }
 #talk input:focus, #talk textarea:focus { outline: none; border-bottom-color: var(--orange); }
+#talk label small { font-size: .74rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--mute); }
 #talk .btn { justify-self: start; }
 #talk .x { position: absolute; right: 14px; top: 12px; border: 0; background: none; font-size: 1.1rem; cursor: pointer; color: var(--ink); }
 #talk .sent { margin: 0; font-size: .85rem; color: var(--accent-ink); } #talk .sent.bad { color: #b0413e; } #talk .btn:disabled { opacity: .6; cursor: wait; }
@@ -1027,11 +1028,10 @@ the best ones bloom over a drink</p>
 <dialog id="talk" aria-labelledby="talk-h">
   <form id="talk-form" method="dialog">
     <button type="button" class="x" aria-label="Close">✕</button>
-    <span class="label" data-for="contact" data-vi="Nói chuyện với mình">Talk to me</span>
-    <span class="label" data-for="advice" hidden data-vi="Một lời khuyên">A piece of advice</span>
-    <h3 id="talk-h"><span data-for="contact" data-vi="Viết email cho mình">Write me an email</span><span data-for="advice" hidden data-vi="Cho mình một lời khuyên nhé">Give me a piece of advice</span></h3>
+    <span class="label" data-vi="Nói chuyện với mình">Talk to me</span>
+    <h3 id="talk-h" data-vi="Viết email cho mình">Write me an email</h3>
     <label><span data-vi="Tên bạn">Your name</span><input name="name" required autocomplete="name"></label>
-    <label><span data-vi="Địa chỉ email của bạn">Your email address</span><input name="from" type="email" autocomplete="email" required></label>
+    <label><span data-vi="Địa chỉ email của bạn">Your email address</span><input name="from" type="email" autocomplete="email" required><small data-vi="Mình chỉ dùng để trả lời bạn.">I'll only use it to reply.</small></label>
     <label><span data-vi="Lời nhắn">Message</span><textarea name="msg" rows="5" required></textarea></label>
     <button class="btn" type="submit" data-vi="Gửi!">Send!</button>
     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" hidden>
@@ -1046,7 +1046,7 @@ the best ones bloom over a drink</p>
     <div class="in">
       <span class="label">Tracing the dots</span>
       <h1 class="wk-h" id="wk-h"><span><span class="wk-b">making sense</span> of</span><span>the moving parts<span class="cur"></span></span></h1>
-      <a class="scroll wk-scroll" href="#wk-list" aria-label="Scroll to the stories"><span>SCROLL</span><i><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></i></a>
+      <a class="scroll wk-scroll" href="#wk-list" aria-label="Scroll to the stories"><span>SCROLL!</span><i><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></i></a>
     </div>
   </section>
   <section class="band wk-list" id="wk-list"><div class="in" id="wk-items"></div></section>
@@ -1123,7 +1123,7 @@ the best ones bloom over a drink</p>
     <section class="band cs-head post-head">
       <div class="in">
         <a class="cs-back" href="#/words" aria-label="Back to Words">←</a>
-        <span class="post-k">( Blog · 24.10.2026 )</span>
+        <span class="post-k">( 24.10.2026 )</span>
         <h1>Chuyện kể</h1>
       </div>
     </section>
