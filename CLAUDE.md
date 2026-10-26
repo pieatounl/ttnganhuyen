@@ -87,7 +87,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
    - Từ 761px trở lên các tờ giấy note luôn xoè quạt và căn giữa (chỉ xếp dọc trên điện thoại ≤760px). Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra khi cửa sổ ≥1200px, nên không bị che; hẹp hơn thì nằm dưới các tờ giấy, căn giữa.
    - Nút "Read the stories!".
-9. Câu **"Great ideas start on a whiteboard. The best ones bloom over a drink!"** (Margot viết 26.10.2026, thay cho câu "I believe…"; bản tiếng Việt trong `data-vi` là bản mình đoán), rồi phần liên hệ có nhãn "The Conversation" (Margot đổi từ "Contact" 26.10.2026; data-vi "Cuộc trò chuyện" là bản đoán; hộp thoại liên hệ vẫn ghi "Contact") ("let's grab the next drink", nút "Ready when you are!").
+9. Câu **"Great ideas start on a whiteboard. The best ones bloom over a drink!"** (Margot viết 26.10.2026, thay cho câu "I believe…"; bản tiếng Việt trong `data-vi` là bản mình đoán), rồi phần liên hệ có nhãn "The Conversation" (Margot đổi từ "Contact" 26.10.2026; data-vi "Cuộc trò chuyện" là bản đoán; hộp thoại liên hệ vẫn ghi "Contact") (tiêu đề "let's mix things up!" Margot viết 26.10.2026, đổi từ "let's grab the next drink"; không có dấu nháy gõ; data-vi là bản đoán), nút "Ready when you are!").
 10. **Footer** (nền tối):
     - Chữ "margot tran".
     - Liên kết tới các trang trong site.
