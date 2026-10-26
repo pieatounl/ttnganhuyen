@@ -1388,7 +1388,17 @@ the best ones bloom over a drink</p>
     var hx = ach.x + ach.w * .42;
     // dots
     var d1 = { x: gch.x + gch.w * .33, y: B - M.xh * F * .9, r: F * .155 };
-    var d3 = { x: yy.x + yy.w * .2, y: B - M.xh * F * .98, r: F * .06 };
+    // the dot on the y: centred on the real top of its left arm, measured from the glyph pixels
+    var iy = ink('y', F), d3 = { x: yy.x + yy.w * .2, y: B - M.xh * F * .98, r: F * .06 };
+    (function () {
+      var rr, cc, lo = iy.W, hi = 0, al = function (r, c) { return iy.d[(r * iy.W + c) * 4 + 3] > 90; };
+      for (rr = 0; rr < iy.H; rr++) for (cc = 0; cc < iy.W; cc++) if (al(rr, cc)) { if (cc < lo) lo = cc; if (cc > hi) hi = cc; }
+      var cut = lo + (hi - lo) * .4, topRow = -1, sx = 0, n = 0; // left arm only
+      for (rr = 0; rr < iy.H && topRow < 0; rr++) for (cc = lo; cc <= cut; cc++) if (al(rr, cc)) { topRow = rr; break; }
+      if (topRow < 0) return;
+      for (rr = topRow; rr < topRow + 4; rr++) for (cc = lo; cc <= cut; cc++) if (al(rr, cc)) { sx += cc; n++; }
+      if (n) { d3.x = yy.x + (sx / n + .5 - iy.pad); d3.y = B - (iy.by - topRow) + d3.r * .3; }
+    })();
     var d4 = { x: n.r - n.w * .2, y: B + 2, r: F * .085 };
     var d5 = { x: H.x + H.w * .17, y: B - M.cap * F * .5, r: F * .09 };
     // notes and leaders
