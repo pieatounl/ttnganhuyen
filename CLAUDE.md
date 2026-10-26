@@ -35,8 +35,8 @@ Khẩu hiệu: "consulting by day, blooming by night".
 - Dấu nháy (`|`) không nhấp nháy. Nó chỉ hiện trong lúc chữ đang gõ, gõ xong thì dừng.
 - Header ghi "( EN, VI )" nghĩa là web dùng cả tiếng Anh lẫn tiếng Việt, **không phải nút chuyển ngôn ngữ**. Chức năng chuyển đổi sẽ làm sau: tiếng Việt đã soạn sẵn trong thuộc tính `data-vi` (`setLang`), đang khoá bằng `VI_ON = false`.
 - Trên điện thoại (≤720px), mọi thứ phải vừa chiều ngang màn hình, không cuộn ngang.
-- **Khoảng cách giữa các section phải đồng đều** (Margot dặn 26.10.2026): nhãn của mỗi section nằm cách phần trước khoảng 90–100px. The Spectrum là phần ghim cao 260vh nên dùng `.eco-a { padding-bottom: 22vh }` và `.eco-b { padding-top: 22vh }` để kéo chữ lớn lên và nút xuống, `.eco { margin-top: -100px }` (kéo phần ghim lên sát The Craft; `.eco` để `pointer-events: none` nên không chặn link kệ sách), còn `.believe` có `min-height` tính theo chiều cao ly (`max(min(64vh, 540px), cao ly + 124px)`) và `padding-bottom: 96px` để chân ly **không bị cắt** (`overflow: hidden`) và cách phần Contact tương đương các section khác. Sau khi đổi bố cục, chụp các điểm nối About→Footprints→The Craft→The Spectrum→"I believe" để so khoảng cách.
-- **Không để chữ nhảy**: mọi dòng gõ hoặc đổi chữ (tên thành phố, `#rot2`, câu "I believe…") phải giữ sẵn chỗ bằng `min-height`, để phần bên dưới không dịch lên xuống. Khi sửa, chạy thử trên 360/390/430/768px, lấy vị trí các section theo thời gian (đứng yên mới đạt) và rà lại cả trang About.
+- **Khoảng cách giữa các section phải đồng đều** (Margot dặn 26.10.2026): nhãn của mỗi section nằm cách phần trước khoảng 90–100px. The Spectrum là phần ghim cao 260vh nên dùng `.eco-a { padding-bottom: 22vh }` và `.eco-b { padding-top: 22vh }` để kéo chữ lớn lên và nút xuống, `.eco { margin-top: -100px }` (kéo phần ghim lên sát The Craft; `.eco` để `pointer-events: none` nên không chặn link kệ sách), còn `.believe` có `min-height` tính theo chiều cao ly (`max(min(64vh, 540px), cao ly + 124px)`) và `padding-bottom: 96px` để chân ly **không bị cắt** (`overflow: hidden`) và cách phần Contact tương đương các section khác. Sau khi đổi bố cục, chụp các điểm nối About→Footprints→The Craft→The Spectrum→câu "Great ideas…" để so khoảng cách.
+- **Không để chữ nhảy**: mọi dòng gõ hoặc đổi chữ (tên thành phố, `#rot2`, câu "Great ideas…") phải giữ sẵn chỗ bằng `min-height`, để phần bên dưới không dịch lên xuống. Khi sửa, chạy thử trên 360/390/430/768px, lấy vị trí các section theo thời gian (đứng yên mới đạt) và rà lại cả trang About.
 
 ## Các trang (router theo hash, hàm `route()`)
 
@@ -87,7 +87,7 @@ Khẩu hiệu: "consulting by day, blooming by night".
    - Bấm vào thì các tờ dạt sang hai bên rồi về lại chỗ cũ.
    - Từ 761px trở lên các tờ giấy note luôn xoè quạt và căn giữa (chỉ xếp dọc trên điện thoại ≤760px). Dòng "Click to uncover more!" nằm bên trái vùng giấy note dạt ra khi cửa sổ ≥1200px, nên không bị che; hẹp hơn thì nằm dưới các tờ giấy, căn giữa.
    - Nút "Read the stories!".
-9. Câu **I believe…**, rồi phần **Contact** ("let's grab the next drink", nút "Ready when you are!").
+9. Câu **"Great ideas start on a whiteboard. The best ones bloom over a drink!"** (Margot viết 26.10.2026, thay cho câu "I believe…"; bản tiếng Việt trong `data-vi` là bản mình đoán), rồi phần **Contact** ("let's grab the next drink", nút "Ready when you are!").
 10. **Footer** (nền tối):
     - Chữ "margot tran".
     - Liên kết tới các trang trong site.
