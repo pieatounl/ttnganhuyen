@@ -818,9 +818,9 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
 <header class="site band" id="hdr">
   <div class="in">
-    <a class="logo" href="#/me">Huyen Tran<span class="sl">/</span><span class="mg">Margot</span><span class="cur"></span></a>
+    <a class="logo" href="#/abt-me">Huyen Tran<span class="sl">/</span><span class="mg">Margot</span><span class="cur"></span></a>
     <nav class="main" aria-label="Sections">
-      <a href="#/me" data-full="Abt me" data-vi="Giới thiệu">Abt me</a>
+      <a href="#/abt-me" data-full="Abt me" data-vi="Giới thiệu">Abt me</a>
       <a href="#/chapters" data-full="Chapters" data-vi="Hành trình">Chapters</a>
       <a href="#/cases" data-full="Cases" data-vi="Tình huống">Cases</a>
       <a href="#/words" data-full="Words" data-vi="Blog">Words</a>
@@ -844,7 +844,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
     <svg class="thread" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
       <path pathLength="1" d="M0 130 C 160 120 260 150 330 175 C 420 210 470 290 520 330 C 600 400 680 420 760 460 C 860 500 940 505 1000 505 M0 330 C 200 340 330 345 420 320 C 470 300 520 240 530 150 C 540 80 470 40 430 70 C 380 110 420 170 470 175 C 560 180 700 150 1000 150 M0 525 C 260 525 400 540 470 560 C 520 572 560 520 560 470 C 560 400 590 375 640 360 C 720 330 800 345 1000 350"/>
     </svg>
-    <a href="#/me" data-vi="giới thiệu">abt me</a>
+    <a href="#/abt-me" data-vi="giới thiệu">abt me</a>
     <a href="#/chapters" data-vi="hành trình">chapters</a>
     <a href="#/cases" data-vi="tình huống">cases</a>
     <a href="#/words" data-vi="blog">words</a>
@@ -1166,12 +1166,12 @@ the puzzles</h2>
 <footer class="band dark">
   <div class="in">
     <div class="fl">
-      <a class="wm" href="#/me">margot<span class="cur"></span></a>
+      <a class="wm" href="#/abt-me">margot<span class="cur"></span></a>
       <span class="wm sur" aria-hidden="true">tran</span>
       <span id="here-now" class="now"></span>
     </div>
     <ol class="fnav">
-      <li><a href="#/me"><span class="n">01</span><span class="t" data-vi="Giới thiệu">Abt me</span></a></li>
+      <li><a href="#/abt-me"><span class="n">01</span><span class="t" data-vi="Giới thiệu">Abt me</span></a></li>
       <li><a href="#/chapters"><span class="n">02</span><span class="t" data-vi="Hành trình">Chapters</span></a></li>
       <li><a href="#/cases"><span class="n">03</span><span class="t" data-vi="Tình huống">Cases</span></a></li>
       <li><a href="#/words"><span class="n">04</span><span class="t" data-vi="Blog">Words</span></a></li>
@@ -1908,19 +1908,19 @@ the puzzles</h2>
   window.addEventListener('resize', baselineRules); if (document.fonts && document.fonts.ready) document.fonts.ready.then(baselineRules);
   var PUB = { work: 'chapters', consulting: 'cases', stories: 'words' }, VIEW = { chapters: 'work', cases: 'consulting', words: 'stories' };
   // every earlier name for a page still lands on it: tab names before the 26.10 rename, and the very first view names
-  var OLDNAME = { about: 'me', profile: 'me', 'my-journey': 'chapters', 'use-cases': 'cases', blog: 'words', work: 'chapters', consulting: 'cases', stories: 'words' };
+  var OLDNAME = { me: 'abt-me', about: 'abt-me', profile: 'abt-me', 'my-journey': 'chapters', 'use-cases': 'cases', blog: 'words', work: 'chapters', consulting: 'cases', stories: 'words' };
   function route() {
     // public names follow the tab names; links under any earlier name are rewritten to the current one
-    var h = location.hash, om = h.match(/^#\/(about|profile|my-journey|use-cases|blog|work|consulting|stories)(\/.*)?$/);
+    var h = location.hash, om = h.match(/^#\/(me|about|profile|my-journey|use-cases|blog|work|consulting|stories)(\/.*)?$/);
     if (om) { history.replaceState(null, '', '#/' + OLDNAME[om[1]] + (om[2] || '')); h = location.hash; }
     h = h.replace(/^#\/(chapters|cases|words)/, function (x, k) { return '#/' + VIEW[k]; });
-    if (/^#\/me\/?$/.test(h)) h = '#/'; // Me is the home page
+    if (/^#\/abt-me\/?$/.test(h)) h = '#/'; // Abt me is the home page
     var m = h.match(/^#\/(\w+)/), v = m && document.getElementById('v-' + m[1]) ? m[1] : 'home';
     var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
     if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
     views.forEach(function (el) { el.hidden = el.id !== 'v-' + shown; });
     document.body.setAttribute('data-view', v);
-    navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/me' : '#/' + (PUB[v] || v))); renderNav(a); });
+    navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/abt-me' : '#/' + (PUB[v] || v))); renderNav(a); });
     if (v !== 'home' || h === '#/' || h === '') window.scrollTo(0, 0);
     else { var t = document.getElementById(h.slice(1)); if (t) setTimeout(function () { t.scrollIntoView(); }, 0); }
     setTimeout(baselineRules, 0);

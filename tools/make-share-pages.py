@@ -61,7 +61,7 @@ def tab_img(tab):
 
 
 pages = {
-    'me': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/me'),
+    'abt-me': ('Huyen Tran / Margot', TAGLINE, DEFAULT_IMG, '#/abt-me'),
     'chapters': ('Chapters · Margot Tran', TAGLINE, tab_img('my-journey'), '#/chapters'),
     'cases': ('Cases · Margot Tran', TAGLINE, tab_img('use-cases'), '#/cases'),
     'words': ('Words · Margot Tran', TAGLINE, tab_img('blog'), '#/words'),
@@ -86,7 +86,7 @@ for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?
 
 # links already shared under the old tab names (about, my-journey, use-cases, blog) keep working:
 # those pages stay, point their canonical URL at the new name and send visitors to the new hash
-LEGACY = {'me': ['about', 'profile'], 'chapters': ['my-journey'], 'cases': ['use-cases'], 'words': ['blog']}
+LEGACY = {'abt-me': ['me', 'about', 'profile'], 'chapters': ['my-journey'], 'cases': ['use-cases'], 'words': ['blog']}
 
 for path, (title, desc, img, target) in pages.items():
     head, _, rest = path.partition('/')
