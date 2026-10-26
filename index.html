@@ -180,7 +180,7 @@ section[hidden] { display: none !important; }
 .eco-word .o { color: var(--orange); }
 .eco-h { font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 10.4vw, 9.6rem); letter-spacing: -0.06em; line-height: .98; margin: 22px 0 34px; display: grid; justify-items: center; }
 .eco-h .e1 { display: flex; gap: .26em; transform: translateX(-.12em); } .eco-h .e2 { transform: translateX(.08em); } .eco-h .e3 { transform: translateX(.9em); }
-.eco-a { justify-content: flex-start; padding-top: 155px; } .eco-b { padding-top: 30vh; opacity: 0; pointer-events: none; } .eco.on-b .eco-b { pointer-events: auto; }
+.eco-a { justify-content: flex-start; padding-top: 155px; } .eco-b { padding-top: clamp(0px, calc(30vh - 130px), 140px); opacity: 0; pointer-events: none; } .eco.on-b .eco-b { pointer-events: auto; }
 .eco-dots { position: absolute; inset: 0; pointer-events: none; }
 .eco-dots i { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid var(--orange); transform: translate(-50%, -50%) scale(var(--e, 1)); }
 .eco-dots i:nth-child(1) { width: 22vw; height: 22vw; opacity: .55; } .eco-dots i:nth-child(2) { width: 38vw; height: 38vw; opacity: .3; } .eco-dots i:nth-child(3) { width: 56vw; height: 56vw; opacity: .14; }
