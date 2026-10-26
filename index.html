@@ -171,7 +171,7 @@ a { color: inherit; }
 @media (max-width: 760px) { .shelf2 { justify-content: flex-start; height: 440px; gap: 8px; } .book { width: calc(var(--w) * .72); } .book .bt { font-size: min(calc(var(--w) * .2), 1.1rem) !important; } .sb-ticks { display: none; } }
 
 /* ---------- Circles, after untold's ecosystem: a row over the word, then they part to frame a headline ---------- */
-.eco { height: 260vh; position: relative; }
+.eco { height: 260vh; position: relative; margin-top: -100px; pointer-events: none; }
 .eco-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .eco-a, .eco-b { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; will-change: transform, opacity; }
 section[hidden] { display: none !important; }
@@ -180,7 +180,7 @@ section[hidden] { display: none !important; }
 .eco-word .o { color: var(--orange); }
 .eco-h { font-family: var(--display); font-weight: 400; font-size: clamp(3.4rem, 10.4vw, 9.6rem); letter-spacing: -0.06em; line-height: .98; margin: 22px 0 34px; display: grid; justify-items: center; }
 .eco-h .e1 { display: flex; gap: .26em; transform: translateX(-.12em); } .eco-h .e2 { transform: translateX(.08em); } .eco-h .e3 { transform: translateX(.9em); }
-.eco-a { padding-bottom: 22vh; } .eco-b { padding-top: 22vh; opacity: 0; pointer-events: none; } .eco.on-b .eco-b { pointer-events: auto; }
+.eco-a { padding-bottom: 22vh; } .eco-b { padding-top: 30vh; opacity: 0; pointer-events: none; } .eco.on-b .eco-b { pointer-events: auto; }
 .eco-dots { position: absolute; inset: 0; pointer-events: none; }
 .eco-dots i { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1px solid var(--orange); transform: translate(-50%, -50%) scale(var(--e, 1)); }
 .eco-dots i:nth-child(1) { width: 22vw; height: 22vw; opacity: .55; } .eco-dots i:nth-child(2) { width: 38vw; height: 38vw; opacity: .3; } .eco-dots i:nth-child(3) { width: 56vw; height: 56vw; opacity: .14; }
@@ -191,7 +191,7 @@ section[hidden] { display: none !important; }
 .eco-rings span b { opacity: var(--lb, 1); transition: opacity .2s; position: relative; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
 .eco-rings span:hover, .eco-rings span.lit { color: #fff; } .eco-rings .ph-sk.lit { color: var(--ink); } .eco-rings span:hover::before { opacity: 1; transform: none; } .eco-rings .ph-sk:hover { color: var(--ink); }
 @media (max-width: 760px) {
-  .eco { height: auto; } .eco-pin { position: static; height: auto; overflow: visible; padding: 70px 0; }
+  .eco { height: auto; margin-top: 0; pointer-events: auto; } .eco-pin { position: static; height: auto; overflow: visible; padding: 70px 0; }
   .eco-a, .eco-b { padding: 0; position: static; opacity: 1 !important; transform: none !important; pointer-events: auto; }
   .eco-word { font-size: 25vw; } .eco-dots { display: none; }
   .eco-rings { position: static; display: grid; grid-template-columns: repeat(3, 104px); justify-content: center; gap: 10px; margin: 26px 0 50px; }
@@ -562,7 +562,7 @@ footer .n { color: var(--orange); margin-right: 6px; font-weight: 400; }
 .big2 .folder:hover { transform: rotate(-6deg) translateY(-.06em); }
 .big2 img { height: .95em; width: auto; }
 .lede { font-family: var(--display); font-weight: 300; font-size: clamp(1.1rem, 1.8vw, 1.6rem); letter-spacing: -0.03em; line-height: 1.35; max-width: 640px; margin: 28px auto 0; min-height: 2.7em; }
-.believe { min-height: min(64vh, 540px); display: flex; align-items: center; overflow: hidden; position: relative; }
+.believe { min-height: max(min(64vh, 540px), calc(clamp(240px, 30vw, 400px) * 1.19 + 124px)); padding-bottom: 96px; display: flex; align-items: center; overflow: hidden; position: relative; }
 .believe .statement { max-width: 22ch; min-height: 3.8em; }
 section.believe { position: relative; } .believe .statement { position: relative; z-index: 1; } .believe .keep { z-index: 1; }
 .martini.m-big { position: absolute; left: 50%; top: 50%; width: clamp(240px, 30vw, 400px); transform: translate(-50%, -46%); z-index: 0; pointer-events: none; overflow: visible; }
@@ -732,7 +732,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
   .sp-box .tale, #names-car .sp-box .tale { position: static; width: auto !important; max-width: none; margin: 14px 0 0; font-size: .8rem; }
   .stage .notes { display: grid; justify-items: center; gap: 18px; }
   .stage .sticky { position: relative; width: min(270px, 82vw); aspect-ratio: auto; min-height: 0; padding: 20px; }
-  .believe { min-height: 0; padding-top: 90px; padding-bottom: 110px; }
+  .believe { min-height: 250px; padding-top: 56px; padding-bottom: 96px; }
   .believe .keep { display: none; }
   .eco-rings span b { font-size: .6rem; letter-spacing: .02em; }
   .soon-card.has-art { min-height: 300px; }
