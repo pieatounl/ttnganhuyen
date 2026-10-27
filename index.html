@@ -223,7 +223,7 @@ section[hidden] { display: none !important; }
 @media (max-width: 760px) { .soon-grid { grid-template-columns: minmax(0, 1fr); } .soon-card { min-height: 0; } }
 /* Work page: org name and years each on one line */
 .wk-item { grid-template-columns: 170px minmax(0, 1fr) !important; }
-.wk-mark { white-space: nowrap; } .wk-mark .lg { flex-direction: row; flex-wrap: nowrap; align-items: baseline; gap: .35em; max-width: none; font-size: .78rem; }
+.wk-mark { white-space: normal; overflow-wrap: break-word; } .wk-mark .lg { flex-direction: row; flex-wrap: nowrap; align-items: baseline; gap: .35em; max-width: none; font-size: .78rem; }
 .wk-mark .lg small, .wk-mark .lg-tedx small { width: auto; margin: 0; font-size: .62em; } .wk-mark .lg-or br { display: none; }
 @media (max-width: 1000px) { .wk-item { grid-template-columns: minmax(0, 1fr) !important; } }
 /* ---------- Header ---------- */
