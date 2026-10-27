@@ -1707,47 +1707,47 @@ the puzzles</h2>
 
   // Work stories: one list page plus a detail page per story (#/chapters/<slug>)
   var WORK = [
-    { id: 'orangerie', mark: 'De Orangerie', yr: '2026–now', role: 'Barback', sc: 'sc9', title: 'behind the bar',
+    { id: 'orangerie', loc: 'Hasselt, Belgium', mark: 'De Orangerie', yr: '2026–now', role: 'Barback', sc: 'sc9', title: 'behind the bar',
       p: ['Hasselt. Part-time <b>barback at De Orangerie</b>, learning the craft from the other side of the counter.',
           'Prepping, stocking and keeping the glasses moving, while watching how good bartenders read a room. Hosting turns out to be another kind of <b>consulting</b>.'],
       caps: ['Hospitality', 'Bar craft', 'Teamwork under pressure', 'Guest care'],
       slides: ['Prep before service', 'Behind the counter', 'Last call'] },
-    { id: 'mom', mark: 'Hasselt University', yr: '2026–now', role: 'Master of Management', sc: 'sc8', title: 'cultivating an entrepreneurial mindset',
+    { id: 'mom', loc: 'Hasselt, Belgium', mark: 'Hasselt University', yr: '2026–now', role: 'Master of Management', sc: 'sc8', title: 'cultivating an entrepreneurial mindset',
       p: ['Hasselt, Belgium. A <b>Master of Management</b> at Hasselt University, specialising in <b>Entrepreneurial Governance</b>.',
           'After years of building, analysing and selling, a step back to study how organisations are steered, and who gets a say.'],
       caps: ['Entrepreneurial governance', 'Strategy', 'Research', 'International classroom'],
       slides: ['Hasselt', 'Entrepreneurial Governance', 'A new country'] },
-    { id: 'fti', mark: 'FPT Telecom International', yr: '2025–2026', role: 'Account Manager', sc: 'sc3', title: 'building the consultative bridge',
+    { id: 'fti', loc: 'Ho Chi Minh City, Vietnam', mark: 'FPT Telecom International', yr: '2025–2026', role: 'Account Manager', sc: 'sc3', title: 'building the consultative bridge',
       p: ['Ho Chi Minh City. A telecom company selling <b>connectivity across borders</b>, and me in the middle: listening to what each client really needed before talking about any product.',
           'I was a <b>key member of the SpaceX Starlink project</b>, working with technical, legal and operations teams so every rollout landed on time.'],
       caps: ['Account management', 'Consultative selling', 'Cross-functional delivery', 'Stakeholder care'],
       slides: ['Starlink rollout', 'Client workshops', 'One team, many desks'] },
-    { id: 'base', mark: 'Base.vn', yr: '2024–2025', role: 'Business Analyst', sc: 'sc1', title: 'automating the core',
+    { id: 'base', loc: 'Hanoi, Vietnam', mark: 'Base.vn', yr: '2024–2025', role: 'Business Analyst', sc: 'sc1', title: 'automating the core',
       p: ['Hanoi. A SaaS company that builds tools for other businesses, and needed its own house in order too.',
           'I <b>synced contracts across departments</b> and <b>automated revenue and commission</b> flows, then trained and supported the teams who would live with them every day, on internal and client-facing projects.'],
       caps: ['Business analysis', 'Process automation', 'Requirements & specs', 'Training & rollout'],
       slides: ['Contract flow, mapped', 'Commission, automated', 'Teams, trained'] },
-    { id: 'msb', mark: 'Maritime Bank', yr: '2023', role: 'Data Administration', sc: 'sc4', title: 'counting risk before it counts',
+    { id: 'msb', loc: 'Hanoi, Vietnam', mark: 'Maritime Bank', yr: '2023', role: 'Data Administration', sc: 'sc4', title: 'counting risk before it counts',
       p: ['A bank, a regulation and a lot of rows. Under <b>IFRS 9</b>, expected credit loss has to be calculated, explained and trusted.',
           'I helped <b>automate the expected credit loss</b> process and turned it into <b>Power BI dashboards</b> people could actually read.'],
       caps: ['Data administration', 'Power BI', 'IFRS 9 reporting', 'Automation'],
       slides: ['ECL, automated', 'Dashboards that read', 'Risk at a glance'] },
-    { id: 'yln', mark: 'Young Leaders Network', yr: '2021', role: 'Head of Project Management', sc: 'sc7', title: 'uniting the network',
+    { id: 'yln', loc: 'Vietnam', mark: 'Young Leaders Network', yr: '2021', role: 'Head of Project Management', sc: 'sc7', title: 'uniting the network',
       p: ['Young Leaders Network, National Executive Board. I led <b>30 people</b>: 10 on the national board and 20+ from three regions.',
           'Together we ran projects in <b>education, start-ups, environment and community</b>, and I was named a <b>Prominent Individual of the Network</b> at Young Leaders Summit 2021.'],
       caps: ['Project management', 'Team leadership', 'Programme design', 'Community building'],
       slides: ['Three regions', 'Four causes', 'Young Leaders Summit 2021'] },
-    { id: 'sinno', mark: 'SOICT Innovation Club', yr: '2020–2021', role: 'Head of Public Relations', sc: 'sc5', title: 'folding ideas into impact',
+    { id: 'sinno', loc: 'Hanoi, Vietnam', mark: 'SOICT Innovation Club', yr: '2020–2021', role: 'Head of Public Relations', sc: 'sc5', title: 'folding ideas into impact',
       p: ['SoICT Innovation Club. My team of <b>15</b> reached out to businesses and mentors so students could build with real people behind them.',
           'We co-organised <b>SoloCode</b>, <b>Innovation Hackathon 2021</b> and <b>Game Maker\'s Week</b>, and I was named <b>Dedicated Member</b> of 2021.'],
       caps: ['Partnerships', 'Public relations', 'Event organisation', 'Mentor network'],
       slides: ['SoloCode', 'Innovation Hackathon 2021', 'Game Maker\'s Week'] },
-    { id: 'tedx', mark: 'TEDx Bachkhoa', yr: '2020–2023', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'curating the narrative',
+    { id: 'tedx', loc: 'Hanoi, Vietnam', mark: 'TEDx Bachkhoa', yr: '2020–2023', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'curating the narrative',
       p: ['A TEDx chapter we started from zero at Hanoi University of Science and Technology. I led a communications team of <b>15–25 people</b>.',
           'The <b>EX series</b> (EXistence, EXposure, EXploration) ran 24 articles and grew organic reach by <b>210%</b>. The <b>RE series</b> (dREaming, insecuRE, REady) added 18 more, and our event <b>Reset</b> lifted engagement by <b>250%</b>.'],
       caps: ['Brand & storytelling', 'Content series', 'Team leadership', 'Event communications'],
       slides: ['EX series', 'RE series', 'Reset'] },
-    { id: 'hust', mark: 'Hanoi University of Science and Technology', yr: '2020–2024', role: 'BBA Business Analytics', sc: 'sc2', title: '1st in Business Analytics',
+    { id: 'hust', loc: 'Hanoi, Vietnam', mark: 'Hanoi University of Science and Technology', yr: '2020–2024', role: 'BBA Business Analytics', sc: 'sc2', title: '1st in Business Analytics',
       p: ['Four years of Business Analytics at Hanoi University of Science and Technology, graduating <b>first in my major</b> with a GPA of 3.65.',
           'Along the way: <b>1st of 200+ teams at NestQuant</b>, <b>first runner-up at the FTU Data Science Talent Contest 2022</b>, and <b>ICAEW Rising Stars</b>.'],
       caps: ['Business analytics', 'Data science', 'Quant modelling', 'Competitions'],
@@ -1769,7 +1769,7 @@ the puzzles</h2>
   var LIST_ORDER = ['fti', 'base', 'msb', 'mom', 'hust', 'orangerie', 'tedx', 'sinno', 'yln'];
   var WORK_LIST = LIST_ORDER.map(function (id) { return WORK.filter(function (x) { return x.id === id; })[0]; });
   wkBox.innerHTML = WORK_LIST.map(function (w) {
-    return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i></div>' +
+    return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i><i>' + w.loc + '</i></div>' +
       '<div><h3><a href="#/chapters/' + w.id + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
       '<a class="wk-more" href="#/chapters/' + w.id + '">Flip to this chapter! <b>→</b></a></div></article>';
   }).join('');
