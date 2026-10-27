@@ -1771,7 +1771,7 @@ the puzzles</h2>
   wkBox.innerHTML = WORK_LIST.map(function (w) {
     return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i></div>' +
       '<div><h3><a href="#/chapters/' + w.id + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
-      '<a class="wk-more" href="#/chapters/' + w.id + '">Explore story <b>→</b></a></div></article>';
+      '<a class="wk-more" href="#/chapters/' + w.id + '">Flip to this chapter! <b>→</b></a></div></article>';
   }).join('');
   var csAt = 0;
   function csGo(n) { var tr = document.getElementById('cs-track'), k = tr.children.length; csAt = (n + k) % k; tr.style.transform = 'translateX(' + (-100 * csAt) + '%)'; }
