@@ -79,8 +79,6 @@ a { color: inherit; }
 .wk-item h3 a { color: inherit; text-decoration: none; } .wk-item h3 a:hover { color: var(--accent-ink); }
 .wk-item p { font-size: .92rem; line-height: 1.65; margin: 0 0 14px; max-width: 560px; color: #333; }
 .wk-item p b { font-weight: 700; color: var(--ink); }
-.wk-by { display: block; margin: 22px 0 6px; font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
-.wk-role { font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-ink); }
 .wk-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--orange); padding-bottom: 2px; }
 .wk-more b { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--orange); color: var(--accent-ink); font-size: .7rem; transition: background .3s, color .3s; }
 .wk-more:hover b { background: var(--ink); color: #fff; border-color: var(--ink); }
@@ -1744,12 +1742,12 @@ the puzzles</h2>
           'We co-organised <b>SoloCode</b>, <b>Innovation Hackathon 2021</b> and <b>Game Maker\'s Week</b>, and I was named <b>Dedicated Member</b> of 2021.'],
       caps: ['Partnerships', 'Public relations', 'Event organisation', 'Mentor network'],
       slides: ['SoloCode', 'Innovation Hackathon 2021', 'Game Maker\'s Week'] },
-    { id: 'tedx', mark: 'TEDxBachkhoa', yr: '2020–2023', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'curating the narrative',
+    { id: 'tedx', mark: 'TEDx Bachkhoa', yr: '2020–2023', role: 'Co-founder & Head of Communications', sc: 'sc6', title: 'curating the narrative',
       p: ['A TEDx chapter we started from zero at Hanoi University of Science and Technology. I led a communications team of <b>15–25 people</b>.',
           'The <b>EX series</b> (EXistence, EXposure, EXploration) ran 24 articles and grew organic reach by <b>210%</b>. The <b>RE series</b> (dREaming, insecuRE, REady) added 18 more, and our event <b>Reset</b> lifted engagement by <b>250%</b>.'],
       caps: ['Brand & storytelling', 'Content series', 'Team leadership', 'Event communications'],
       slides: ['EX series', 'RE series', 'Reset'] },
-    { id: 'hust', mark: 'HUST · Bách Khoa', yr: '2020–2024', role: 'BBA Business Analytics', sc: 'sc2', title: '1st in Business Analytics',
+    { id: 'hust', mark: 'Hanoi University of Science and Technology', yr: '2020–2024', role: 'BBA Business Analytics', sc: 'sc2', title: '1st in Business Analytics',
       p: ['Four years of Business Analytics at Hanoi University of Science and Technology, graduating <b>first in my major</b> with a GPA of 3.65.',
           'Along the way: <b>1st of 200+ teams at NestQuant</b>, <b>first runner-up at the FTU Data Science Talent Contest 2022</b>, and <b>ICAEW Rising Stars</b>.'],
       caps: ['Business analytics', 'Data science', 'Quant modelling', 'Competitions'],
@@ -1771,7 +1769,6 @@ the puzzles</h2>
   wkBox.innerHTML = WORK.map(function (w) {
     return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i></div>' +
       '<div><h3><a href="#/chapters/' + w.id + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
-      '<span class="wk-by">Told by</span><span class="wk-role">Margot</span><br>' +
       '<a class="wk-more" href="#/chapters/' + w.id + '">Explore story <b>→</b></a></div></article>';
   }).join('');
   var csAt = 0;
