@@ -1770,8 +1770,8 @@ the puzzles</h2>
   var wkBox = document.getElementById('wk-items');
   wkBox.innerHTML = WORK.map(function (w) {
     return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i></div>' +
-      '<div><h3><a href="#/chapters/' + w.id + '">' + w.title + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
-      '<span class="wk-by">Told by</span><span class="wk-role">Margot · ' + w.role + '</span><br>' +
+      '<div><h3><a href="#/chapters/' + w.id + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
+      '<span class="wk-by">Told by</span><span class="wk-role">Margot</span><br>' +
       '<a class="wk-more" href="#/chapters/' + w.id + '">Explore story <b>→</b></a></div></article>';
   }).join('');
   var csAt = 0;
