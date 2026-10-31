@@ -23,7 +23,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&subset=vietnamese&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;700&subset=vietnamese&display=swap">
 <style>
 /* Layout: untold-style paper page. Huge light headlines on faint ruled lines, inline photo boxes and hand-drawn figures between words, orange as the one loud colour. Deliberately single (light) theme: the dark loader is "night", the page that opens is "day". */
 :root {
@@ -38,7 +38,7 @@
   --green: #4f9a6b;
   --night: #27272b;
   --display: "Lexend", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-  --body: "Be Vietnam Pro", "Helvetica Neue", Arial, sans-serif;
+  --body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
@@ -1514,7 +1514,7 @@ the puzzles</h2>
     }, { threshold: .2 });
     specIO.observe(document.getElementById('sp-danh')); specIO.observe(document.getElementById('sp-tu')); specIO.observe(document.querySelector('.margot'));
   }
-  if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('200 100px Lexend', 'Ngân Huyền ề'), document.fonts.load('italic 200 100px Lexend', 'Pie At Ounl ề'), document.fonts.load('400 21px "Be Vietnam Pro"')]).then(initSpecs, initSpecs); else initSpecs();
+  if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('200 100px Lexend', 'Ngân Huyền ề'), document.fonts.load('italic 200 100px Lexend', 'Pie At Ounl ề'), document.fonts.load("400 21px system-ui")]).then(initSpecs, initSpecs); else initSpecs();
 
   // Hero rules: one hairline exactly on each headline baseline; the (*) note sits on the last one
   var hero = document.getElementById('hero'), rulesEl = document.getElementById('rules'), side = document.getElementById('side');
