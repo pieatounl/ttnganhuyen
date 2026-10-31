@@ -148,7 +148,7 @@ a { color: inherit; }
 .wk-mark .lg { align-items: flex-start; text-align: left; } .wk-mark .lg-tedx { justify-content: flex-start; }
 .cs-mark .lg { font-size: .9rem; }
 #t-projects .in { max-width: 1240px; }
-.shelf2 { display: flex; justify-content: center; align-items: flex-end; gap: clamp(8px, 1.6vw, 24px); height: clamp(400px, 66vh, 600px); margin: 26px auto 0; padding: 48px 4px 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+.shelf2 { display: flex; justify-content: center; align-items: flex-end; gap: clamp(8px, 1.6vw, 24px); height: clamp(480px, 78vh, 720px); margin: 26px auto 0; padding: 48px 4px 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
 .shelf2::-webkit-scrollbar { display: none; }
 .book { position: relative; flex: none; width: var(--w); height: var(--h); background: #eceef1; color: var(--ink); text-decoration: none; display: flex; flex-direction: column; align-items: center; padding: 18px 0 20px; transform: rotate(var(--r)); transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.7,.2,1), background .4s, color .4s; }
 .book .lg { flex: none; transition: color .4s; }
@@ -169,7 +169,7 @@ a { color: inherit; }
 .sb-count { font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; } .sb-count b { color: var(--accent-ink); } .sb-count a { color: var(--ink); margin-left: 6px; border-bottom: 1px solid var(--orange); text-decoration: none; }
 .sb-cta { grid-column: 3; justify-self: end; font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; } .sb-cta a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--orange); padding-bottom: 2px; } .sb-cta .dash { color: var(--mute); }
 @media (max-width: 1000px) { .shelf-bar { grid-template-columns: 1fr; justify-items: center; } .sb-nav, .sb-cta { grid-column: 1; justify-self: center; } }
-@media (max-width: 760px) { .shelf2 { justify-content: flex-start; height: 440px; gap: 8px; } .book { width: calc(var(--w) * .72); } .book .bt { font-size: min(calc(var(--w) * .2), 1.1rem) !important; } .sb-ticks { display: none; } }
+@media (max-width: 760px) { .shelf2 { justify-content: flex-start; height: 540px; gap: 8px; } .book { width: calc(var(--w) * .72); } .book .bt { font-size: min(calc(var(--w) * .2), 1.1rem) !important; } .sb-ticks { display: none; } }
 
 /* ---------- Circles, after untold's ecosystem: a row over the word, then they part to frame a headline ---------- */
 .eco { height: 260vh; position: relative; margin-top: -100px; pointer-events: none; }
@@ -1321,6 +1321,13 @@ the puzzles</h2>
     for (var y = 0; y < Hh; y++) for (var x = 0; x < W; x++) if (d[(y * W + x) * 4 + 3] > 90) { if (y < top) top = y; if (y > bot) bot = y; }
     return { top: by - top, bot: bot - by, cv: cv, c: c, d: d, W: W, H: Hh, pad: pad, by: by };
   }
+  // centre of the right-most stroke of a glyph on the row h px above the baseline, from pixels: x is relative to the glyph origin
+  function strokeRight(ch, F, italic, h) {
+    var m = ink(ch, F, italic), r = Math.max(0, Math.min(m.H - 1, Math.round(m.by - h))), x = m.W - 1;
+    while (x > 0 && m.d[(r * m.W + x) * 4 + 3] <= 90) x--;
+    var e = x; while (x > 0 && m.d[(r * m.W + x) * 4 + 3] > 90) x--;
+    return (x + e) / 2 + .5 - m.pad;
+  }
   // a hatch image over the enclosed counter of one glyph (closeBase: shut the open bottom of an n)
   function counterHatch(ch, F, italic, color, closeBase, drop) {
     var m = ink(ch, F, italic), W = m.W, H = m.H, d = m.d, solid = new Uint8Array(W * H), seen = new Uint8Array(W * H), i;
@@ -1403,7 +1410,7 @@ the puzzles</h2>
       for (rr = topRow; rr < topRow + 4; rr++) for (cc = lo; cc <= cut; cc++) if (al(rr, cc)) { sx += cc; n++; }
       if (n) { d3.x = yy.x + (sx / n + .5 - iy.pad); d3.y = B - (iy.by - topRow) + d3.r * .3; }
     })();
-    var d4 = { x: n.r - n.w * .2, y: B + 2, r: F * .085 };
+    var d4 = { x: n.x + strokeRight('n', F, false, 3), y: B - F * .02, r: F * .085 };
     var d5 = { x: H.x + H.w * .17, y: B - M.cap * F * .5, r: F * .09 };
     // notes and leaders
     var top = ys[0];
@@ -1435,7 +1442,7 @@ the puzzles</h2>
     var xh = ys[3] - ys[2];
     // hatch: the inside of the n, from its real counter
     placeHatch(g, t, 9, 'n', F, true, 'b', true);
-    var db = { x: n.r - n.w * .12 + xh * .85 * sl - 8, y: B - xh * .86, r: F * .085 };
+    var db = { x: n.x + strokeRight('n', F, true, xh * .74), y: B - xh * .74, r: F * .085 };
     var dor = { x: e.r - e.w * .12, y: B - xh * .06, r: F * .1 };
     note(g, db.x - 115, ys[0] - 78, T.t1, 'b'); lead(g, db.x, ys[0] - 40, db.x, db.y - db.r - 4, 'b');
     note(g, dor.x - 96, ys[4] + 78, T.t2, 'o'); lead(g, dor.x, ys[4] + 56, dor.x, dor.y + dor.r + 4, 'o');
@@ -1807,7 +1814,7 @@ the puzzles</h2>
       var t = bk.querySelector('.bt'), lg = bk.querySelector('.lg');
       if (t.dataset.html === undefined) t.dataset.html = t.innerHTML;
       t.innerHTML = t.dataset.html; t.style.removeProperty('font-size');
-      var avail = bk.clientHeight - lg.offsetHeight - 64; if (avail < 40) return;
+      var avail = bk.clientHeight - lg.offsetHeight - 110; if (avail < 40) return;
       var cs = getComputedStyle(t), f = parseFloat(cs.fontSize), up = cs.textTransform === 'uppercase';
       bookCx.font = cs.fontWeight + ' 100px ' + cs.fontFamily;
       var ls = (parseFloat(cs.letterSpacing) || 0) / f;
