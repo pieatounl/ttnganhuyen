@@ -71,7 +71,16 @@ a { color: inherit; }
 @media (max-width: 760px) { .wk-h { font-size: min(3rem, 11vw); } .wk-h > span { white-space: nowrap; } }
 .wk-h .cur { height: .8em; vertical-align: -.04em; }
 .wk-scroll { right: 0; bottom: 6px; }
-.wk-list .in { border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.wk-group + .wk-group { margin-top: clamp(56px, 10vh, 110px); }
+.wk-gh { display: grid; grid-template-columns: 170px minmax(0, 1fr) auto; gap: 0 clamp(20px, 3vw, 48px); align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink); }
+.wk-gh h2 { font-family: var(--display); font-weight: 400; font-size: clamp(1.5rem, 2.4vw, 2.2rem); letter-spacing: -0.015em; line-height: 1; margin: 0; }
+.wk-gn, .wk-gc { font-size: .7rem; font-weight: 700; letter-spacing: .04em; color: var(--accent-ink); }
+.wk-soon { padding: clamp(28px, 5vh, 48px) 0 clamp(28px, 5vh, 48px) calc(170px + clamp(20px, 3vw, 48px)); margin: 0; font-size: .74rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.wk-course { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 0 clamp(20px, 3vw, 48px); align-items: baseline; padding: clamp(18px, 3vh, 28px) 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.wk-course .wk-mark { padding-top: 0; }
+.wk-course h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: -0.015em; line-height: 1.05; text-transform: uppercase; margin: 0; }
+@media (max-width: 1000px) { .wk-course { grid-template-columns: minmax(0, 1fr); } .wk-course .wk-mark { padding-bottom: 6px; } }
+@media (max-width: 1000px) { .wk-gh { grid-template-columns: auto minmax(0, 1fr) auto; gap: 0 14px; } .wk-soon { padding-left: 0; } }
 .wk-item { display: grid; grid-template-columns: 70px minmax(0, 1fr) minmax(0, .62fr); gap: 0 clamp(20px, 3vw, 48px); padding: clamp(36px, 6vh, 64px) 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); align-items: start; }
 .wk-mark { font-family: var(--body); font-weight: 800; font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; line-height: 1.1; padding-top: .9em; color: var(--ink); }
 .wk-mark i { display: block; font-style: normal; font-weight: 400; color: var(--mute); margin-top: 4px; }
@@ -2338,12 +2347,30 @@ the puzzles</h2>
   };
   var wkBox = document.getElementById('wk-items');
   function slug(id) { return id === 'tedx' ? 'tedxbachkhoa' : id === 'base' ? 'basevn' : id; }
-  var LIST_ORDER = ['fti', 'base', 'msb', 'mom', 'hust', 'orangerie', 'tedx', 'sinno', 'yln'];
+  // Chapters list in five groups (Margot, 31.10.2026); an empty group shows "Coming soon"
+  var GROUPS = [
+    { name: 'Education', ids: ['mom', 'hust'] },
+    { name: 'Work', ids: ['fti', 'base', 'msb'] },
+    { name: 'Clubs', ids: ['tedx', 'sinno', 'yln'] },
+    { name: 'Courses', ids: [], list: [  // short courses: only on Chapters, not on the bookshelf
+      ['Floral design', 'Tigon'], ['Data science', 'FTU'], ['Bartending', 'Nguyễn Trường Tộ'],
+      ['Graphic design', 'ColorMe'], ['Chinese (HSK)', 'Thanh Mai HSK'], ['Dutch', 'PCVO']] },
+    { name: 'Side gigs', ids: ['orangerie'] }
+  ];
+  var LIST_ORDER = [].concat.apply([], GROUPS.map(function (g) { return g.ids; }));
   var WORK_LIST = LIST_ORDER.map(function (id) { return WORK.filter(function (x) { return x.id === id; })[0]; });
-  wkBox.innerHTML = WORK_LIST.map(function (w) {
+  function wkItem(w) {
     return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i><i>' + w.loc + '</i></div>' +
       '<div><h3><a href="#/chapters/' + slug(w.id) + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
       '<a class="wk-more" href="#/chapters/' + slug(w.id) + '">Flip to this chapter! <b>→</b></a></div></article>';
+  }
+  wkBox.innerHTML = GROUPS.map(function (g, i) {
+    var items = g.ids.map(function (id) { return wkItem(WORK.filter(function (x) { return x.id === id; })[0]); }).join('') +
+      (g.list || []).map(function (c) { return '<div class="wk-course reveal"><div class="wk-mark">' + c[1] + '</div><h3>' + c[0] + '</h3></div>'; }).join('');
+    var n = g.ids.length + (g.list || []).length;
+    return '<div class="wk-group"><div class="wk-gh reveal"><span class="wk-gn">( 0' + (i + 1) + ' )</span><h2>' + g.name + '</h2>' +
+      '<span class="wk-gc">' + (n ? '( ' + n + ' )' : '') + '</span></div>' +
+      (items || '<p class="wk-soon reveal">Coming soon</p>') + '</div>';
   }).join('');
   var csAt = 0;
   function csGo(n) { var tr = document.getElementById('cs-track'), k = tr.children.length; csAt = (n + k) % k; tr.style.transform = 'translateX(' + (-100 * csAt) + '%)'; }
