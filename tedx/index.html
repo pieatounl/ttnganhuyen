@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TEDx Bachkhoa Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&subset=vietnamese&display=swap">
+<style>
+:root {
+  --paper: #ffffff; --ink: #252528; --mute: #6e6d6a; --rule: rgba(37,37,40,.09);
+  --orange: #8facd8; --accent-ink: #4d6f9f;
+  --g: #3ddc4a; --r: #e0322d; --b: #5a7fe0;
+  --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --gut: clamp(16px, 6vw, 96px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: light; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
+.in { padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); max-width: 1500px; margin-inline: auto; }
+
+.bar { position: fixed; inset: 0 0 auto 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: calc(18px + env(safe-area-inset-top, 0px)) max(var(--gut), env(safe-area-inset-right, 0px)) 18px max(var(--gut), env(safe-area-inset-left, 0px)); background: linear-gradient(#fff 60%, rgba(255,255,255,0)); font-weight: 700; font-size: .78rem; letter-spacing: .02em; text-transform: uppercase; }
+.bar a { text-decoration: none; }
+.bar .back { display: inline-flex; align-items: center; gap: 10px; }
+.bar .back b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--orange); color: var(--accent-ink); font-weight: 400; transition: background .3s; }
+.bar .back:hover b { background: var(--orange); color: var(--ink); }
+.bar em { font-style: normal; color: var(--accent-ink); }
+
+.label { font-weight: 700; font-size: .78rem; letter-spacing: .02em; text-transform: uppercase; }
+.label::before { content: "( "; color: var(--mute); font-weight: 400; } .label::after { content: " )"; color: var(--mute); font-weight: 400; }
+.ast { color: var(--orange); }
+
+/* hero */
+.hero { padding-top: clamp(130px, 22vh, 220px); }
+.hero h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3.2rem, 11vw, 10.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 22px 0 0; }
+.hero h1 span { color: var(--accent-ink); }
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.role { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px 40px; padding-block: 26px; margin-top: clamp(26px, 5vh, 56px); border-block: 1px solid var(--rule); }
+.role b { display: block; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+.role p { margin: 0; font-size: .98rem; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: clamp(34px, 6vh, 64px); }
+.stat { border-left: 1px solid var(--orange); padding-left: 16px; }
+.stat strong { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.6rem); letter-spacing: -.03em; line-height: 1; }
+.stat span { display: block; margin-top: 8px; font-size: .84rem; color: var(--mute); max-width: 18ch; }
+.hero-pic { margin-top: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.4vw, 18px); }
+.hero-pic figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; }
+.hero-pic img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+/* chip nav */
+.jump { display: flex; flex-wrap: wrap; gap: 10px; padding-block: clamp(34px, 6vh, 60px) 0; }
+.jump a { text-decoration: none; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 9px 16px; border: 1px solid var(--orange); border-radius: 99px; transition: background .3s; }
+.jump a:hover { background: var(--orange); }
+
+/* sections */
+.sec { padding-top: clamp(90px, 14vh, 150px); }
+.sec-h { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px clamp(30px, 6vw, 96px); align-items: end; }
+.sec h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.6rem, 7.4vw, 7rem); letter-spacing: -.028em; line-height: 1.04; margin: 14px 0 0; }
+.sec .lead { margin: 0; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.75; max-width: 520px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 26px; margin: 22px 0 0; padding: 0; list-style: none; font-size: .86rem; color: var(--mute); }
+.meta b { color: var(--ink); font-weight: 700; }
+.wall { columns: 3; column-gap: clamp(10px, 1.6vw, 22px); margin-top: clamp(30px, 5vh, 56px); }
+.wall figure { margin: 0 0 clamp(10px, 1.6vw, 22px); break-inside: avoid; cursor: zoom-in; position: relative; overflow: hidden; border-radius: 4px; background: #f4f5f7; }
+.wall img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.wall figure:hover img { transform: scale(1.03); }
+.wall figcaption { position: absolute; left: 10px; bottom: 10px; font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #fff; padding: 4px 9px; border-radius: 99px; opacity: 0; transform: translateY(6px); transition: .3s; }
+.wall figure:hover figcaption { opacity: 1; transform: none; }
+
+/* RE tracks */
+.track { margin-top: clamp(40px, 7vh, 76px); }
+.track-h { display: flex; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.track-h i { width: 12px; height: 12px; border-radius: 50%; flex: none; align-self: center; }
+.track-h h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.8rem, 3.6vw, 3.2rem); letter-spacing: -.02em; line-height: 1; margin: 0; }
+.track-h h3 b { font-weight: 800; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(26px, 4vw, 48px) clamp(10px, 1.6vw, 20px); padding: 22px 0 6px; }
+.ep { margin: 0; grid-column: 1 / -1; min-width: 0; }
+.ep.one { grid-column: span 2; }
+.ep.th { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(12px, 2vw, 28px); align-items: center; }
+.ep.th .thm { grid-row: 1 / 3; cursor: zoom-in; border-radius: 4px; overflow: hidden; }
+.ep.th .thm img { display: block; width: 100%; height: auto; }
+.ep.th figcaption { grid-column: 2; margin-top: 0; }
+.key { margin: 0 0 22px; max-width: 260px; cursor: zoom-in; border-radius: 4px; overflow: hidden; }
+.key img { display: block; width: 100%; height: auto; }
+.ep .pan { overflow: hidden; border-radius: 4px; cursor: zoom-in; background: #f4f5f7; }
+.ep .pan img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.ep .pan:hover img { transform: scale(1.015); }
+.ep figcaption { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; margin-top: 12px; font-size: .9rem; max-width: 62ch; }
+.ep figcaption b { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.ep figcaption b::before { content: "( "; } .ep figcaption b::after { content: " )"; }
+.hint { font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); margin-left: auto; }
+
+.end { padding-block: clamp(100px, 16vh, 180px) clamp(70px, 12vh, 130px); text-align: center; }
+.end h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 5.4rem); letter-spacing: -.028em; line-height: 1.05; margin: 14px 0 34px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 14px 24px; border: 1px solid var(--ink); border-radius: 99px; transition: background .3s, border-color .3s; }
+.btn:hover { background: var(--orange); border-color: var(--orange); }
+footer { border-top: 1px solid var(--rule); padding-block: 26px 40px; font-size: .78rem; color: var(--mute); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+.rv { opacity: 0; transform: translateY(18px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.2,1); }
+.rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+/* lightbox */
+#lb { position: fixed; inset: 0; z-index: 50; background: rgba(255,255,255,.96); display: none; place-items: center; padding: 56px 16px 40px; }
+#lb.on { display: grid; }
+#lb img { max-height: 100%; max-width: min(100%, 1500px); border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+#lb button { position: absolute; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--orange); background: #fff; color: var(--accent-ink); font-size: 1.1rem; cursor: pointer; }
+#lb button:hover { background: var(--orange); color: var(--ink); }
+#lb .x { top: 14px; right: 14px; } #lb .p { left: 14px; top: 50%; } #lb .n { right: 14px; top: 50%; }
+#lb .c { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); }
+
+@media (max-width: 900px) {
+  .sec-h { grid-template-columns: minmax(0, 1fr); }
+  .wall { columns: 2; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .strip { grid-template-columns: minmax(0, 1fr); }
+  .ep.one { grid-column: 1 / -1; }
+  .ep.th { grid-template-columns: minmax(0, 1fr); }
+  .ep.th .thm { grid-row: auto; }
+  .ep.th figcaption { grid-column: 1; }
+  .key { max-width: 200px; }
+  .ep:not(.one) .pan { overflow-x: auto; border-radius: 0; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--orange) transparent; }
+  .ep:not(.one) .pan img { width: calc(var(--n) * 78%); max-width: none; }
+  .hero-pic { grid-template-columns: repeat(2, 1fr); } .hero-pic figure:nth-child(3) { display: none; }
+  .bar em { display: none; }
+  #lb .p, #lb .n { top: auto; bottom: 8px; } #lb .p { left: calc(50% - 56px); } #lb .n { right: calc(50% - 56px); } #lb .c { display: none; }
+}
+</style>
+
+<div class="bar">
+  <a class="back" href="#" onclick="return false"><b>←</b>Chapters</a>
+  <span>Huyen Tran / Margot<em> &nbsp;·&nbsp; preview</em></span>
+</div>
+
+<main>
+<header class="hero in">
+  <span class="label">TEDx Bachkhoa</span>
+  <h1>curating<br>the <span>narrative</span></h1>
+
+  <div class="role rv">
+    <div><b>Role</b><p>Co-founder &amp; Head of Communications</p></div>
+    <div><b>Also</b><p>Co-organizer, Reset</p></div>
+    <div><b>Years</b><p>2020–2023</p></div>
+    <div><b>Where</b><p>Hanoi University of Science and Technology, Hanoi</p></div>
+  </div>
+
+  <div class="stats rv">
+    <div class="stat"><strong>15–25</strong><span>people in the communications team</span></div>
+    <div class="stat"><strong>42</strong><span>articles across two series, EX and RE</span></div>
+    <div class="stat"><strong>+210%</strong><span>organic reach with the EX series</span></div>
+    <div class="stat"><strong>+250%</strong><span>engagement around the event Reset</span></div>
+  </div>
+
+  <div class="hero-pic rv" id="heroPic"></div>
+
+  <nav class="jump rv" aria-label="Sections">
+    <a href="#zero">From zero</a><a href="#unveiled">The Unveiled</a><a href="#re">The RE series</a><a href="#reset">Reset</a>
+  </nav>
+</header>
+
+<!-- 01 -->
+<section class="sec in" id="zero">
+  <hr class="rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">01 · From zero</span><h2>a blank page,<br>a name, a crew</h2></div>
+    <div>
+      <p class="lead">A TEDx chapter we started from nothing at Hanoi University of Science and Technology. I founded the fanpage and built the brand from scratch, then grew the team that kept it speaking.</p>
+      <ul class="meta"><li><b>01.11.2021</b> our first meeting</li><li><b>Aug 2022</b> member recruitment</li></ul>
+    </div>
+  </div>
+  <div class="wall rv" id="w-zero"></div>
+</section>
+
+<!-- 02 -->
+<section class="sec in" id="unveiled">
+  <hr class="rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">02 · The Unveiled</span><h2>the first<br>stage</h2></div>
+    <div>
+      <p class="lead">Our first event, shaped by the EX series: EXistence, EXposure, EXploration. Twenty-four articles built the story before anyone took the stage, and organic reach grew by 210%.</p>
+      <ul class="meta"><li><b>27.03.2022</b></li><li>14:00 to 17:00, on Zoom</li><li>Speakers <b>Hiên, Luke Ngo, Trường Vũ, Ngọc Khánh</b></li></ul>
+    </div>
+  </div>
+  <div class="wall rv" id="w-unveiled"></div>
+</section>
+
+<!-- 03 -->
+<section class="sec in" id="re">
+  <hr class="rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">03 · The RE series</span><h2>three colours,<br>one conversation</h2></div>
+    <div>
+      <figure class="key rv" id="keyvis"><img src="img/th-key.jpg" alt="RE series key visual: insecuRE, REady, dREaming"></figure>
+      <p class="lead">Eighteen articles on dREaming, insecuRE and REady. Each phase got its own colour and its own episodes, so a feed of small posts still read as one story.</p>
+      <ul class="meta"><li><b>18</b> articles</li><li>Art, individualism, pride, love languages, AI</li></ul>
+    </div>
+  </div>
+  <div class="track rv"><div class="track-h"><i style="background:var(--g)"></i><h3>d<b>RE</b>aming</h3></div><div class="strip" id="s-dream"></div></div>
+  <div class="track rv"><div class="track-h"><i style="background:var(--r)"></i><h3>insecu<b>RE</b></h3></div><div class="strip" id="s-insec"></div></div>
+  <div class="track rv"><div class="track-h"><i style="background:var(--b)"></i><h3><b>RE</b>ady</h3></div><div class="strip" id="s-ready"></div></div>
+</section>
+
+<!-- 04 -->
+<section class="sec in" id="reset">
+  <hr class="rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">04 · Reset</span><h2>a new insight<br>into what<br>people know</h2></div>
+    <div>
+      <p class="lead">Reset looked again at what everyone already knows, so it would speak to today's generation. The campaign lifted engagement by 250%.</p>
+      <ul class="meta"><li><b>08.01.2023</b></li><li>10th floor, Ta Quang Buu Library</li><li>Speakers <b>Lê Nhật Nam, Trương Công Tuấn, Teresa Xuan Nguyen, Javier Gonzalez Nunez</b></li></ul>
+    </div>
+  </div>
+  <div class="wall rv" id="w-reset"></div>
+</section>
+
+<section class="end in">
+  <span class="label">Turn the page</span>
+  <h2>more chapters<br>to flip through</h2>
+  <a class="btn" href="#" onclick="return false">Back to the chapters! →</a>
+</section>
+</main>
+
+<footer class="in"><span>EST. 2002 · Margot · Ngân Huyền · pie.at.ounl</span><span>Photos: TEDx Bachkhoa fanpage</span></footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="x" aria-label="Close">✕</button><button class="p" aria-label="Previous">←</button><img alt=""><button class="n" aria-label="Next">→</button><div class="c"></div>
+</div>
+
+<script>
+(function () {
+  var I = function (n) { return 'img/t' + (n < 10 ? '0' : '') + n + '.jpg'; };
+  var G = {
+    zero: [[0,'TEDxBachKhoa logo'],[42,'Our 1st meeting · 01 Nov 2021'],[3,'TEDxBachKhoa 2022 key visual'],[61,'Member recruitment 2022'],[2,'Recruitment key visual'],[60,'Recruitment timeline 2022'],[62,'Recruitment banner']],
+    unveiled: [[43,'The Unveiled · 27.03.2022'],[47,'Timeline'],[54,'Hiên · speaker'],[55,'Luke Ngo · speaker'],[46,'Performers'],[53,'MC'],[58,'Hiên · quote'],[56,'Trường Vũ · quote'],[57,'Ngọc Khánh · quote'],[51,'Save the date'],[52,'Thank you, speakers'],[59,'Recap'],[44,'The Unveiled banner']],
+    dream: [['dream1', 4, '01', 'Một cái nhìn thoáng qua về lịch sử của AI', 'th-dream1'], ['dream2', 1, '02', 'Stonewall, khởi đầu của những ước mơ'], ['dream3', 1, '03', 'Vì sao chúng ta cảm thấy thiếu tương tác với những mối quan hệ gần gũi?']],
+    insec: [['insec1', 4, '01', 'Nghệ thuật “ảo”', 'th-insec1'], ['insec2', 4.49, '02', 'Hôn nhân và chủ nghĩa tự do cá nhân', 'th-insec2'], ['insec3', 1, '03', 'Vì sao chúng ta nói chuyện với người lạ?']],
+    ready: [['ready1', 4, '01', 'Sẵn sàng cho một kỷ nguyên mới cùng trí tuệ nhân tạo', 'th-ready1'], ['ready2', 4.49, '02', 'PRIDE không chỉ là tự hào', 'th-ready2'], ['ready5', 4.49, '05', 'Năm ngôn ngữ tình yêu', 'th-ready5']],
+    reset: [[35,'Reset · 08.01.2023'],[33,'Presented by TEDxBachKhoa'],[30,'Lê Nhật Nam · speaker'],[31,'Trương Công Tuấn · speaker'],[36,'Teresa Xuan Nguyen · speaker'],[37,'Javier Gonzalez Nunez · speaker'],[39,'Performer and MC'],[38,'Thank you, speakers'],[40,'10th floor, Ta Quang Buu Library'],[41,'Ta Quang Buu Library'],[28,'Reset banner']]
+  };
+  var seq = [];
+  function fig(tag, key, p) {
+    var f = document.createElement('figure');
+    f.innerHTML = '<img decoding="async" src="' + I(p[0]) + '" alt="' + (p[1] || 'TEDxBachKhoa post') + '">' + (tag && p[1] ? '<figcaption>' + p[1] + '</figcaption>' : '');
+    f.dataset.i = seq.length; seq.push({ src: I(p[0]), alt: p[1] || 'TEDxBachKhoa post' });
+    f.addEventListener('click', function () { open(+f.dataset.i); });
+    return f;
+  }
+  function fill(id, key, tag) { var el = document.getElementById(id); G[key].forEach(function (p) { el.appendChild(fig(tag, key, p)); }); }
+  // hero trio first so lightbox order starts there
+  var hp = document.getElementById('heroPic');
+  [[43,'The Unveiled'],[35,'Reset'],[5,'The RE series']].forEach(function (p) { hp.appendChild(fig(false, 'h', p)); });
+  fill('w-zero', 'zero', true); fill('w-unveiled', 'unveiled', true);
+  function episodes(id, key) {
+    var el = document.getElementById(id);
+    G[key].forEach(function (ep) {
+      var f = document.createElement('figure'); f.className = 'ep' + (ep[1] === 1 ? ' one' : ''); f.style.setProperty('--n', ep[1]);
+      var th = ep[4] ? '<div class="thm"><img decoding="async" src="img/' + ep[4] + '.jpg" alt="' + key + ' episode ' + ep[2] + ' topics"></div>' : '';
+      if (ep[4]) f.classList.add('th');
+      f.innerHTML = th + '<div class="pan"><img decoding="async" src="img/e-' + ep[0] + '.jpg" alt="' + key + ' episode ' + ep[2] + '"></div><figcaption><b>Episode ' + ep[2] + '</b>' + ep[3] + '</figcaption>';
+      f.dataset.i = seq.length; seq.push({ src: 'img/e-' + ep[0] + '.jpg', alt: ep[3] });
+      f.querySelector('.pan').addEventListener('click', function () { open(+f.dataset.i); });
+      if (ep[4]) { f.dataset.t = seq.length; seq.push({ src: 'img/' + ep[4] + '.jpg', alt: ep[3] + ' (topics)' }); f.querySelector('.thm').addEventListener('click', function () { open(+f.dataset.t); }); }
+      el.appendChild(f);
+    });
+  }
+  seq.push({ src: 'img/th-key.jpg', alt: 'The RE series' }); var ki = seq.length - 1; document.getElementById('keyvis').addEventListener('click', function () { open(ki); });
+  episodes('s-dream', 'dream'); episodes('s-insec', 'insec'); episodes('s-ready', 'ready');
+  fill('w-reset', 'reset', true);
+
+  var lb = document.getElementById('lb'), im = lb.querySelector('img'), ct = lb.querySelector('.c'), cur = 0;
+  function show(i) { cur = (i + seq.length) % seq.length; im.src = seq[cur].src; im.alt = seq[cur].alt; ct.textContent = (cur + 1) + ' / ' + seq.length + (seq[cur].alt ? '  ·  ' + seq[cur].alt : ''); }
+  function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }
+  function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+  lb.querySelector('.x').onclick = close; lb.querySelector('.p').onclick = function () { show(cur - 1); }; lb.querySelector('.n').onclick = function () { show(cur + 1); };
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+  var els = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  } else els.forEach(function (e) { e.classList.add('on'); });
+})();
+</script>
+
+</body>
+</html>
