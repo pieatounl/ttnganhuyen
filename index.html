@@ -909,11 +909,10 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 
 /* Base.vn chapter (#/chapters/basevn): same frame as the TEDx page, with drawn diagrams and slides from Margot's guide */
 #v-base { --gut: clamp(16px, 6vw, 96px); overflow-x: clip; }
-#v-base img { display: block; max-width: 100%; }
 #v-base .bs-in { padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); max-width: 1500px; margin-inline: auto; }
 #v-base .bs-hero { padding-top: clamp(130px, 22vh, 220px); }
 #v-base .bs-hero h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3.2rem, 11vw, 10.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 22px 0 0; }
-#v-base .bs-hero h1 span { color: var(--orange); }
+#v-base .bs-hero h1 span { color: var(--accent-ink); }
 #v-base .bs-rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
 #v-base .bs-role { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px 40px; padding-block: 26px; margin-top: clamp(26px, 5vh, 56px); border-block: 1px solid var(--rule); }
 #v-base .bs-role b { display: block; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
@@ -922,9 +921,6 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base .stat { border-left: 1px solid var(--orange); padding-left: 16px; }
 #v-base .stat strong { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.6rem); letter-spacing: -.03em; line-height: 1; }
 #v-base .stat span { display: block; margin-top: 8px; font-size: .84rem; color: var(--mute); max-width: 20ch; }
-#v-base .bs-hero-pic { margin-top: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.4vw, 18px); }
-#v-base .bs-hero-pic figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; border: 1px solid var(--rule); }
-#v-base .bs-hero-pic img { width: 100%; height: auto; }
 #v-base .jump { display: flex; flex-wrap: wrap; gap: 10px; padding-block: clamp(34px, 6vh, 60px) 0; }
 #v-base .jump a { text-decoration: none; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 9px 16px; border: 1px solid var(--orange); border-radius: 99px; transition: background .3s; }
 #v-base .jump a:hover { background: var(--orange); }
@@ -937,10 +933,6 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base .gl { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin: clamp(34px,6vh,60px) 0 0; }
 #v-base .gl::before { content: "( "; }
 #v-base .gl::after { content: " )"; }
-#v-base .wall { display: grid; grid-template-columns: repeat(var(--c, 3), minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 22px); margin-top: clamp(20px, 3vh, 34px); }
-#v-base .wall figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; border: 1px solid var(--rule); background: #fff; }
-#v-base .wall img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-#v-base .wall figure:hover img { transform: scale(1.03); }
 /* drawn diagrams */
 #v-base .bs-dia { margin: clamp(40px, 7vh, 76px) 0 0; }
 #v-base .bs-dia svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--body); }
@@ -950,6 +942,19 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base .bs-dia text.k { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; fill: var(--accent-ink); }
 #v-base .bs-dia .ln { fill: none; stroke: var(--accent-ink); stroke-width: 1.5; }
 #v-base .bs-dia figcaption { margin-top: 14px; font-size: .86rem; color: var(--mute); }
+#v-base .bs-dia .hub { fill: none; stroke: var(--accent-ink); }
+#v-base .bs-dia .api path { fill: none; stroke: var(--accent-ink); stroke-width: 1.5; marker-end: none; }
+#v-base .bs-dia .lab text { font-size: 13px; font-weight: 400; fill: var(--mute); }
+#v-base .bs-dia rect.dash { stroke-dasharray: 6 6; stroke: var(--mute); }
+#v-base #bs-dia-ticket .sv { fill: none; stroke: var(--rule); }
+#v-base #bs-dia-ticket .tk rect { fill: var(--orange); stroke: none; }
+#v-base #bs-dia-ticket .tk text { font-size: 12px; fill: var(--ink); }
+#v-base .bs-dia .bs-refs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+#v-base .bs-refs button { font: 700 .72rem var(--body); letter-spacing: .04em; text-transform: uppercase; padding: 9px 16px; border: 1px solid var(--orange); border-radius: 99px; background: #fff; color: var(--ink); cursor: pointer; transition: background .3s; }
+#v-base .bs-refs button:hover, #v-base .bs-refs button.on { background: var(--orange); }
+#v-base #bs-dia-talk .ref.bad { stroke-dasharray: 5 5; stroke: var(--mute); }
+#v-base #bs-dia-talk .xx { font-size: 26px; fill: var(--mute); }
+#v-base .bs-dia .bs-refnote { min-height: 3.2em; }
 #v-base #bs-dia-why .bs-before rect { stroke-dasharray: 6 6; stroke: var(--mute); }
 #v-base #bs-dia-why .bs-after .ln { stroke-dasharray: 1000; stroke-dashoffset: 1000; transition: stroke-dashoffset 1.6s .4s ease; }
 #v-base #bs-dia-why .bk { opacity: 0; transition: opacity .6s; }
@@ -958,8 +963,8 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base #bs-dia-why.on .bk:nth-of-type(2) { transition-delay: .5s; } #v-base #bs-dia-why.on .bk:nth-of-type(3) { transition-delay: .9s; } #v-base #bs-dia-why.on .bk:nth-of-type(4) { transition-delay: 1.3s; } #v-base #bs-dia-why.on .bk:nth-of-type(5) { transition-delay: 1.7s; }
 #v-base #bs-dia-talk .sv { fill: none; stroke: var(--rule); stroke-width: 1.5; }
 #v-base #bs-dia-talk .sv.b { stroke: var(--orange); stroke-dasharray: 6 6; }
-#v-base #bs-dia-talk .bl text { text-anchor: middle; font-size: 17px; }
-#v-base #bs-dia-talk .bl rect.hl { fill: var(--orange); }
+#v-base #bs-dia-talk .nodes text { text-anchor: middle; font-size: 17px; }
+#v-base #bs-dia-talk .nodes rect.hl { fill: var(--orange); }
 #v-base #bs-dia-talk .ref { fill: none; stroke: var(--accent-ink); stroke-width: 2; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 1.8s .5s ease; }
 #v-base #bs-dia-talk.on .ref { stroke-dashoffset: 0; }
 /* the twelve blocks */
@@ -969,6 +974,26 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base .bs-tile i { display: block; font-style: normal; font-size: .62rem; letter-spacing: .08em; color: var(--mute); }
 #v-base .bs-tile h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.25rem, 1.8vw, 1.6rem); letter-spacing: -.01em; margin: 10px 0 8px; }
 #v-base .bs-tile p { margin: 0; font-size: .86rem; line-height: 1.55; color: var(--mute); }
+/* rules, links, logic */
+#v-base .bs-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); margin-top: clamp(30px, 5vh, 56px); }
+#v-base .bs-cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#v-base .bs-card { border-top: 1px solid var(--orange); padding-top: 16px; }
+#v-base .bs-card .k { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); font-weight: 700; }
+#v-base .bs-card h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 2vw, 1.8rem); letter-spacing: -.01em; margin: 8px 0 12px; }
+#v-base .bs-card p, #v-base .bs-card li, #v-base .bs-card dd { font-size: .92rem; line-height: 1.65; color: var(--mute); margin: 0; }
+#v-base .bs-card ol, #v-base .bs-card ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+#v-base .bs-card dt { font-weight: 700; font-size: .92rem; margin-top: 10px; }
+#v-base .bs-card dt:first-child { margin-top: 0; }
+#v-base .bs-card ul.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+#v-base .bs-card .chips li { color: var(--ink); border: 1px solid var(--orange); border-radius: 99px; padding: 6px 12px; font-size: .8rem; line-height: 1.2; }
+#v-base .bs-steps, #v-base .bs-logic { list-style: none; margin: clamp(20px, 3vh, 32px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+#v-base .bs-steps li, #v-base .bs-logic li { padding: 16px 18px 20px 0; font-size: .92rem; line-height: 1.6; color: var(--mute); }
+#v-base .bs-steps b, #v-base .bs-logic b { display: block; font-family: var(--display); font-weight: 300; font-size: 1.8rem; color: var(--accent-ink); margin-bottom: 6px; }
+#v-base .bs-note { margin: 22px 0 0; font-size: .92rem; color: var(--mute); max-width: 62ch; line-height: 1.65; }
+#v-base .bs-note b { color: var(--ink); }
+#v-base .bs-toc { list-style: none; margin: clamp(30px, 5vh, 56px) 0 0; padding: 0; columns: 2; column-gap: clamp(24px, 6vw, 96px); border-top: 1px solid var(--rule); }
+#v-base .bs-toc li { break-inside: avoid; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 1rem; }
+#v-base .bs-toc i { font-style: normal; font-size: .66rem; letter-spacing: .08em; color: var(--mute); margin-right: 18px; }
 /* purchase request → purchase order */
 #v-base .bs-po { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 60px); margin-top: clamp(40px, 7vh, 76px); align-items: start; }
 #v-base .bs-po .pr { border: 1px solid var(--orange); border-radius: 10px; padding: clamp(20px, 3vw, 34px); }
@@ -991,36 +1016,23 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-base .bs-credit { margin: 28px 0 0; font-size: .74rem; color: var(--mute); }
 #v-base .bs-rv { opacity: 0; transform: translateY(18px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.2,1); }
 #v-base .bs-rv.on { opacity: 1; transform: none; }
-#bs-lb { position: fixed; inset: 0; z-index: 50; background: rgba(255,255,255,.96); display: none; place-items: center; padding: 56px 16px 40px; }
-#bs-lb.on { display: grid; }
-#bs-lb img { max-height: 100%; max-width: min(100%, 1200px); width: 100%; height: auto; object-fit: contain; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
-#bs-lb button { position: absolute; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--orange); background: #fff; color: var(--accent-ink); font-size: 1.1rem; cursor: pointer; }
-#bs-lb button:hover { background: var(--orange); color: var(--ink); }
-#bs-lb .lx { top: 14px; right: 14px; }
-#bs-lb .lp { left: 14px; top: 50%; }
-#bs-lb .ln { right: 14px; top: 50%; }
-#bs-lb .lc { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); }
 @media (prefers-reduced-motion: reduce) {
 #v-base .bs-rv { opacity: 1; transform: none; transition: none; }
 }
 @media (max-width: 900px) {
+#v-base .bs-cards, #v-base .bs-cards.three { grid-template-columns: minmax(0, 1fr); }
+#v-base .bs-steps, #v-base .bs-logic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#v-base .bs-toc { columns: 1; }
 #v-base .sec-h { grid-template-columns: minmax(0, 1fr); }
-#v-base .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #v-base .bs-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 #v-base .bs-po { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 720px) {
 #v-base .stats { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-#v-base .bs-hero-pic { grid-template-columns: repeat(2, 1fr); }
-#v-base .bs-hero-pic figure:nth-child(3) { display: none; }
 #v-base .bs-dia { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--orange) transparent; }
-#v-base .bs-dia svg { width: 640px; max-width: none; }
+#v-base .bs-dia svg { width: 760px; max-width: none; }
 #v-base .bs-tile { min-height: 0; }
 #v-base .bs-po dd { font-size: 1.7rem; }
-#bs-lb .lp, #bs-lb .ln { top: auto; bottom: 8px; }
-#bs-lb .lp { left: calc(50% - 56px); }
-#bs-lb .ln { right: calc(50% - 56px); }
-#bs-lb .lc { display: none; }
 }
 </style>
 </head>
@@ -1391,23 +1403,23 @@ the puzzles</h2>
     <div><b>Where</b><p>Hanoi, Vietnam</p></div>
   </div>
   <div class="stats bs-rv">
-    <div class="stat"><strong>12</strong><span>block types to build any process with</span></div>
-    <div class="stat"><strong>74</strong><span>pages in the user guide I wrote</span></div>
-    <div class="stat"><strong>10,000+</strong><span>businesses on Base.vn</span></div>
+    <div class="stat"><strong>12</strong><span>block types: every step of a process is one of them</span></div>
+    <div class="stat"><strong>4</strong><span>rules for who does a step</span></div>
+    <div class="stat"><strong>5</strong><span>outcomes at an approval</span></div>
   </div>
-  <div class="bs-hero-pic bs-rv" id="bs-hero-pic"></div>
+    
   <nav class="jump bs-rv" aria-label="Sections">
-    <a href="#bs-why">The why</a><a href="#bs-blocks">The blocks</a><a href="#bs-talk">Services that talk</a><a href="#bs-case">PR → PO</a><a href="#bs-house">In the house</a><a href="#bs-guide">The guide</a>
+    <a href="#bs-why">The problem</a><a href="#bs-blocks">The model</a><a href="#bs-talk">The links</a><a href="#bs-case">The case</a><a href="#bs-house">In practice</a><a href="#bs-guide">Hand-over</a>
   </nav>
 </header>
 <!-- 01 -->
 <section class="sec bs-in" id="bs-why">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">01 · The why</span><h2>one request,<br>three apps</h2></div>
+    <div><span class="label">01 · The problem</span><h2>one request,<br>three apps</h2></div>
     <div>
-      <p class="bs-lead">Base built a deep app for every job. Issuing one asset meant a proposal in Base Asset, an approval in Base Request and a cost in Base Expense, so the information, and the people chasing it, were scattered across products.</p>
-      <ul class="meta"><li>Example: <b>issuing an asset</b></li><li>Base Asset · Base Request · Base Expense</li></ul>
+      <p class="bs-lead">Each Base app is built deep for one job. A single business process, like issuing an asset, crosses several of them: the proposal, the approval and the cost live in different apps, so data and actions are scattered and nobody can follow one request end to end.</p>
+      <ul class="meta"><li>Process: <b>issue an asset</b></li><li>Needs: track · sync · one place</li></ul>
     </div>
   </div>
   <figure class="bs-dia bs-rv" id="bs-dia-why" aria-label="Three separate apps become one Service">
@@ -1427,65 +1439,113 @@ the puzzles</h2>
         <g class="bk"><rect x="830" y="206" width="170" height="60" rx="10"/><text x="848" y="242">Record cost</text></g>
       </g>
     </svg>
-    <figcaption>One Service, one ticket, every step in one place.</figcaption>
+    <figcaption>Requirement: one place to collect, track and sync the data of a process, whichever app does the work.</figcaption>
   </figure>
-  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="07 08 10 19"></div>
+  <div class="gl">The approach: service-oriented operation</div>
+  <figure class="bs-dia bs-rv" id="bs-dia-hub" aria-label="The internal service talks to Orders, Fulfillment and Invoice through APIs">
+    <svg viewBox="0 0 1000 400" role="img">
+      <rect class="hub" x="0" y="0" width="1000" height="118" rx="14"/>
+      <text x="26" y="40">Internal service</text>
+      <text x="26" y="72" class="s">designs the flow · holds the administrative steps</text>
+      <text x="26" y="96" class="s">plugs in the specialist work of each team</text>
+      <g class="api">
+        <path d="M60 118 V262"/><path d="M110 262 V118"/><path d="M170 118 V262"/><path d="M220 262 V118"/>
+        <path d="M355 118 V262"/><path d="M415 262 V118"/>
+        <path d="M640 118 V262"/><path d="M690 262 V118"/>
+        <path d="M860 118 V262"/><path d="M910 262 V118"/>
+      </g>
+      <g class="lab">
+        <text x="66" y="160">check</text><text x="116" y="226">result</text><text x="176" y="160">run</text><text x="226" y="226">book it</text>
+        <text x="361" y="160">hand on</text><text x="421" y="226">result</text>
+      </g>
+      <rect x="0" y="262" width="280" height="118" rx="12"/><text x="22" y="300">Orders</text><text x="22" y="330" class="s">item, supplier, customer</text>
+      <rect x="320" y="262" width="280" height="118" rx="12"/><text x="342" y="300">Fulfillment</text><text x="342" y="330" class="s">quantity, stock, debts</text>
+      <rect x="620" y="262" width="160" height="118" rx="12"/><text x="642" y="300">Invoice</text>
+      <rect x="820" y="262" width="180" height="118" rx="12" class="dash"/><text x="842" y="300">…</text>
+    </svg>
+    <figcaption>Each team keeps its own app. The Service designs the flow and calls the apps through APIs, then takes the result back, so there is one point of control.</figcaption>
+  </figure>
 </section>
 <!-- 02 -->
 <section class="sec bs-in" id="bs-blocks">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">02 · The blocks</span><h2>every process,<br>a stack of blocks</h2></div>
+    <div><span class="label">02 · The model</span><h2>every process,<br>a stack of blocks</h2></div>
     <div>
-      <p class="bs-lead">Base Service is a set of LEGO bricks for software. Each process is a Service, each action inside it is a Block, and a Ticket travels from block to block, picking up what the next step needs.</p>
-      <ul class="meta"><li><b>12</b> block types</li><li>Service · Block · Ticket</li></ul>
+      <p class="bs-lead">Three entities carry the whole model. A <b>Service</b> is a process: an ordered chain of actions. A <b>Block</b> is one action. A <b>Ticket</b> is one case moving through it, recording what happened at each block and collecting the data the next block needs.</p>
+      <ul class="meta"><li>Service = process</li><li>Block = action</li><li>Ticket = case</li></ul>
     </div>
   </div>
+  <figure class="bs-dia bs-rv" id="bs-dia-ticket" aria-label="A ticket travels through the blocks of a Service">
+    <svg viewBox="0 0 1000 250" role="img">
+      <rect class="sv" x="0" y="0" width="1000" height="250" rx="14"/>
+      <text x="24" y="36" class="k">Service · Issue an asset</text>
+      <path class="ln" d="M190 140 H250 M440 140 H470 V96 H500 M440 140 H470 V196 H500 M690 96 H720 V140 H750 M690 196 H720 V140"/>
+      <rect x="24" y="112" width="166" height="56" rx="10"/><text x="42" y="146">Request</text>
+      <rect x="250" y="112" width="190" height="56" rx="10"/><text x="268" y="146">IT approves</text>
+      <rect class="dash" x="486" y="62" width="218" height="168" rx="12"/>
+      <rect x="500" y="72" width="190" height="48" rx="10"/><text x="518" y="102">Issue from stock</text>
+      <rect x="500" y="172" width="190" height="48" rx="10"/><text x="518" y="202">Buy a new one</text>
+      <rect x="750" y="112" width="226" height="56" rx="10"/><text x="768" y="146">Hand over</text>
+      <g class="tk"><rect x="-34" y="-17" width="68" height="34" rx="5"/><text x="0" y="6" text-anchor="middle">ticket</text></g>
+    </svg>
+    <figcaption>A ticket enters at the start, takes the branch its data points to, and ends when it reaches an end block.</figcaption>
+  </figure>
   <div class="bs-tiles bs-rv" id="bs-tiles"></div>
-  <div class="gl">Core concept</div><div class="wall bs-rv" data-s="14 16 18 11"></div>
-  <div class="gl">Block types</div><div class="wall bs-rv" data-s="21 23 25 28 32 34 36 38 40"></div>
+  <div class="bs-cards bs-rv">
+    <div class="bs-card"><span class="k">Rule · assignee</span><h3>who does the step</h3>
+      <ol><li>Keep whoever did the previous block.</li><li>One fixed person.</li><li>The previous assignee picks one person from a fixed list.</li><li>Open to everyone on a fixed list, who can pick the work up themselves.</li></ol></div>
+    <div class="bs-card"><span class="k">Rule · approval</span><h3>five outcomes</h3>
+      <ul class="chips"><li>Approve</li><li>Approve and forward</li><li>Add an approver before</li><li>Reject</li><li>Need more info</li></ul>
+      <p>Each approval flow can be set up with an electronic signature through Base Sign.</p></div>
+  </div>
 </section>
 <!-- 03 -->
 <section class="sec bs-in" id="bs-talk">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">03 · Services that talk</span><h2>processes<br>inside processes</h2></div>
+    <div><span class="label">03 · The links</span><h2>processes<br>inside processes</h2></div>
     <div>
-      <p class="bs-lead">“Issue an asset” can call “Buy an asset” and wait for it to finish. Custom fields reference each other across blocks and services, so a value changed in one place updates everywhere it is used.</p>
+      <p class="bs-lead">Real processes depend on each other: when there is no stock, “Issue an asset” needs “Buy an asset”. A Service can call another and wait for it, and fields can reference each other across blocks and services, so one value is entered once and stays true everywhere.</p>
       <ul class="meta"><li>Related services &amp; tickets</li><li>Field references</li><li>Link ticket to ticket</li></ul>
     </div>
   </div>
-  <figure class="bs-dia bs-rv" id="bs-dia-talk" aria-label="Service A calls Service B; a field in Service B updates a field in Service A">
-    <svg viewBox="0 0 1000 345" role="img">
-      <rect class="sv" x="0" y="20" width="1000" height="230" rx="14"/>
-      <text x="22" y="52" class="k">Service A · Issue an asset</text>
-      <rect class="sv b" x="560" y="80" width="420" height="150" rx="12"/>
-      <text x="580" y="108" class="k">Service B · Buy an asset</text>
-      <g class="bl">
-        <rect x="22" y="140" width="90" height="44" rx="8"/><text x="67" y="168">1</text>
-        <rect x="152" y="140" width="90" height="44" rx="8"/><text x="197" y="168">2</text>
-        <rect x="282" y="100" width="90" height="44" rx="8"/><text x="327" y="128">3</text>
-        <rect x="282" y="180" width="90" height="44" rx="8" class="hl"/><text x="327" y="208">4</text>
-        <rect x="412" y="140" width="90" height="44" rx="8"/><text x="457" y="168">5</text>
-        <rect x="580" y="140" width="80" height="44" rx="8"/><text x="620" y="168">6</text>
-        <rect x="690" y="140" width="80" height="44" rx="8"/><text x="730" y="168">7</text>
-        <rect x="800" y="124" width="80" height="44" rx="8"/><text x="840" y="152">8</text>
-        <rect x="800" y="180" width="80" height="44" rx="8" class="hl"/><text x="840" y="208">9</text>
-      </g>
-      <path class="ln" d="M112 162 H152 M242 162 H262 V122 H282 M262 162 V202 H282 M372 122 H392 V162 H412 M372 202 H392 V162 M502 162 H580 M660 162 H690 M770 162 H785 V146 H800 M785 162 V202 H800"/>
-      <path class="ref" d="M840 226 C 840 320, 330 330, 327 226"/>
-      <text x="1000" y="338" class="s" text-anchor="end">Block 9 in Service B updates a field in Block 4 of Service A</text>
+  <figure class="bs-dia bs-rv" id="bs-dia-talk" aria-label="Field references between Service A and Service B">
+    <svg viewBox="0 0 1000 330" role="img">
+      <text x="0" y="22" class="k">Issue an asset</text>
+      <rect class="sv" x="0" y="34" width="1000" height="236" rx="14"/>
+      <text x="550" y="82" class="k">Buy an asset</text>
+      <rect class="sv b" x="540" y="94" width="444" height="150" rx="12"/>
+      <path class="ln" d="M96 160 H124 M196 160 H214 V122 H232 M214 160 V198 H232 M304 122 H322 V160 H340 M304 198 H322 V160 M412 160 H560 M632 160 H650 M722 160 H740 V122 H758 M740 160 V198 H758 M830 122 H848 V160 H866 M830 198 H848 V160"/>
+      <g class="nodes"></g>
+      <path class="ref" d=""/>
     </svg>
+    <div class="bs-refs" role="group" aria-label="Pick a reference"></div>
+    <figcaption class="bs-refnote"></figcaption>
   </figure>
-  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="50 56 58 62 63 72 74"></div>
+  <div class="bs-cards three bs-rv">
+    <div class="bs-card"><span class="k">Custom fields</span><h3>two kinds</h3>
+      <dl><dt>Service fields</dt><dd>Travel with the ticket from start to end. View and edit rights are set per block.</dd><dt>Block fields</dt><dd>Show only at that block, for details that do not matter later, like a tracking number.</dd></dl></div>
+    <div class="bs-card"><span class="k">Related tickets</span><h3>main and sub</h3>
+      <p>At a related-service block, a new ticket opens in the other Service. The current one becomes the <b>main ticket</b>, the new one its <b>sub-ticket</b>, and a Merge block picks the main flow back up.</p></div>
+    <div class="bs-card"><span class="k">Followers</span><h3>who keeps an eye</h3>
+      <ol><li>Fixed followers at a block.</li><li>Keep the previous followers, even into a related Service.</li><li>Drop the last assignee when they no longer need to see it.</li></ol></div>
+  </div>
+  <div class="gl">Link ticket to ticket</div>
+  <ol class="bs-steps bs-rv">
+    <li><b>1</b>On the sub-ticket, choose “Link to another ticket”.</li>
+    <li><b>2</b>Pick the Service of the main ticket.</li>
+    <li><b>3</b>Pick the main ticket.</li>
+    <li><b>4</b>The sub-ticket now shows under the main one.</li>
+  </ol>
 </section>
 <!-- 04 -->
 <section class="sec bs-in" id="bs-case">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">04 · Case study</span><h2>counting what's<br>left to buy</h2></div>
+    <div><span class="label">04 · The case</span><h2>counting what's<br>left to buy</h2></div>
     <div>
-      <p class="bs-lead">A purchase request names the item and the quantity. Above 500 units it goes to the head of procurement, otherwise to a specialist. Each purchase order adds to “bought” and takes from “still to buy”, and payment opens only when the remainder reaches zero.</p>
+      <p class="bs-lead">The requirement: show “bought” and “still to buy” on both the request and its orders, and open payment only when nothing is left to buy. Approval depends on quantity: above 500 units the head of procurement signs, otherwise a specialist.</p>
       <ul class="meta"><li>Purchase request → Purchase order</li><li>References + a transformer block</li></ul>
     </div>
   </div>
@@ -1500,15 +1560,22 @@ the puzzles</h2>
     </div>
     <div class="pos"><ol data-f="l"></ol><button class="btn" type="button" data-f="go">Add a purchase order!</button></div>
   </div>
-  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="64 65"></div>
+  <div class="gl">The logic</div>
+  <ol class="bs-logic bs-rv">
+    <li><b>01</b><span>Create the purchase request and enter the total to buy.</span></li>
+    <li><b>02</b><span>Set bought to 0 and still to buy to the total.</span></li>
+    <li><b>03</b><span>Create a purchase order and enter the quantity bought.</span></li>
+    <li><b>04</b><span>Bought = bought before + this order. Still to buy = total − this order − bought before.</span></li>
+  </ol>
+  <p class="bs-note bs-rv">A <b>reference</b> carries the numbers from each purchase order back to the request, and a <b>transformer</b> block recalculates them.</p>
 </section>
 <!-- 05 -->
 <section class="sec bs-in" id="bs-house">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">05 · In the house</span><h2>Base,<br>built on Base</h2></div>
+    <div><span class="label">05 · In practice</span><h2>Base,<br>built on Base</h2></div>
     <div>
-      <p class="bs-lead">A SaaS company that builds tools for other businesses needed its own house in order too. I synced contracts across departments and automated revenue and commission flows, then trained and supported the teams who would live with them every day.</p>
+      <p class="bs-lead">Base also had to run on its own logic. I synced contracts across departments and automated the revenue and commission flows, then trained and supported the teams who would use them daily, on internal and client-facing projects.</p>
       <ul class="meta"><li>Revenue Center</li><li>Contracts · Revenue · Commission</li><li>Internal and client-facing projects</li></ul>
     </div>
   </div>
@@ -1517,27 +1584,28 @@ the puzzles</h2>
 <section class="sec bs-in" id="bs-guide">
   <hr class="bs-rule">
   <div class="sec-h">
-    <div><span class="label">06 · The guide</span><h2>go-live<br>is day one</h2></div>
+    <div><span class="label">06 · Hand-over</span><h2>go-live<br>is day one</h2></div>
     <div>
-      <p class="bs-lead">I wrote the whole user guide, 74 pages from “What is Base Service?” to linking tickets, so the people using it every day could build their own blocks.</p>
-      <ul class="meta"><li><b>74</b> pages</li><li>Updated <b>08.10.2024</b></li></ul>
+      <p class="bs-lead">A process only works if its users can run and change it. I wrote the user guide so teams could build their own blocks: what the product is, why it exists, the model, the rules and a worked case.</p>
+      <ul class="meta"><li>Updated <b>08.10.2024</b></li></ul>
     </div>
   </div>
-  <div class="wall bs-rv" data-s="02 03 06 13 20 66 68 70"></div>
+  <ol class="bs-toc bs-rv">
+    <li><i>01</i>What is Base Service?</li><li><i>02</i>Why Base Service?</li><li><i>03</i>Core concept in the app</li>
+    <li><i>04</i>Block types</li><li><i>05</i>Custom fields</li><li><i>06</i>Case study: purchase orders</li>
+    <li><i>07</i>Followers</li><li><i>08</i>Move a ticket back</li><li><i>09</i>Related tickets</li><li><i>10</i>Link ticket to ticket</li>
+  </ol>
 </section>
 <section class="end bs-in">
   <span class="label">Turn the page</span>
   <h2>more chapters<br>to flip through</h2>
   <a class="btn" href="#/chapters">Back to the chapters!</a>
-  <p class="bs-credit">Slides: Base Service user guide, written by Margot</p>
+  <p class="bs-credit">Diagrams redrawn from the Base Service user guide</p>
 </section>
 </div>
 <section class="band cs-lib">
   <div class="in"><h2>Work Library</h2><ul class="rows" id="bs-lib"></ul></div>
 </section>
-<div id="bs-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button class="lx" aria-label="Close">✕</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln" aria-label="Next">→</button><div class="lc"></div>
-</div>
 </div>
 <div class="view" id="v-case" hidden>
   <section class="band cs-head">
@@ -2538,19 +2606,11 @@ the puzzles</h2>
 
 </script>
 <script>
-// Base.vn chapter: slides from Margot's Base Service guide, the twelve blocks, a PR → PO counter, its own image viewer
+// Base.vn chapter: drawn diagrams of the Base Service model, the twelve blocks, a PR → PO counter
 (function () {
   var root = document.getElementById('v-base'); if (!root) return;
-  var S = function (n) { return 'basevn/img/s' + n + '.jpg'; }, seq = [];
-  function fig(n, box) {
-    var f = document.createElement('figure'), i = seq.length;
-    f.innerHTML = '<img loading="lazy" decoding="async" src="' + S(n) + '" alt="Base Service user guide, page ' + (+n) + '">';
-    seq.push({ src: S(n), alt: 'Page ' + (+n) + ' of 74' });
-    f.addEventListener('click', function () { open(i); }); box.appendChild(f);
-  }
-  ['01', '04', '09'].forEach(function (n) { fig(n, document.getElementById('bs-hero-pic')); });
-  // four across when the slides fill whole rows of four, else three, so no slide sits alone on a row
-  root.querySelectorAll('.wall[data-s]').forEach(function (w) { var ns = w.dataset.s.split(' '), k = ns.length; if (k <= 4) w.style.setProperty('--c', k); else if (k % 4 === 0 || k % 4 === 3) w.style.setProperty('--c', 4); ns.forEach(function (n) { fig(n, w); }); });
+  var NS = 'http://www.w3.org/2000/svg', reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 
   var BLOCKS = [
     ['Start', 'Where a Service begins. A ticket here switches it on.'],
@@ -2558,7 +2618,7 @@ the puzzles</h2>
     ['Custom form', 'Asks for the fields this step needs: who, which team, what for.'],
     ['Step', 'A task someone marks done to move the ticket on.'],
     ['Approval', 'Approve, approve and forward, add an approver, reject, or ask for more.'],
-    ['Condition', 'Checks the rules and routes the ticket on its own.'],
+    ['Condition', 'Checks a rule on the data and routes the ticket on its own.'],
     ['Transformer', 'Changes or fills in fields as the ticket passes.'],
     ['Integrated apps', 'Hands the work to Base Expense or Base Income.'],
     ['Related service', 'Opens a linked ticket in another Service.'],
@@ -2569,6 +2629,47 @@ the puzzles</h2>
   document.getElementById('bs-tiles').innerHTML = BLOCKS.map(function (b, i) {
     return '<div class="bs-tile"><i>' + (i < 9 ? '0' : '') + (i + 1) + '</i><h3>' + b[0] + '</h3><p>' + b[1] + '</p></div>';
   }).join('');
+
+  // a ticket walking the Service: it takes the branch its data points to, alternating
+  (function () {
+    var svg = document.querySelector('#bs-dia-ticket svg'), tk = svg.querySelector('.tk');
+    var P = ['M158 140 H345 H470 V96 H595 H720 V140 H863', 'M158 140 H345 H470 V196 H595 H720 V140 H863'].map(function (d) { var p = el('path', { d: d, fill: 'none' }); svg.appendChild(p); return p; });
+    var run = false, t0 = 0, n = 0, DUR = 4200;
+    function at(p, f) { var q = p.getPointAtLength(f * p.getTotalLength()); tk.setAttribute('transform', 'translate(' + q.x + ',' + q.y + ')'); }
+    if (reduce) { at(P[0], .02); return; }
+    function frame(t) {
+      if (!run) return; if (!t0) t0 = t;
+      var f = (t - t0) / DUR; if (f >= 1) { t0 = t; f = 0; n = 1 - n; }
+      at(P[n], f < .08 ? 0 : f > .96 ? 1 : (f - .08) / .88); requestAnimationFrame(frame);
+    }
+    at(P[0], 0);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !run) { run = true; t0 = 0; requestAnimationFrame(frame); } else if (!e.isIntersecting) run = false; }); }).observe(svg);
+  })();
+
+  // field references between blocks: pick one to see it drawn
+  (function () {
+    var fig = document.getElementById('bs-dia-talk'), svg = fig.querySelector('svg'), nodes = svg.querySelector('.nodes'), ref = svg.querySelector('.ref');
+    var POS = { 1: [24, 136], 2: [124, 136], 3: [232, 98], 4: [232, 174], 5: [340, 136], 6: [560, 136], 7: [650, 136], 8: [758, 98], 9: [758, 174], 10: [866, 136] }, R = {};
+    Object.keys(POS).forEach(function (k) {
+      var g = el('g', {}, nodes), r = el('rect', { x: POS[k][0], y: POS[k][1], width: 72, height: 48, rx: 8 }, g), t = el('text', { x: POS[k][0] + 36, y: POS[k][1] + 29, 'text-anchor': 'middle' }, g); t.textContent = k; R[k] = r;
+    });
+    var xx = el('text', { x: 66, y: 252, class: 'xx', 'text-anchor': 'middle' }, svg); xx.textContent = '×'; xx.style.display = 'none';
+    var CASES = [
+      { b: 'Block 8 → block 4', f: '8', t: '4', d: 'M794 222 C 794 322, 268 322, 268 222', note: 'A field in block 8 of “Buy an asset” updates the field in block 4 of “Issue an asset”: the value is entered once and follows.' },
+      { b: 'Block 5 → block 4', f: '5', t: '4', d: 'M376 184 C 376 252, 268 252, 268 222', note: 'Inside one Service, a field in block 5 can update the field in block 4.' },
+      { b: 'Block 1 → its Service', f: '1', bad: true, d: 'M60 184 C 60 214, 60 226, 60 240', note: 'Not allowed: block 1, the first block of a Service, cannot reference a field of its own Service.' }
+    ];
+    var box = fig.querySelector('.bs-refs'), note = fig.querySelector('.bs-refnote');
+    function pick(i) {
+      var c = CASES[i]; Object.keys(R).forEach(function (k) { R[k].classList.remove('hl'); }); R[c.f].classList.add('hl'); if (c.t) R[c.t].classList.add('hl');
+      ref.setAttribute('d', c.d); ref.setAttribute('class', 'ref' + (c.bad ? ' bad' : '')); xx.style.display = c.bad ? '' : 'none';
+      var L = ref.getTotalLength(); ref.style.transition = 'none'; ref.style.strokeDasharray = c.bad ? '5 5' : L; ref.style.strokeDashoffset = c.bad ? 0 : L; ref.getBoundingClientRect();
+      ref.style.transition = c.bad ? 'none' : 'stroke-dashoffset 1.4s ease'; if (!c.bad) ref.style.strokeDashoffset = 0;
+      note.textContent = c.note; [].forEach.call(box.children, function (b, j) { b.classList.toggle('on', j === i); });
+    }
+    CASES.forEach(function (c, i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = c.b; b.addEventListener('click', function () { pick(i); }); box.appendChild(b); });
+    pick(0);
+  })();
 
   // PR → PO: demo numbers, three orders bring "still to buy" down to zero
   var po = document.getElementById('bs-po'), q = function (k) { return po.querySelector('[data-f="' + k + '"]'); };
@@ -2582,14 +2683,6 @@ the puzzles</h2>
   }
   q('go').addEventListener('click', function () { done = done === ORDERS.length ? 0 : done + 1; paint(); });
   paint();
-
-  var lb = document.getElementById('bs-lb'), im = lb.querySelector('img'), ct = lb.querySelector('.lc'), cur = 0;
-  function show(i) { cur = (i + seq.length) % seq.length; im.src = seq[cur].src; im.alt = seq[cur].alt; ct.textContent = (cur + 1) + ' / ' + seq.length + '  ·  ' + seq[cur].alt; }
-  function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }
-  function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
-  lb.querySelector('.lx').onclick = close; lb.querySelector('.lp').onclick = function () { show(cur - 1); }; lb.querySelector('.ln').onclick = function () { show(cur + 1); };
-  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-  document.addEventListener('keydown', function (e) { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
 
   var els = root.querySelectorAll('.bs-rv, .bs-dia');
   if ('IntersectionObserver' in window) {
