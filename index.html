@@ -1418,7 +1418,7 @@ the puzzles</h2>
     note(g, hx - 200, ys[4] + 72, T.d2, 'o'); lead(g, hx, ys[4] + 46, hx, B + 4, 'o');
     lead(g, d3.x, top - 80, d3.x, d3.y - d3.r - 4, 'o');
     note(g, 1648, B + 108, T.d4, 'o', 'end'); lead(g, d4.x - 50, B + 86, d4.x - d4.r * .6, d4.y + d4.r * .8 + 3, 'o');
-    var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 30, ys[4] + 156, d5.x - 3, d5.y + d5.r + 4, 'b');
+    var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 52, ys[4] + 156, d5.x - d5.r * .8, d5.y + d5.r * .75 + 3, 'b');
     var fx = x0 - 46; note(g, fx + 56, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx, ys[4] + 104, fx, ys[4] + 16, 'b');
     // dimension + label
     var ax = x0 - 46; dimArrow(g, ax, ys[1], ys[4], 'b');
