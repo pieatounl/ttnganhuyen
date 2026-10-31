@@ -2347,15 +2347,15 @@ the puzzles</h2>
   };
   var wkBox = document.getElementById('wk-items');
   function slug(id) { return id === 'tedx' ? 'tedxbachkhoa' : id === 'base' ? 'basevn' : id; }
-  // Chapters list in five groups (Margot, 31.10.2026); an empty group shows "Coming soon"
+  // Chapters list in five groups: Work, Education, Side gigs, Clubs, Courses (Margot, 31.10.2026); an empty group shows "Coming soon"
   var GROUPS = [
-    { name: 'Education', ids: ['mom', 'hust'] },
     { name: 'Work', ids: ['fti', 'base', 'msb'] },
+    { name: 'Education', ids: ['mom', 'hust'] },
+    { name: 'Side gigs', ids: ['orangerie'] },
     { name: 'Clubs', ids: ['tedx', 'sinno', 'yln'] },
     { name: 'Courses', ids: [], list: [  // short courses: only on Chapters, not on the bookshelf
       ['Floral design', 'Tigon'], ['Data science', 'FTU'], ['Bartending', 'Nguyễn Trường Tộ'],
-      ['Graphic design', 'ColorMe'], ['Chinese (HSK)', 'Thanh Mai HSK'], ['Dutch', 'PCVO']] },
-    { name: 'Side gigs', ids: ['orangerie'] }
+      ['Graphic design', 'ColorMe'], ['Chinese (HSK)', 'Thanh Mai HSK'], ['Dutch', 'PCVO']] }
   ];
   var LIST_ORDER = [].concat.apply([], GROUPS.map(function (g) { return g.ids; }));
   var WORK_LIST = LIST_ORDER.map(function (id) { return WORK.filter(function (x) { return x.id === id; })[0]; });
