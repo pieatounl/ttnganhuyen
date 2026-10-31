@@ -13,7 +13,7 @@ import html, os, re
 SITE = 'https://www.ttnganhuyen.com'
 DEFAULT_IMG = '/img/og-image.png'
 SITE_NAME = 'Huyen Tran / Margot'
-TAGLINE = 'consulting by day, blooming by night'
+TAGLINE = "I'm Margot (Huyen Tran), a business analyst from Vietnam, now based in Belgium. I turn complex processes into clear conversations, and I make room for flowers, cocktails and sketching."
 
 src = open('index.html', encoding='utf-8').read()
 
