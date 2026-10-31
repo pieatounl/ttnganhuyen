@@ -364,14 +364,14 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 /* a straight vertical spread, bent slightly like a hand fan pivoting on the left; hover on desktop, tap to open and tap again to close on touch */
 @media (hover: hover) {
   .stack:hover { z-index: 5; }
-  .stack:hover .p0 { z-index: 5; transform: translateX(.08em) rotate(0deg); }
-  .stack:hover .p1 { transform: translate(-.02em, -1.08em) rotate(-7deg); }
-  .stack:hover .p2 { transform: translate(-.02em, 1em) rotate(7deg); }
+  .stack:hover .p0 { z-index: 5; transform: translate(.04em, -.04em) rotate(0deg); }
+  .stack:hover .p1 { z-index: 4; transform: translate(-.2em, .12em) rotate(-6deg); }
+  .stack:hover .p2 { z-index: 3; transform: translate(.27em, .12em) rotate(6deg); }
 }
 .stack.open { z-index: 5; }
-.stack.open .p0 { z-index: 5; transform: translateX(.08em) rotate(0deg); }
-.stack.open .p1 { transform: translate(-.02em, -1.08em) rotate(-7deg); }
-.stack.open .p2 { transform: translate(-.02em, 1em) rotate(7deg); }
+.stack.open .p0 { z-index: 5; transform: translate(.04em, -.04em) rotate(0deg); }
+.stack.open .p1 { z-index: 4; transform: translate(-.2em, .12em) rotate(-6deg); }
+.stack.open .p2 { z-index: 3; transform: translate(.27em, .12em) rotate(6deg); }
 
 .big .l4 { flex-wrap: wrap; row-gap: 12px; }
 .hero .side { display: block; align-self: flex-end; margin: 0 0 0.12em 0.5em; position: relative; padding: 0 0 0 .95em; font-family: var(--body); font-size: clamp(.9rem, 1.08vw, 1.1rem); line-height: 1.55; letter-spacing: 0; white-space: normal; max-width: 380px; }
