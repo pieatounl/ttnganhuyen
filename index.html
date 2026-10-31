@@ -1328,6 +1328,12 @@ the puzzles</h2>
     var e = x; while (x > 0 && m.d[(r * m.W + x) * 4 + 3] > 90) x--;
     return (x + e) / 2 + .5 - m.pad;
   }
+  function strokeLeft(ch, F, italic, h) {
+    var m = ink(ch, F, italic), r = Math.max(0, Math.min(m.H - 1, Math.round(m.by - h))), x = 0;
+    while (x < m.W - 1 && m.d[(r * m.W + x) * 4 + 3] <= 90) x++;
+    var b = x; while (x < m.W - 1 && m.d[(r * m.W + x) * 4 + 3] > 90) x++;
+    return (b + x) / 2 - .5 - m.pad;
+  }
   // a hatch image over the enclosed counter of one glyph (closeBase: shut the open bottom of an n)
   function counterHatch(ch, F, italic, color, closeBase, drop) {
     var m = ink(ch, F, italic), W = m.W, H = m.H, d = m.d, solid = new Uint8Array(W * H), seen = new Uint8Array(W * H), i;
@@ -1419,7 +1425,7 @@ the puzzles</h2>
     lead(g, d3.x, top - 80, d3.x, d3.y - d3.r - 4, 'o');
     note(g, 1648, B + 108, T.d4, 'o', 'end'); lead(g, d4.x - 50, B + 86, d4.x - d4.r * .6, d4.y + d4.r * .8 + 3, 'o');
     var n5 = note(g, d5.x - 130, ys[4] + 178, T.d5, 'b'), o5 = n5.getBBox().x + n5.getBBox().width - 1650; if (o5 > 0) n5.querySelectorAll('tspan').forEach(function (ts) { ts.setAttribute('x', d5.x - 130 - o5); }); lead(g, d5.x - 52, ys[4] + 156, d5.x - d5.r * .8, d5.y + d5.r * .75 + 3, 'b');
-    var fx = x0 - 46; note(g, fx + 56, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx, ys[4] + 104, fx, ys[4] + 16, 'b');
+    var fx = x0 + strokeLeft('N', F, false, 4); note(g, fx - 52, ys[4] + 128, T.d6, 'b', 'end'); lead(g, fx - 36, ys[4] + 104, fx - 1, B + 8, 'b');
     // dimension + label
     var ax = x0 - 46; dimArrow(g, ax, ys[1], ys[4], 'b');
     note(g, ax - 14, B - M.xh * F * .62, T.dl, 'b', 'end');
