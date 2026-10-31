@@ -907,6 +907,121 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #tx-lb .lc { display: none; }
 }
 
+/* Base.vn chapter (#/chapters/basevn): same frame as the TEDx page, with drawn diagrams and slides from Margot's guide */
+#v-base { --gut: clamp(16px, 6vw, 96px); overflow-x: clip; }
+#v-base img { display: block; max-width: 100%; }
+#v-base .bs-in { padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); max-width: 1500px; margin-inline: auto; }
+#v-base .bs-hero { padding-top: clamp(130px, 22vh, 220px); }
+#v-base .bs-hero h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3.2rem, 11vw, 10.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 22px 0 0; }
+#v-base .bs-hero h1 span { color: var(--orange); }
+#v-base .bs-rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+#v-base .bs-role { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px 40px; padding-block: 26px; margin-top: clamp(26px, 5vh, 56px); border-block: 1px solid var(--rule); }
+#v-base .bs-role b { display: block; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+#v-base .bs-role p { margin: 0; font-size: .98rem; }
+#v-base .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-block: clamp(34px, 6vh, 64px); }
+#v-base .stat { border-left: 1px solid var(--orange); padding-left: 16px; }
+#v-base .stat strong { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.6rem); letter-spacing: -.03em; line-height: 1; }
+#v-base .stat span { display: block; margin-top: 8px; font-size: .84rem; color: var(--mute); max-width: 20ch; }
+#v-base .bs-hero-pic { margin-top: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.4vw, 18px); }
+#v-base .bs-hero-pic figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; border: 1px solid var(--rule); }
+#v-base .bs-hero-pic img { width: 100%; height: auto; }
+#v-base .jump { display: flex; flex-wrap: wrap; gap: 10px; padding-block: clamp(34px, 6vh, 60px) 0; }
+#v-base .jump a { text-decoration: none; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 9px 16px; border: 1px solid var(--orange); border-radius: 99px; transition: background .3s; }
+#v-base .jump a:hover { background: var(--orange); }
+#v-base .sec { padding-top: clamp(90px, 14vh, 150px); }
+#v-base .sec-h { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px clamp(30px, 6vw, 96px); align-items: end; margin-top: 34px; }
+#v-base .sec h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.6rem, 7.4vw, 7rem); letter-spacing: -.028em; line-height: 1.04; margin: 14px 0 0; }
+#v-base .bs-lead { margin: 0; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.75; max-width: 520px; }
+#v-base .meta { display: flex; flex-wrap: wrap; gap: 6px 26px; margin: 22px 0 0; padding: 0; list-style: none; font-size: .86rem; color: var(--mute); }
+#v-base .meta b { color: var(--ink); font-weight: 700; }
+#v-base .gl { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin: clamp(34px,6vh,60px) 0 0; }
+#v-base .gl::before { content: "( "; }
+#v-base .gl::after { content: " )"; }
+#v-base .wall { display: grid; grid-template-columns: repeat(var(--c, 3), minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 22px); margin-top: clamp(20px, 3vh, 34px); }
+#v-base .wall figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; border: 1px solid var(--rule); background: #fff; }
+#v-base .wall img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+#v-base .wall figure:hover img { transform: scale(1.03); }
+/* drawn diagrams */
+#v-base .bs-dia { margin: clamp(40px, 7vh, 76px) 0 0; }
+#v-base .bs-dia svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--body); }
+#v-base .bs-dia rect { fill: #fff; stroke: var(--orange); stroke-width: 1.5; }
+#v-base .bs-dia text { font-size: 19px; font-weight: 700; fill: var(--ink); }
+#v-base .bs-dia text.s { font-size: 15px; font-weight: 400; fill: var(--mute); }
+#v-base .bs-dia text.k { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; fill: var(--accent-ink); }
+#v-base .bs-dia .ln { fill: none; stroke: var(--accent-ink); stroke-width: 1.5; }
+#v-base .bs-dia figcaption { margin-top: 14px; font-size: .86rem; color: var(--mute); }
+#v-base #bs-dia-why .bs-before rect { stroke-dasharray: 6 6; stroke: var(--mute); }
+#v-base #bs-dia-why .bs-after .ln { stroke-dasharray: 1000; stroke-dashoffset: 1000; transition: stroke-dashoffset 1.6s .4s ease; }
+#v-base #bs-dia-why .bk { opacity: 0; transition: opacity .6s; }
+#v-base #bs-dia-why.on .bs-after .ln { stroke-dashoffset: 0; }
+#v-base #bs-dia-why.on .bk { opacity: 1; }
+#v-base #bs-dia-why.on .bk:nth-of-type(2) { transition-delay: .5s; } #v-base #bs-dia-why.on .bk:nth-of-type(3) { transition-delay: .9s; } #v-base #bs-dia-why.on .bk:nth-of-type(4) { transition-delay: 1.3s; } #v-base #bs-dia-why.on .bk:nth-of-type(5) { transition-delay: 1.7s; }
+#v-base #bs-dia-talk .sv { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+#v-base #bs-dia-talk .sv.b { stroke: var(--orange); stroke-dasharray: 6 6; }
+#v-base #bs-dia-talk .bl text { text-anchor: middle; font-size: 17px; }
+#v-base #bs-dia-talk .bl rect.hl { fill: var(--orange); }
+#v-base #bs-dia-talk .ref { fill: none; stroke: var(--accent-ink); stroke-width: 2; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 1.8s .5s ease; }
+#v-base #bs-dia-talk.on .ref { stroke-dashoffset: 0; }
+/* the twelve blocks */
+#v-base .bs-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: clamp(40px, 7vh, 76px); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+#v-base .bs-tile { padding: 18px 18px 22px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); min-height: 150px; transition: background .3s; }
+#v-base .bs-tile:hover { background: color-mix(in srgb, var(--orange) 14%, #fff); }
+#v-base .bs-tile i { display: block; font-style: normal; font-size: .62rem; letter-spacing: .08em; color: var(--mute); }
+#v-base .bs-tile h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.25rem, 1.8vw, 1.6rem); letter-spacing: -.01em; margin: 10px 0 8px; }
+#v-base .bs-tile p { margin: 0; font-size: .86rem; line-height: 1.55; color: var(--mute); }
+/* purchase request → purchase order */
+#v-base .bs-po { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 60px); margin-top: clamp(40px, 7vh, 76px); align-items: start; }
+#v-base .bs-po .pr { border: 1px solid var(--orange); border-radius: 10px; padding: clamp(20px, 3vw, 34px); }
+#v-base .bs-po .k { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); font-weight: 700; }
+#v-base .bs-po .it { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; margin: 8px 0 18px; }
+#v-base .bs-po dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+#v-base .bs-po dt { font-size: .7rem; color: var(--mute); }
+#v-base .bs-po dd { margin: 4px 0 0; font-family: var(--display); font-weight: 300; font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums; }
+#v-base .bs-po .ap { font-size: .86rem; color: var(--mute); margin: 18px 0 14px; }
+#v-base .bs-po .bar { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+#v-base .bs-po .bar i { display: block; height: 100%; width: 0; background: var(--accent-ink); transition: width .8s cubic-bezier(.2,.7,.2,1); }
+#v-base .bs-po .pay { font-size: .86rem; margin: 12px 0 0; color: var(--mute); }
+#v-base .bs-po .pay.done { color: var(--ink); font-weight: 700; }
+#v-base .bs-po ol { list-style: none; margin: 0 0 18px; padding: 0; min-height: 168px; }
+#v-base .bs-po li { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: .92rem; animation: bs-in .5s ease; }
+#v-base .bs-po li b { font-variant-numeric: tabular-nums; }
+@keyframes bs-in { from { opacity: 0; transform: translateY(8px); } }
+#v-base .end { padding-block: clamp(100px, 16vh, 180px) clamp(70px, 12vh, 130px); text-align: center; }
+#v-base .end h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 5.4rem); letter-spacing: -.028em; line-height: 1.05; margin: 14px 0 34px; }
+#v-base .bs-credit { margin: 28px 0 0; font-size: .74rem; color: var(--mute); }
+#v-base .bs-rv { opacity: 0; transform: translateY(18px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.2,1); }
+#v-base .bs-rv.on { opacity: 1; transform: none; }
+#bs-lb { position: fixed; inset: 0; z-index: 50; background: rgba(255,255,255,.96); display: none; place-items: center; padding: 56px 16px 40px; }
+#bs-lb.on { display: grid; }
+#bs-lb img { max-height: 100%; max-width: min(100%, 1200px); width: 100%; height: auto; object-fit: contain; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+#bs-lb button { position: absolute; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--orange); background: #fff; color: var(--accent-ink); font-size: 1.1rem; cursor: pointer; }
+#bs-lb button:hover { background: var(--orange); color: var(--ink); }
+#bs-lb .lx { top: 14px; right: 14px; }
+#bs-lb .lp { left: 14px; top: 50%; }
+#bs-lb .ln { right: 14px; top: 50%; }
+#bs-lb .lc { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); }
+@media (prefers-reduced-motion: reduce) {
+#v-base .bs-rv { opacity: 1; transform: none; transition: none; }
+}
+@media (max-width: 900px) {
+#v-base .sec-h { grid-template-columns: minmax(0, 1fr); }
+#v-base .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#v-base .bs-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#v-base .bs-po { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+#v-base .stats { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+#v-base .bs-hero-pic { grid-template-columns: repeat(2, 1fr); }
+#v-base .bs-hero-pic figure:nth-child(3) { display: none; }
+#v-base .bs-dia { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--orange) transparent; }
+#v-base .bs-dia svg { width: 640px; max-width: none; }
+#v-base .bs-tile { min-height: 0; }
+#v-base .bs-po dd { font-size: 1.7rem; }
+#bs-lb .lp, #bs-lb .ln { top: auto; bottom: 8px; }
+#bs-lb .lp { left: calc(50% - 56px); }
+#bs-lb .ln { right: calc(50% - 56px); }
+#bs-lb .lc { display: none; }
+}
 </style>
 </head>
 <body>
@@ -1261,6 +1376,166 @@ the puzzles</h2>
   <div class="in"><h2>Work Library</h2><ul class="rows" id="tx-lib"></ul></div>
 </section>
 <div id="tx-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lx" aria-label="Close">✕</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln" aria-label="Next">→</button><div class="lc"></div>
+</div>
+</div>
+<div class="view" id="v-base" hidden>
+<div class="bs-main">
+<header class="bs-hero bs-in">
+  <span class="label">Base.vn</span>
+  <h1>automating<br>the <span>core</span></h1>
+  <div class="bs-role bs-rv">
+    <div><b>Role</b><p>Business Analyst</p></div>
+    <div><b>Product</b><p>Base Service</p></div>
+    <div><b>Years</b><p>2024–2025</p></div>
+    <div><b>Where</b><p>Hanoi, Vietnam</p></div>
+  </div>
+  <div class="stats bs-rv">
+    <div class="stat"><strong>12</strong><span>block types to build any process with</span></div>
+    <div class="stat"><strong>74</strong><span>pages in the user guide I wrote</span></div>
+    <div class="stat"><strong>10,000+</strong><span>businesses on Base.vn</span></div>
+  </div>
+  <div class="bs-hero-pic bs-rv" id="bs-hero-pic"></div>
+  <nav class="jump bs-rv" aria-label="Sections">
+    <a href="#bs-why">The why</a><a href="#bs-blocks">The blocks</a><a href="#bs-talk">Services that talk</a><a href="#bs-case">PR → PO</a><a href="#bs-house">In the house</a><a href="#bs-guide">The guide</a>
+  </nav>
+</header>
+<!-- 01 -->
+<section class="sec bs-in" id="bs-why">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">01 · The why</span><h2>one request,<br>three apps</h2></div>
+    <div>
+      <p class="bs-lead">Base built a deep app for every job. Issuing one asset meant a proposal in Base Asset, an approval in Base Request and a cost in Base Expense, so the information, and the people chasing it, were scattered across products.</p>
+      <ul class="meta"><li>Example: <b>issuing an asset</b></li><li>Base Asset · Base Request · Base Expense</li></ul>
+    </div>
+  </div>
+  <figure class="bs-dia bs-rv" id="bs-dia-why" aria-label="Three separate apps become one Service">
+    <svg viewBox="0 0 1000 300" role="img">
+      <g class="bs-before">
+        <text x="0" y="22" class="k">Before</text>
+        <rect x="0" y="44" width="250" height="64" rx="10"/><text x="20" y="72">Base Asset</text><text x="20" y="94" class="s">propose &amp; record the asset</text>
+        <rect x="375" y="44" width="250" height="64" rx="10"/><text x="395" y="72">Base Request</text><text x="395" y="94" class="s">approve the purchase</text>
+        <rect x="750" y="44" width="250" height="64" rx="10"/><text x="770" y="72">Base Expense</text><text x="770" y="94" class="s">record the cost</text>
+      </g>
+      <g class="bs-after">
+        <text x="0" y="176" class="k">With Base Service</text>
+        <path class="ln" d="M0 236 H1000"/>
+        <g class="bk"><rect x="0" y="206" width="170" height="60" rx="10"/><text x="18" y="242">Propose</text></g>
+        <g class="bk"><rect x="276" y="206" width="170" height="60" rx="10"/><text x="294" y="242">Approve</text></g>
+        <g class="bk"><rect x="552" y="206" width="170" height="60" rx="10"/><text x="570" y="242">Buy</text></g>
+        <g class="bk"><rect x="830" y="206" width="170" height="60" rx="10"/><text x="848" y="242">Record cost</text></g>
+      </g>
+    </svg>
+    <figcaption>One Service, one ticket, every step in one place.</figcaption>
+  </figure>
+  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="07 08 10 19"></div>
+</section>
+<!-- 02 -->
+<section class="sec bs-in" id="bs-blocks">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">02 · The blocks</span><h2>every process,<br>a stack of blocks</h2></div>
+    <div>
+      <p class="bs-lead">Base Service is a set of LEGO bricks for software. Each process is a Service, each action inside it is a Block, and a Ticket travels from block to block, picking up what the next step needs.</p>
+      <ul class="meta"><li><b>12</b> block types</li><li>Service · Block · Ticket</li></ul>
+    </div>
+  </div>
+  <div class="bs-tiles bs-rv" id="bs-tiles"></div>
+  <div class="gl">Core concept</div><div class="wall bs-rv" data-s="14 16 18 11"></div>
+  <div class="gl">Block types</div><div class="wall bs-rv" data-s="21 23 25 28 32 34 36 38 40"></div>
+</section>
+<!-- 03 -->
+<section class="sec bs-in" id="bs-talk">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">03 · Services that talk</span><h2>processes<br>inside processes</h2></div>
+    <div>
+      <p class="bs-lead">“Issue an asset” can call “Buy an asset” and wait for it to finish. Custom fields reference each other across blocks and services, so a value changed in one place updates everywhere it is used.</p>
+      <ul class="meta"><li>Related services &amp; tickets</li><li>Field references</li><li>Link ticket to ticket</li></ul>
+    </div>
+  </div>
+  <figure class="bs-dia bs-rv" id="bs-dia-talk" aria-label="Service A calls Service B; a field in Service B updates a field in Service A">
+    <svg viewBox="0 0 1000 345" role="img">
+      <rect class="sv" x="0" y="20" width="1000" height="230" rx="14"/>
+      <text x="22" y="52" class="k">Service A · Issue an asset</text>
+      <rect class="sv b" x="560" y="80" width="420" height="150" rx="12"/>
+      <text x="580" y="108" class="k">Service B · Buy an asset</text>
+      <g class="bl">
+        <rect x="22" y="140" width="90" height="44" rx="8"/><text x="67" y="168">1</text>
+        <rect x="152" y="140" width="90" height="44" rx="8"/><text x="197" y="168">2</text>
+        <rect x="282" y="100" width="90" height="44" rx="8"/><text x="327" y="128">3</text>
+        <rect x="282" y="180" width="90" height="44" rx="8" class="hl"/><text x="327" y="208">4</text>
+        <rect x="412" y="140" width="90" height="44" rx="8"/><text x="457" y="168">5</text>
+        <rect x="580" y="140" width="80" height="44" rx="8"/><text x="620" y="168">6</text>
+        <rect x="690" y="140" width="80" height="44" rx="8"/><text x="730" y="168">7</text>
+        <rect x="800" y="124" width="80" height="44" rx="8"/><text x="840" y="152">8</text>
+        <rect x="800" y="180" width="80" height="44" rx="8" class="hl"/><text x="840" y="208">9</text>
+      </g>
+      <path class="ln" d="M112 162 H152 M242 162 H262 V122 H282 M262 162 V202 H282 M372 122 H392 V162 H412 M372 202 H392 V162 M502 162 H580 M660 162 H690 M770 162 H785 V146 H800 M785 162 V202 H800"/>
+      <path class="ref" d="M840 226 C 840 320, 330 330, 327 226"/>
+      <text x="1000" y="338" class="s" text-anchor="end">Block 9 in Service B updates a field in Block 4 of Service A</text>
+    </svg>
+  </figure>
+  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="50 56 58 62 63 72 74"></div>
+</section>
+<!-- 04 -->
+<section class="sec bs-in" id="bs-case">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">04 · Case study</span><h2>counting what's<br>left to buy</h2></div>
+    <div>
+      <p class="bs-lead">A purchase request names the item and the quantity. Above 500 units it goes to the head of procurement, otherwise to a specialist. Each purchase order adds to “bought” and takes from “still to buy”, and payment opens only when the remainder reaches zero.</p>
+      <ul class="meta"><li>Purchase request → Purchase order</li><li>References + a transformer block</li></ul>
+    </div>
+  </div>
+  <div class="bs-po bs-rv" id="bs-po">
+    <div class="pr">
+      <span class="k">Purchase request · demo</span>
+      <p class="it">Office chairs</p>
+      <dl><div><dt>Total to buy</dt><dd>1,200</dd></div><div><dt>Bought</dt><dd data-f="b">0</dd></div><div><dt>Still to buy</dt><dd data-f="r">1,200</dd></div></dl>
+      <p class="ap">1,200 &gt; 500, so the <b>head of procurement</b> approves.</p>
+      <div class="bar"><i data-f="w"></i></div>
+      <p class="pay" data-f="p">Payment file opens at 0.</p>
+    </div>
+    <div class="pos"><ol data-f="l"></ol><button class="btn" type="button" data-f="go">Add a purchase order!</button></div>
+  </div>
+  <div class="gl">From the guide</div><div class="wall bs-rv" data-s="64 65"></div>
+</section>
+<!-- 05 -->
+<section class="sec bs-in" id="bs-house">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">05 · In the house</span><h2>Base,<br>built on Base</h2></div>
+    <div>
+      <p class="bs-lead">A SaaS company that builds tools for other businesses needed its own house in order too. I synced contracts across departments and automated revenue and commission flows, then trained and supported the teams who would live with them every day.</p>
+      <ul class="meta"><li>Revenue Center</li><li>Contracts · Revenue · Commission</li><li>Internal and client-facing projects</li></ul>
+    </div>
+  </div>
+</section>
+<!-- 06 -->
+<section class="sec bs-in" id="bs-guide">
+  <hr class="bs-rule">
+  <div class="sec-h">
+    <div><span class="label">06 · The guide</span><h2>go-live<br>is day one</h2></div>
+    <div>
+      <p class="bs-lead">I wrote the whole user guide, 74 pages from “What is Base Service?” to linking tickets, so the people using it every day could build their own blocks.</p>
+      <ul class="meta"><li><b>74</b> pages</li><li>Updated <b>08.10.2024</b></li></ul>
+    </div>
+  </div>
+  <div class="wall bs-rv" data-s="02 03 06 13 20 66 68 70"></div>
+</section>
+<section class="end bs-in">
+  <span class="label">Turn the page</span>
+  <h2>more chapters<br>to flip through</h2>
+  <a class="btn" href="#/chapters">Back to the chapters!</a>
+  <p class="bs-credit">Slides: Base Service user guide, written by Margot</p>
+</section>
+</div>
+<section class="band cs-lib">
+  <div class="in"><h2>Work Library</h2><ul class="rows" id="bs-lib"></ul></div>
+</section>
+<div id="bs-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
   <button class="lx" aria-label="Close">✕</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln" aria-label="Next">→</button><div class="lc"></div>
 </div>
 </div>
@@ -1954,7 +2229,7 @@ the puzzles</h2>
       p: ['Hanoi. A SaaS company that builds tools for other businesses, and needed its own house in order too.',
           'I <b>synced contracts across departments</b> and <b>automated revenue and commission</b> flows, then trained and supported the teams who would live with them every day, on internal and client-facing projects.'],
       caps: ['Business analysis', 'Process automation', 'Requirements & specs', 'Training & rollout'],
-      slides: ['Contract flow, mapped', 'Commission, automated', 'Teams, trained'] },
+      slides: ['Contract flow, mapped', 'Commission, automated', 'Teams, trained'], img: 'img/og-basevn.png' },
     { id: 'msb', loc: 'Hanoi, Vietnam', mark: 'Maritime Bank', yr: '2023', role: 'Data Administration', sc: 'sc4', title: 'counting risk before it counts',
       p: ['A bank, a regulation and a lot of rows. Under <b>IFRS 9</b>, expected credit loss has to be calculated, explained and trusted.',
           'I helped <b>automate the expected credit loss</b> process and turned it into <b>Power BI dashboards</b> people could actually read.'],
@@ -1994,7 +2269,7 @@ the puzzles</h2>
     hust: '<span class="lg lgi" role="img" aria-label="HUST" style="--m:url(data:image/png;base64,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);--ar:4.870;--sq:2.207"></span>'
   };
   var wkBox = document.getElementById('wk-items');
-  function slug(id) { return id === 'tedx' ? 'tedxbachkhoa' : id; }
+  function slug(id) { return id === 'tedx' ? 'tedxbachkhoa' : id === 'base' ? 'basevn' : id; }
   var LIST_ORDER = ['fti', 'base', 'msb', 'mom', 'hust', 'orangerie', 'tedx', 'sinno', 'yln'];
   var WORK_LIST = LIST_ORDER.map(function (id) { return WORK.filter(function (x) { return x.id === id; })[0]; });
   wkBox.innerHTML = WORK_LIST.map(function (w) {
@@ -2021,6 +2296,9 @@ the puzzles</h2>
     return true;
   }
   document.getElementById('tx-lib').innerHTML = WORK_LIST.filter(function (x) { return x.id !== 'tedx'; }).map(function (x) {
+    return '<li><a href="#/chapters/' + slug(x.id) + '"><span class="y">' + x.yr.slice(0, 4) + '</span><span class="t">' + x.title + '<small>' + x.mark + ' · ' + x.role + '</small></span><span class="ar">→</span></a></li>';
+  }).join('');
+  document.getElementById('bs-lib').innerHTML = WORK_LIST.filter(function (x) { return x.id !== 'base'; }).map(function (x) {
     return '<li><a href="#/chapters/' + slug(x.id) + '"><span class="y">' + x.yr.slice(0, 4) + '</span><span class="t">' + x.title + '<small>' + x.mark + ' · ' + x.role + '</small></span><span class="ar">→</span></a></li>';
   }).join('');
   var baseTitle = document.title;
@@ -2145,11 +2423,12 @@ the puzzles</h2>
     var h = location.hash, om = h.match(/^#\/(me|about|profile|my-journey|use-cases|blog|work|consulting|stories)(\/.*)?$/);
     if (om) { history.replaceState(null, '', '#/' + OLDNAME[om[1]] + (om[2] || '')); h = location.hash; }
     if (/^#\/(chapters|work)\/tedx\/?$/.test(h)) { history.replaceState(null, '', '#/chapters/tedxbachkhoa'); h = location.hash; }
+    if (/^#\/(chapters|work)\/base\/?$/.test(h)) { history.replaceState(null, '', '#/chapters/basevn'); h = location.hash; }
     h = h.replace(/^#\/(chapters|cases|words)/, function (x, k) { return '#/' + VIEW[k]; });
     if (/^#\/abt-me\/?$/.test(h)) h = '#/'; // Abt me is the home page
     var m = h.match(/^#\/(\w+)/), v = m && document.getElementById('v-' + m[1]) ? m[1] : 'home';
-    var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && cm[1] === 'tedxbachkhoa' ? 'tedx' : cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
-    if (shown === 'tedx') document.title = 'TEDx Bachkhoa · Co-founder & Head of Communications · Margot Tran'; else if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
+    var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && cm[1] === 'tedxbachkhoa' ? 'tedx' : cm && cm[1] === 'basevn' ? 'base' : cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
+    if (shown === 'tedx') document.title = 'TEDx Bachkhoa · Co-founder & Head of Communications · Margot Tran'; else if (shown === 'base') document.title = 'Base.vn · Business Analyst · Margot Tran'; else if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
     views.forEach(function (el) { el.hidden = el.id !== 'v-' + shown; });
     document.body.setAttribute('data-view', v);
     navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/abt-me' : '#/' + (PUB[v] || v))); renderNav(a); });
@@ -2257,6 +2536,67 @@ the puzzles</h2>
   } else els.forEach(function (e) { e.classList.add('on'); });
 })();
 
+</script>
+<script>
+// Base.vn chapter: slides from Margot's Base Service guide, the twelve blocks, a PR → PO counter, its own image viewer
+(function () {
+  var root = document.getElementById('v-base'); if (!root) return;
+  var S = function (n) { return 'basevn/img/s' + n + '.jpg'; }, seq = [];
+  function fig(n, box) {
+    var f = document.createElement('figure'), i = seq.length;
+    f.innerHTML = '<img loading="lazy" decoding="async" src="' + S(n) + '" alt="Base Service user guide, page ' + (+n) + '">';
+    seq.push({ src: S(n), alt: 'Page ' + (+n) + ' of 74' });
+    f.addEventListener('click', function () { open(i); }); box.appendChild(f);
+  }
+  ['01', '04', '09'].forEach(function (n) { fig(n, document.getElementById('bs-hero-pic')); });
+  // four across when the slides fill whole rows of four, else three, so no slide sits alone on a row
+  root.querySelectorAll('.wall[data-s]').forEach(function (w) { var ns = w.dataset.s.split(' '), k = ns.length; if (k <= 4) w.style.setProperty('--c', k); else if (k % 4 === 0 || k % 4 === 3) w.style.setProperty('--c', 4); ns.forEach(function (n) { fig(n, w); }); });
+
+  var BLOCKS = [
+    ['Start', 'Where a Service begins. A ticket here switches it on.'],
+    ['Webhook in', 'Starts a Service from outside and drops a ticket at any block.'],
+    ['Custom form', 'Asks for the fields this step needs: who, which team, what for.'],
+    ['Step', 'A task someone marks done to move the ticket on.'],
+    ['Approval', 'Approve, approve and forward, add an approver, reject, or ask for more.'],
+    ['Condition', 'Checks the rules and routes the ticket on its own.'],
+    ['Transformer', 'Changes or fills in fields as the ticket passes.'],
+    ['Integrated apps', 'Hands the work to Base Expense or Base Income.'],
+    ['Related service', 'Opens a linked ticket in another Service.'],
+    ['Merge', 'Picks the flow back up once the related Service is done.'],
+    ['End', 'The ticket has walked the whole Service. A Service can have many ends.'],
+    ['Webhook out', 'Sends the data out of the app.']
+  ];
+  document.getElementById('bs-tiles').innerHTML = BLOCKS.map(function (b, i) {
+    return '<div class="bs-tile"><i>' + (i < 9 ? '0' : '') + (i + 1) + '</i><h3>' + b[0] + '</h3><p>' + b[1] + '</p></div>';
+  }).join('');
+
+  // PR → PO: demo numbers, three orders bring "still to buy" down to zero
+  var po = document.getElementById('bs-po'), q = function (k) { return po.querySelector('[data-f="' + k + '"]'); };
+  var TOTAL = 1200, ORDERS = [500, 450, 250], done = 0, fmt = function (x) { return x.toLocaleString('en-US'); };
+  function paint() {
+    var b = ORDERS.slice(0, done).reduce(function (a, x) { return a + x; }, 0);
+    q('b').textContent = fmt(b); q('r').textContent = fmt(TOTAL - b); q('w').style.width = (100 * b / TOTAL) + '%';
+    q('l').innerHTML = ORDERS.slice(0, done).map(function (x, i) { return '<li><span>Purchase order ' + (i + 1) + '</span><b>+' + fmt(x) + '</b></li>'; }).join('');
+    q('p').textContent = b === TOTAL ? 'Still to buy is 0: the payment file opens.' : 'Payment file opens at 0.'; q('p').classList.toggle('done', b === TOTAL);
+    q('go').textContent = done === ORDERS.length ? 'Run it again!' : 'Add a purchase order!';
+  }
+  q('go').addEventListener('click', function () { done = done === ORDERS.length ? 0 : done + 1; paint(); });
+  paint();
+
+  var lb = document.getElementById('bs-lb'), im = lb.querySelector('img'), ct = lb.querySelector('.lc'), cur = 0;
+  function show(i) { cur = (i + seq.length) % seq.length; im.src = seq[cur].src; im.alt = seq[cur].alt; ct.textContent = (cur + 1) + ' / ' + seq.length + '  ·  ' + seq[cur].alt; }
+  function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }
+  function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+  lb.querySelector('.lx').onclick = close; lb.querySelector('.lp').onclick = function () { show(cur - 1); }; lb.querySelector('.ln').onclick = function () { show(cur + 1); };
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+  var els = root.querySelectorAll('.bs-rv, .bs-dia');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  } else els.forEach(function (e) { e.classList.add('on'); });
+})();
 </script>
 </body>
 </html>

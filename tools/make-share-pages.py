@@ -79,7 +79,7 @@ for m in re.finditer(r'<article class="post" id="post-([\w-]+)"(.*?)</article>',
 # My journey: entries of the WORK array; an optional img: '…' field becomes the preview
 for m in re.finditer(r"\{ id: '([\w-]+)',(?: loc: '(?:[^'\\]|\\.)*',)? mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
     wid, mark, role, rest = m.group(1), m.group(2).replace("\\'", "'"), m.group(3).replace("\\'", "'"), m.group(4)
-    wid = {'tedx': 'tedxbachkhoa'}.get(wid, wid)  # the TEDx chapter's public name
+    wid = {'tedx': 'tedxbachkhoa', 'base': 'basevn'}.get(wid, wid)  # public names of the TEDx and Base.vn chapters
     img = re.search(r"\bimg: '([^']+)'", rest)
     p = re.search(r"p: \['((?:[^'\\]|\\.)*)'", rest)
     pages['chapters/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
@@ -89,8 +89,8 @@ for m in re.finditer(r"\{ id: '([\w-]+)',(?: loc: '(?:[^'\\]|\\.)*',)? mark: '((
 # those pages stay, point their canonical URL at the new name and send visitors to the new hash
 LEGACY = {'abt-me': ['me', 'about', 'profile'], 'chapters': ['my-journey'], 'cases': ['use-cases'], 'words': ['blog']}
 
-# the TEDx chapter was first published as chapters/tedx
-ALIAS = {'chapters/tedxbachkhoa': ['chapters/tedx']}
+# the TEDx and Base.vn chapters were first published as chapters/tedx and chapters/base
+ALIAS = {'chapters/tedxbachkhoa': ['chapters/tedx'], 'chapters/basevn': ['chapters/base']}
 
 for path, (title, desc, img, target) in pages.items():
     head, _, rest = path.partition('/')
