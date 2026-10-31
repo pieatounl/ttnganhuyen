@@ -329,14 +329,13 @@ body.ready .reveal .d1 { transition-delay: .05s; } body.ready .reveal .d2 { tran
 
 .sun { width: 2.69em; height: 2.69em; margin: -0.82em -0.25em -0.82em 0.02em; flex: none; overflow: visible; cursor: pointer; }
 .sun .rays { transform-origin: 113px 82px; opacity: 0; transform: scale(.6); transition: opacity .8s, transform .9s cubic-bezier(.2,.7,.2,1); }
-.sun .disc { fill: #cfd6e2; transform-origin: 113px 82px; transition: fill 1s, transform .6s cubic-bezier(.2,.7,.2,1); }
+.sun .disc { fill: var(--orange); transform-origin: 113px 82px; transition: fill 1s, transform .6s cubic-bezier(.2,.7,.2,1); }
 .sun .shade { transition: transform 1.2s cubic-bezier(.6,0,.2,1); }
 .sun .strokes path { fill: none; stroke: var(--ink); stroke-width: 8.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .sun .strokes { transition: opacity .5s .3s; }
 .sun .png { opacity: 0; transition: opacity .9s; filter: brightness(0) invert(.27); } .sun.drawn .png { opacity: 1; }
 .sun .orb { opacity: 0; transition: opacity .9s; } .sun.lit .orb { opacity: 1; }
 .sun.sunup .shade { transform: translate(64px, -46px); }
-.sun.sunup .disc { fill: var(--orange); }
 .sun.sunup .rays { opacity: 1; transform: none; }
 .sun .blush { fill: none; stroke: #a9b8d0; stroke-width: 3.4; stroke-linecap: round; transition: opacity .6s; }
 .sun.sunup .blush { opacity: 0; }
