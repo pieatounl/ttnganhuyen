@@ -805,6 +805,107 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 .post-back { display: inline-block; margin-top: 28px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--orange); }
 a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; } a.sb-cta:hover { color: var(--accent-ink); border-bottom-color: var(--orange); }
 .wk-h .wk-b { color: var(--orange) !important; -webkit-text-fill-color: var(--orange); }
+
+/* TEDx Bachkhoa chapter */
+#v-tedx { --g: #3ddc4a; --r: #e0322d; --b: #5a7fe0; --gut: clamp(16px, 6vw, 96px); overflow-x: clip; }
+#v-tedx img { display: block; max-width: 100%; }
+#v-tedx .tx-in { padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); max-width: 1500px; margin-inline: auto; }
+#v-tedx .tx-hero { padding-top: clamp(110px, 18vh, 190px); }
+#v-tedx .tx-hero h1 span { color: var(--accent-ink); }
+#v-tedx .tx-credit { margin: 28px 0 0; font-size: .74rem; color: var(--mute); }
+#v-tedx .tx-hero { padding-top: clamp(130px, 22vh, 220px); }
+#v-tedx .tx-hero h1 { font-family: var(--display); font-weight: 300; font-size: clamp(3.2rem, 11vw, 10.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 22px 0 0; }
+#v-tedx .tx-hero h1 span { color: var(--accent-ink); }
+#v-tedx .tx-rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+#v-tedx .tx-role { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px 40px; padding-block: 26px; margin-top: clamp(26px, 5vh, 56px); border-block: 1px solid var(--rule); }
+#v-tedx .tx-role b { display: block; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+#v-tedx .tx-role p { margin: 0; font-size: .98rem; }
+#v-tedx .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: clamp(34px, 6vh, 64px); }
+#v-tedx .stat { border-left: 1px solid var(--orange); padding-left: 16px; }
+#v-tedx .stat strong { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.6rem); letter-spacing: -.03em; line-height: 1; }
+#v-tedx .stat span { display: block; margin-top: 8px; font-size: .84rem; color: var(--mute); max-width: 18ch; }
+#v-tedx .tx-hero-pic { margin-top: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.4vw, 18px); }
+#v-tedx .tx-hero-pic figure { margin: 0; cursor: zoom-in; overflow: hidden; border-radius: 4px; }
+#v-tedx .tx-hero-pic img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+#v-tedx .jump { display: flex; flex-wrap: wrap; gap: 10px; padding-block: clamp(34px, 6vh, 60px) 0; }
+#v-tedx .jump a { text-decoration: none; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 9px 16px; border: 1px solid var(--orange); border-radius: 99px; transition: background .3s; }
+#v-tedx .jump a:hover { background: var(--orange); }
+#v-tedx .sec { padding-top: clamp(90px, 14vh, 150px); }
+#v-tedx .sec-h { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px clamp(30px, 6vw, 96px); align-items: end; }
+#v-tedx .sec h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.6rem, 7.4vw, 7rem); letter-spacing: -.028em; line-height: 1.04; margin: 14px 0 0; }
+#v-tedx .sec .tx-lead { margin: 0; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.75; max-width: 520px; }
+#v-tedx .meta { display: flex; flex-wrap: wrap; gap: 6px 26px; margin: 22px 0 0; padding: 0; list-style: none; font-size: .86rem; color: var(--mute); }
+#v-tedx .meta b { color: var(--ink); font-weight: 700; }
+#v-tedx .gl { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin: clamp(34px,6vh,60px) 0 0; }
+#v-tedx .gl::before { content: "( "; }
+#v-tedx .gl::after { content: " )"; }
+#v-tedx .wall { columns: 3; column-gap: clamp(10px, 1.6vw, 22px); margin-top: clamp(30px, 5vh, 56px); }
+#v-tedx .wall figure { margin: 0 0 clamp(10px, 1.6vw, 22px); break-inside: avoid; cursor: zoom-in; position: relative; overflow: hidden; border-radius: 4px; background: #f4f5f7; }
+#v-tedx .wall img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+#v-tedx .wall figure:hover img { transform: scale(1.03); }
+#v-tedx .wall figcaption { position: absolute; left: 10px; bottom: 10px; font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #fff; padding: 4px 9px; border-radius: 99px; opacity: 0; transform: translateY(6px); transition: .3s; }
+#v-tedx .wall figure:hover figcaption { opacity: 1; transform: none; }
+#v-tedx .track { margin-top: clamp(40px, 7vh, 76px); }
+#v-tedx .track-h { display: flex; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+#v-tedx .track-h i { width: 12px; height: 12px; border-radius: 50%; flex: none; align-self: center; }
+#v-tedx .track-h h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.8rem, 3.6vw, 3.2rem); letter-spacing: -.02em; line-height: 1; margin: 0; }
+#v-tedx .track-h h3 b { font-weight: 800; }
+#v-tedx .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(26px, 4vw, 48px) clamp(10px, 1.6vw, 20px); padding: 22px 0 6px; }
+#v-tedx .ep { margin: 0; grid-column: 1 / -1; min-width: 0; }
+#v-tedx .ep.one { grid-column: span 2; }
+#v-tedx .ep.th { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(12px, 2vw, 28px); align-items: center; }
+#v-tedx .ep.th .thm { grid-row: 1 / 3; cursor: zoom-in; border-radius: 4px; overflow: hidden; }
+#v-tedx .ep.th .thm img { display: block; width: 100%; height: auto; }
+#v-tedx .ep.th figcaption { grid-column: 2; margin-top: 0; }
+#v-tedx .key { margin: 0 0 22px; max-width: 260px; cursor: zoom-in; border-radius: 4px; overflow: hidden; }
+#v-tedx .key img { display: block; width: 100%; height: auto; }
+#v-tedx .ep .pan { overflow: hidden; border-radius: 4px; cursor: zoom-in; background: #f4f5f7; }
+#v-tedx .ep .pan img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+#v-tedx .ep .pan:hover img { transform: scale(1.015); }
+#v-tedx .ep figcaption { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; margin-top: 12px; font-size: .9rem; max-width: 62ch; }
+#v-tedx .ep figcaption b { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+#v-tedx .ep figcaption b::before { content: "( "; }
+#v-tedx .ep figcaption b::after { content: " )"; }
+#v-tedx .end { padding-block: clamp(100px, 16vh, 180px) clamp(70px, 12vh, 130px); text-align: center; }
+#v-tedx .end h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 5.4rem); letter-spacing: -.028em; line-height: 1.05; margin: 14px 0 34px; }
+#v-tedx .tx-rv { opacity: 0; transform: translateY(18px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.2,1); }
+#v-tedx .tx-rv.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+#v-tedx .tx-rv { opacity: 1; transform: none; transition: none; }
+#v-tedx html { scroll-behavior: auto; }
+}
+#tx-lb { position: fixed; inset: 0; z-index: 50; background: rgba(255,255,255,.96); display: none; place-items: center; padding: 56px 16px 40px; }
+#tx-lb.on { display: grid; }
+#tx-lb img { max-height: 100%; max-width: min(100%, 1500px); border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+#tx-lb button { position: absolute; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--orange); background: #fff; color: var(--accent-ink); font-size: 1.1rem; cursor: pointer; }
+#tx-lb button:hover { background: var(--orange); color: var(--ink); }
+#tx-lb .lx { top: 14px; right: 14px; }
+#tx-lb .lp { left: 14px; top: 50%; }
+#tx-lb .ln { right: 14px; top: 50%; }
+#tx-lb .lc { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--mute); }
+@media (max-width: 900px) {
+#v-tedx .sec-h { grid-template-columns: minmax(0, 1fr); }
+#v-tedx .wall { columns: 2; }
+#v-tedx .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+#v-tedx .strip { grid-template-columns: minmax(0, 1fr); }
+#v-tedx .ep.one { grid-column: 1 / -1; }
+#v-tedx .ep.th { grid-template-columns: minmax(0, 1fr); }
+#v-tedx .ep.th .thm { grid-row: auto; }
+#v-tedx .ep.th figcaption { grid-column: 1; }
+#v-tedx .key { max-width: 200px; }
+#v-tedx .ep:not(.one) .pan { overflow-x: auto; border-radius: 0; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--orange) transparent; }
+#v-tedx .ep:not(.one) .pan img { width: calc(var(--n) * 78%); max-width: none; }
+#v-tedx .tx-hero-pic { grid-template-columns: repeat(2, 1fr); }
+#v-tedx .tx-hero-pic figure:nth-child(3) { display: none; }
+#tx-lb .lp, #tx-lb .ln { top: auto; bottom: 8px; }
+#tx-lb .lp { left: calc(50% - 56px); }
+#tx-lb .ln { right: calc(50% - 56px); }
+#tx-lb .lc { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -1058,6 +1159,101 @@ the puzzles</h2>
       <a class="btn" href="#/cases">Step inside the cases!</a>
     </div>
   </section>
+</div>
+<div class="view" id="v-tedx" hidden>
+<div class="tx-main">
+<header class="tx-hero tx-in">
+  <span class="label">TEDx Bachkhoa</span>
+  <h1>curating<br>the <span>narrative</span></h1>
+
+  <div class="tx-role tx-rv">
+    <div><b>Role</b><p>Co-founder &amp; Head of Communications</p></div>
+    <div><b>Also</b><p>Co-organizer, Reset</p></div>
+    <div><b>Years</b><p>2020–2023</p></div>
+    <div><b>Where</b><p>Hanoi University of Science and Technology, Hanoi</p></div>
+  </div>
+
+  <div class="stats tx-rv">
+    <div class="stat"><strong>15–25</strong><span>people in the communications team</span></div>
+    <div class="stat"><strong>42</strong><span>articles across two series, EX and RE</span></div>
+    <div class="stat"><strong>+210%</strong><span>organic reach with the EX series</span></div>
+    <div class="stat"><strong>+250%</strong><span>engagement around the event Reset</span></div>
+  </div>
+
+  <div class="hero-pic tx-rv" id="heroPic"></div>
+
+  <nav class="jump tx-rv" aria-label="Sections">
+    <a href="#zero">From zero</a><a href="#unveiled">The Unveiled</a><a href="#re">The RE series</a><a href="#reset">Reset</a>
+  </nav>
+</header>
+
+<!-- 01 -->
+<section class="sec tx-in" id="zero">
+  <hr class="tx-rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">01 · From zero</span><h2>a blank page,<br>a name, a crew</h2></div>
+    <div>
+      <p class="tx-lead">A TEDx chapter we started from nothing at Hanoi University of Science and Technology. I founded the fanpage and built the brand from scratch, then grew the team that kept it speaking.</p>
+      <ul class="meta"><li><b>01.11.2021</b> our first meeting</li><li><b>2</b> recruitment rounds</li></ul>
+    </div>
+  </div>
+  <div class="gl">Recruitment · round 1</div><div class="wall tx-rv" id="w-zero"></div>
+  <div class="gl">Recruitment · round 2</div><div class="wall tx-rv" id="w-zero2"></div>
+</section>
+
+<!-- 02 -->
+<section class="sec tx-in" id="unveiled">
+  <hr class="tx-rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">02 · The Unveiled</span><h2>the first<br>stage</h2></div>
+    <div>
+      <p class="tx-lead">Our first event, shaped by the EX series: EXistence, EXposure, EXploration. Twenty-four articles built the story before anyone took the stage, and organic reach grew by 210%.</p>
+      <ul class="meta"><li><b>27.03.2022</b></li><li>Speakers <b>Hiên, Luke Ngo, Trường Vũ, Ngọc Khánh</b></li></ul>
+    </div>
+  </div>
+  <div class="wall tx-rv" id="w-unveiled"></div>
+  <div class="gl">Speakers &amp; guests</div><div class="wall tx-rv" id="w-guests"></div>
+</section>
+
+<!-- 03 -->
+<section class="sec tx-in" id="re">
+  <hr class="tx-rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">03 · The RE series</span><h2>three colours,<br>one conversation</h2></div>
+    <div>
+      <figure class="key tx-rv" id="keyvis"><img src="tedx/img/th-key.jpg" alt="RE series key visual: insecuRE, REady, dREaming"></figure>
+      <p class="tx-lead">Eighteen articles on dREaming, insecuRE and REady. Each phase got its own colour and its own episodes, so a feed of small posts still read as one story.</p>
+      <ul class="meta"><li><b>18</b> articles</li><li>Art, individualism, pride, love languages, AI</li></ul>
+    </div>
+  </div>
+  <div class="track tx-rv"><div class="track-h"><i style="background:var(--g)"></i><h3>d<b>RE</b>aming</h3></div><div class="strip" id="s-dream"></div></div>
+  <div class="track tx-rv"><div class="track-h"><i style="background:var(--r)"></i><h3>insecu<b>RE</b></h3></div><div class="strip" id="s-insec"></div></div>
+  <div class="track tx-rv"><div class="track-h"><i style="background:var(--b)"></i><h3><b>RE</b>ady</h3></div><div class="strip" id="s-ready"></div></div>
+</section>
+
+<!-- 04 -->
+<section class="sec tx-in" id="reset">
+  <hr class="tx-rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">04 · Reset</span><h2>a new insight<br>into what<br>people know</h2></div>
+    <div>
+      <p class="tx-lead">Reset looked again at what everyone already knows, so it would speak to today's generation. The campaign lifted engagement by 250%.</p>
+      <ul class="meta"><li><b>08.01.2023</b></li><li>10th floor, Ta Quang Buu Library</li><li>Speakers <b>Lê Nhật Nam, Trương Công Tuấn, Teresa Xuan Nguyen, Javier Gonzalez Nunez</b></li></ul>
+    </div>
+  </div>
+  <div class="wall tx-rv" id="w-reset"></div>
+</section>
+
+<section class="end tx-in">
+  <span class="label">Turn the page</span>
+  <h2>more chapters<br>to flip through</h2>
+  <a class="btn" href="#/chapters">Back to the chapters!</a>
+  <p class="tx-credit">Photos: TEDx Bachkhoa fanpage</p>
+</section>
+</div>
+<div id="tx-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lx" aria-label="Close">✕</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln" aria-label="Next">→</button><div class="lc"></div>
+</div>
 </div>
 <div class="view" id="v-case" hidden>
   <section class="band cs-head">
@@ -1769,7 +1965,7 @@ the puzzles</h2>
       p: ['A TEDx chapter we started from zero at Hanoi University of Science and Technology. I led a communications team of <b>15–25 people</b>.',
           'The <b>EX series</b> (EXistence, EXposure, EXploration) ran 24 articles and grew organic reach by <b>210%</b>. The <b>RE series</b> (dREaming, insecuRE, REady) added 18 more, and our event <b>Reset</b> lifted engagement by <b>250%</b>.'],
       caps: ['Brand & storytelling', 'Content series', 'Team leadership', 'Event communications'],
-      slides: ['EX series', 'RE series', 'Reset'] },
+      slides: ['EX series', 'RE series', 'Reset'], img: 'img/og-tedxbachkhoa.png' },
     { id: 'hust', loc: 'Hanoi, Vietnam', mark: 'Hanoi University of Science and Technology', yr: '2020–2024', role: 'BBA Business Analytics', sc: 'sc2', title: '1st in Business Analytics',
       p: ['Four years of Business Analytics at Hanoi University of Science and Technology, graduating <b>first in my major</b> with a GPA of 3.65.',
           'Along the way: <b>1st of 200+ teams at NestQuant</b>, <b>first runner-up at the FTU Data Science Talent Contest 2022</b>, and <b>ICAEW Rising Stars</b>.'],
@@ -1789,12 +1985,13 @@ the puzzles</h2>
     hust: '<span class="lg lgi" role="img" aria-label="HUST" style="--m:url(data:image/png;base64,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);--ar:4.870;--sq:2.207"></span>'
   };
   var wkBox = document.getElementById('wk-items');
+  function slug(id) { return id === 'tedx' ? 'tedxbachkhoa' : id; }
   var LIST_ORDER = ['fti', 'base', 'msb', 'mom', 'hust', 'orangerie', 'tedx', 'sinno', 'yln'];
   var WORK_LIST = LIST_ORDER.map(function (id) { return WORK.filter(function (x) { return x.id === id; })[0]; });
   wkBox.innerHTML = WORK_LIST.map(function (w) {
     return '<article class="wk-item reveal"><div class="wk-mark">' + w.mark + '<i>' + w.yr + '</i><i>' + w.loc + '</i></div>' +
-      '<div><h3><a href="#/chapters/' + w.id + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
-      '<a class="wk-more" href="#/chapters/' + w.id + '">Flip to this chapter! <b>→</b></a></div></article>';
+      '<div><h3><a href="#/chapters/' + slug(w.id) + '">' + w.role + '</a></h3>' + w.p.map(function (t) { return '<p>' + t + '</p>'; }).join('') +
+      '<a class="wk-more" href="#/chapters/' + slug(w.id) + '">Flip to this chapter! <b>→</b></a></div></article>';
   }).join('');
   var csAt = 0;
   function csGo(n) { var tr = document.getElementById('cs-track'), k = tr.children.length; csAt = (n + k) % k; tr.style.transform = 'translateX(' + (-100 * csAt) + '%)'; }
@@ -1810,7 +2007,7 @@ the puzzles</h2>
     document.getElementById('cs-track').innerHTML = w.slides.map(function (t) { return '<div class="cs-slide">' + t + '</div>'; }).join('');
     csGo(0);
     document.getElementById('cs-lib').innerHTML = WORK_LIST.filter(function (x) { return x.id !== id; }).map(function (x) {
-      return '<li><a href="#/chapters/' + x.id + '"><span class="y">' + x.yr.slice(0, 4) + '</span><span class="t">' + x.title + '<small>' + x.mark + ' · ' + x.role + '</small></span><span class="ar">→</span></a></li>';
+      return '<li><a href="#/chapters/' + slug(x.id) + '"><span class="y">' + x.yr.slice(0, 4) + '</span><span class="t">' + x.title + '<small>' + x.mark + ' · ' + x.role + '</small></span><span class="ar">→</span></a></li>';
     }).join('');
     return true;
   }
@@ -1821,7 +2018,7 @@ the puzzles</h2>
   var shelfWork = WORK.slice().reverse();
   shelf.innerHTML = shelfWork.map(function (w, i) {
     var b = BOOK[w.id];
-    return '<a class="book t-' + b[3] + '" href="#/chapters/' + w.id + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '"' + (b[4] ? ' data-fs="' + b[4] + '"' : '') + ' aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title.replace('\n', '<br>') + '</b><i class="by">' + w.yr + '</i></a>';
+    return '<a class="book t-' + b[3] + '" href="#/chapters/' + slug(w.id) + '" style="--w:' + b[0] + 'px;--h:' + b[1] + '%;--r:' + b[2] + 'deg" data-i="' + i + '"' + (b[4] ? ' data-fs="' + b[4] + '"' : '') + ' aria-label="' + w.title + ', ' + w.mark + ', ' + w.yr + '">' + LOGO[w.id] + '<b class="bt">' + w.title.replace('\n', '<br>') + '</b><i class="by">' + w.yr + '</i></a>';
   }).join('');
   // spine titles are measured with the font's own metrics (canvas), not the vertical layout box, which Safari reports differently
   var bookCx = document.createElement('canvas').getContext('2d');
@@ -1935,11 +2132,12 @@ the puzzles</h2>
     // public names follow the tab names; links under any earlier name are rewritten to the current one
     var h = location.hash, om = h.match(/^#\/(me|about|profile|my-journey|use-cases|blog|work|consulting|stories)(\/.*)?$/);
     if (om) { history.replaceState(null, '', '#/' + OLDNAME[om[1]] + (om[2] || '')); h = location.hash; }
+    if (/^#\/(chapters|work)\/tedx\/?$/.test(h)) { history.replaceState(null, '', '#/chapters/tedxbachkhoa'); h = location.hash; }
     h = h.replace(/^#\/(chapters|cases|words)/, function (x, k) { return '#/' + VIEW[k]; });
     if (/^#\/abt-me\/?$/.test(h)) h = '#/'; // Abt me is the home page
     var m = h.match(/^#\/(\w+)/), v = m && document.getElementById('v-' + m[1]) ? m[1] : 'home';
-    var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
-    if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
+    var cm = h.match(/^#\/work\/([\w-]+)/), pm = h.match(/^#\/stories\/([\w-]+)/), shown = cm && cm[1] === 'tedxbachkhoa' ? 'tedx' : cm && fillCase(cm[1]) ? 'case' : pm && document.getElementById('post-' + pm[1]) ? 'post' : v;
+    if (shown === 'tedx') document.title = 'TEDx Bachkhoa · Co-founder & Head of Communications · Margot Tran'; else if (shown === 'case') document.title = document.getElementById('cs-h').textContent + ' · Margot Tran'; else if (shown === 'post') document.title = document.querySelector('#post-' + pm[1] + ' h1').textContent + ' · Margot Tran'; else document.title = baseTitle;
     views.forEach(function (el) { el.hidden = el.id !== 'v-' + shown; });
     document.body.setAttribute('data-view', v);
     navLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === (v === 'home' ? '#/abt-me' : '#/' + (PUB[v] || v))); renderNav(a); });
@@ -1984,6 +2182,65 @@ the puzzles</h2>
   setInterval(function () { r2 = (r2 + 1) % 3; var w = ROT2[lang][r2], cur = rot2.textContent, t = setInterval(function () { if (w.indexOf(cur) === 0 && cur.length < w.length) cur = w.slice(0, cur.length + 1); else if (cur !== w) cur = cur.slice(0, -1); rot2.textContent = cur; if (cur === w) clearInterval(t); }, 55); }, 4200);
   if (lang === 'vi') setLang('vi');
 })();
+</script>
+<script>
+(function () {
+  var I = function (n) { return 'tedx/img/t' + (n < 10 ? '0' : '') + n + '.jpg'; };
+  var G = {
+    zero: [[2,'Recruitment key visual'],[42,'Our 1st meeting · 01 Nov 2021']],
+    zero2: [[3,'TEDxBachKhoa 2022 key visual'],[61,'Member recruitment 2022'],[60,'Recruitment timeline 2022'],[62,'Recruitment banner']],
+    unveiled: [[43,'The Unveiled · 27.03.2022'],[47,'Timeline'],[59,'Recap'],[44,'The Unveiled banner']],
+    guests: [[55,'Luke Ngo · speaker'],[58,'Hiên · quote'],[56,'Trường Vũ · quote'],[57,'Ngọc Khánh · quote'],[52,'Thank you, speakers'],[53,'MC'],[46,'Performers']],
+    dream: [['dream1', 4, '01', 'Một cái nhìn thoáng qua về lịch sử của AI', 'th-dream1'], ['dream2', 1, '02', ''], ['dream3', 1, '03', '']],
+    insec: [['insec1', 4, '01', 'Nghệ thuật “ảo”', 'th-insec1'], ['insec2', 4.49, '02', 'Hôn nhân và chủ nghĩa tự do cá nhân', 'th-insec2'], ['insec3', 1, '03', '']],
+    ready: [['ready1', 4, '01', 'Sẵn sàng cho một kỷ nguyên mới cùng trí tuệ nhân tạo', 'th-ready1'], ['ready2', 4.49, '02', 'PRIDE không chỉ là tự hào', 'th-ready2'], ['ready5', 4.49, '05', 'Năm ngôn ngữ tình yêu', 'th-ready5']],
+    reset: [[35,'Reset · 08.01.2023'],[33,'Presented by TEDxBachKhoa'],[30,'Lê Nhật Nam · speaker'],[31,'Trương Công Tuấn · speaker'],[36,'Teresa Xuan Nguyen · speaker'],[37,'Javier Gonzalez Nunez · speaker'],[39,'Performer and MC'],[38,'Thank you, speakers'],[40,'10th floor, Ta Quang Buu Library'],[41,'Ta Quang Buu Library'],[28,'Reset banner']]
+  };
+  var seq = [];
+  function fig(tag, key, p) {
+    var f = document.createElement('figure');
+    f.innerHTML = '<img decoding="async" src="' + I(p[0]) + '" alt="' + (p[1] || 'TEDxBachKhoa post') + '">' + (tag && p[1] ? '<figcaption>' + p[1] + '</figcaption>' : '');
+    f.dataset.i = seq.length; seq.push({ src: I(p[0]), alt: p[1] || 'TEDxBachKhoa post' });
+    f.addEventListener('click', function () { open(+f.dataset.i); });
+    return f;
+  }
+  function fill(id, key, tag) { var el = document.getElementById(id); G[key].forEach(function (p) { el.appendChild(fig(tag, key, p)); }); }
+  // hero trio first so lightbox order starts there
+  var hp = document.getElementById('heroPic');
+  [[0,'TEDxBachKhoa'],[43,'The Unveiled'],[35,'Reset']].forEach(function (p) { hp.appendChild(fig(false, 'h', p)); });
+  fill('w-zero', 'zero', true); fill('w-zero2', 'zero2', true); fill('w-unveiled', 'unveiled', true); fill('w-guests', 'guests', true);
+  function episodes(id, key) {
+    var el = document.getElementById(id);
+    G[key].forEach(function (ep) {
+      var f = document.createElement('figure'); f.className = 'ep' + (ep[1] === 1 ? ' one' : ''); f.style.setProperty('--n', ep[1]);
+      var th = ep[4] ? '<div class="thm"><img decoding="async" src="tedx/img/' + ep[4] + '.jpg" alt="' + key + ' episode ' + ep[2] + ' topics"></div>' : '';
+      if (ep[4]) f.classList.add('th');
+      f.innerHTML = th + '<div class="pan"><img decoding="async" src="tedx/img/e-' + ep[0] + '.jpg" alt="' + key + ' episode ' + ep[2] + '"></div><figcaption><b>Episode ' + ep[2] + '</b>' + ep[3] + '</figcaption>';
+      f.dataset.i = seq.length; seq.push({ src: 'tedx/img/e-' + ep[0] + '.jpg', alt: ep[3] });
+      f.querySelector('.pan').addEventListener('click', function () { open(+f.dataset.i); });
+      if (ep[4]) { f.dataset.t = seq.length; seq.push({ src: 'tedx/img/' + ep[4] + '.jpg', alt: ep[3] + ' (topics)' }); f.querySelector('.thm').addEventListener('click', function () { open(+f.dataset.t); }); }
+      el.appendChild(f);
+    });
+  }
+  seq.push({ src: 'tedx/img/th-key.jpg', alt: 'The RE series' }); var ki = seq.length - 1; document.getElementById('keyvis').addEventListener('click', function () { open(ki); });
+  episodes('s-dream', 'dream'); episodes('s-insec', 'insec'); episodes('s-ready', 'ready');
+  fill('w-reset', 'reset', true);
+
+  var lb = document.getElementById('tx-lb'), im = lb.querySelector('img'), ct = lb.querySelector('.lc'), cur = 0;
+  function show(i) { cur = (i + seq.length) % seq.length; im.src = seq[cur].src; im.alt = seq[cur].alt; ct.textContent = (cur + 1) + ' / ' + seq.length + (seq[cur].alt ? '  ·  ' + seq[cur].alt : ''); }
+  function open(i) { show(i); lb.classList.add('on'); document.body.style.overflow = 'hidden'; }
+  function close() { lb.classList.remove('on'); document.body.style.overflow = ''; }
+  lb.querySelector('.lx').onclick = close; lb.querySelector('.lp').onclick = function () { show(cur - 1); }; lb.querySelector('.ln').onclick = function () { show(cur + 1); };
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+  var els = document.querySelectorAll('#v-tedx .tx-rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  } else els.forEach(function (e) { e.classList.add('on'); });
+})();
+
 </script>
 </body>
 </html>

@@ -77,8 +77,9 @@ for m in re.finditer(r'<article class="post" id="post-([\w-]+)"(.*?)</article>',
                             img.group(1) if img and not img.group(1).startswith('data:') else tab_img('blog'), '#/words/' + pid)
 
 # My journey: entries of the WORK array; an optional img: '…' field becomes the preview
-for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
+for m in re.finditer(r"\{ id: '([\w-]+)',(?: loc: '(?:[^'\\]|\\.)*',)? mark: '((?:[^'\\]|\\.)*)'.*?role: '((?:[^'\\]|\\.)*)'(.*?)\}(?=,?\s*(?:\{ id:|\]))", src, re.S):
     wid, mark, role, rest = m.group(1), m.group(2).replace("\\'", "'"), m.group(3).replace("\\'", "'"), m.group(4)
+    wid = {'tedx': 'tedxbachkhoa'}.get(wid, wid)  # the TEDx chapter's public name
     img = re.search(r"\bimg: '([^']+)'", rest)
     p = re.search(r"p: \['((?:[^'\\]|\\.)*)'", rest)
     pages['chapters/' + wid] = (f'{mark} · {role} · Margot Tran', clip(text(p.group(1).replace("\\'", "'"))) if p else TAGLINE,
@@ -88,9 +89,12 @@ for m in re.finditer(r"\{ id: '([\w-]+)', mark: '((?:[^'\\]|\\.)*)'.*?role: '((?
 # those pages stay, point their canonical URL at the new name and send visitors to the new hash
 LEGACY = {'abt-me': ['me', 'about', 'profile'], 'chapters': ['my-journey'], 'cases': ['use-cases'], 'words': ['blog']}
 
+# the TEDx chapter was first published as chapters/tedx
+ALIAS = {'chapters/tedxbachkhoa': ['chapters/tedx']}
+
 for path, (title, desc, img, target) in pages.items():
     head, _, rest = path.partition('/')
-    for out, canon in [(path, None)] + [(o + ('/' + rest if rest else ''), path) for o in LEGACY[head]]:
+    for out, canon in [(path, None)] + [(o + ('/' + rest if rest else ''), path) for o in LEGACY[head]] + [(a, path) for a in ALIAS.get(path, [])]:
         os.makedirs(os.path.dirname(out) or '.', exist_ok=True)
         with open(out + '.html', 'w', encoding='utf-8') as f:
             f.write(page(out, title, desc, img, target, canon))
