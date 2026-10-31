@@ -806,6 +806,7 @@ footer.dark .fb { color: color-mix(in srgb, var(--ink) 70%, transparent); }
 a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; } a.sb-cta:hover { color: var(--accent-ink); border-bottom-color: var(--orange); }
 .wk-h .wk-b { color: var(--orange) !important; -webkit-text-fill-color: var(--orange); }
 
+
 /* TEDx Bachkhoa chapter */
 #v-tedx { --g: #3ddc4a; --r: #e0322d; --b: #5a7fe0; --gut: clamp(16px, 6vw, 96px); overflow-x: clip; }
 #v-tedx img { display: block; max-width: 100%; }
@@ -836,6 +837,7 @@ a.sb-cta { color: var(--accent-ink); text-decoration: none; border-bottom: 1px s
 #v-tedx .sec .tx-lead { margin: 0; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.75; max-width: 520px; }
 #v-tedx .meta { display: flex; flex-wrap: wrap; gap: 6px 26px; margin: 22px 0 0; padding: 0; list-style: none; font-size: .86rem; color: var(--mute); }
 #v-tedx .meta b { color: var(--ink); font-weight: 700; }
+#v-tedx .wall.one { columns: 1; }
 #v-tedx .gl { font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); margin: clamp(34px,6vh,60px) 0 0; }
 #v-tedx .gl::before { content: "( "; }
 #v-tedx .gl::after { content: " )"; }
@@ -1183,7 +1185,7 @@ the puzzles</h2>
   <div class="hero-pic tx-rv" id="heroPic"></div>
 
   <nav class="jump tx-rv" aria-label="Sections">
-    <a href="#zero">From zero</a><a href="#unveiled">The Unveiled</a><a href="#re">The RE series</a><a href="#reset">Reset</a>
+    <a href="#zero">From zero</a><a href="#unveiled">The Unveiled</a><a href="#reset">Reset</a><a href="#re">The RE series</a>
   </nav>
 </header>
 
@@ -1194,11 +1196,12 @@ the puzzles</h2>
     <div><span class="label">01 · From zero</span><h2>a blank page,<br>a name, a crew</h2></div>
     <div>
       <p class="tx-lead">A TEDx chapter we started from nothing at Hanoi University of Science and Technology. I founded the fanpage and built the brand from scratch, then grew the team that kept it speaking.</p>
-      <ul class="meta"><li><b>01.11.2021</b> our first meeting</li><li><b>2</b> recruitment rounds</li></ul>
+      <ul class="meta"><li><b>01.11.2021</b> our first meeting</li><li><b>2</b> recruitment seasons</li></ul>
     </div>
   </div>
-  <div class="gl">Recruitment · round 1</div><div class="wall tx-rv" id="w-zero"></div>
-  <div class="gl">Recruitment · round 2</div><div class="wall tx-rv" id="w-zero2"></div>
+  <div class="gl">Recruitment · season 1</div><div class="wall tx-rv" id="w-zero"></div>
+  <div class="gl">Recruitment · season 2</div><div class="wall tx-rv" id="w-zero2"></div>
+  <div class="wall one tx-rv" id="w-banner"></div>
 </section>
 
 <!-- 02 -->
@@ -1208,18 +1211,34 @@ the puzzles</h2>
     <div><span class="label">02 · The Unveiled</span><h2>the first<br>stage</h2></div>
     <div>
       <p class="tx-lead">Our first event, shaped by the EX series: EXistence, EXposure, EXploration. Twenty-four articles built the story before anyone took the stage, and organic reach grew by 210%.</p>
-      <ul class="meta"><li><b>27.03.2022</b></li><li>Speakers <b>Hiên, Luke Ngo, Trường Vũ, Ngọc Khánh</b></li></ul>
+      <ul class="meta"><li><b>27.03.2022</b></li><li>Online, 14:00 to 17:00 on Zoom</li><li>Speakers <b>Hiên, Luke Ngo, Trường Vũ, Ngọc Khánh</b></li></ul>
     </div>
   </div>
   <div class="wall tx-rv" id="w-unveiled"></div>
-  <div class="gl">Speakers &amp; guests</div><div class="wall tx-rv" id="w-guests"></div>
+  <div class="gl">Speakers</div><div class="wall tx-rv" id="w-speakers"></div>
+  <div class="gl">Guests</div><div class="wall tx-rv" id="w-guests"></div>
 </section>
 
 <!-- 03 -->
+<section class="sec tx-in" id="reset">
+  <hr class="tx-rule">
+  <div class="sec-h" style="margin-top:34px">
+    <div><span class="label">03 · Reset</span><h2>a new insight<br>into what<br>people know</h2></div>
+    <div>
+      <p class="tx-lead">Reset looked again at what everyone already knows, so it would speak to today's generation. The campaign lifted engagement by 250%.</p>
+      <ul class="meta"><li><b>08.01.2023</b></li><li>10th floor, Ta Quang Buu Library</li><li>Speakers <b>Lê Nhật Nam, Trương Công Tuấn, Teresa Xuan Nguyen, Javier Gonzalez Nunez</b></li></ul>
+    </div>
+  </div>
+  <div class="wall tx-rv" id="w-reset"></div>
+  <div class="gl">Speakers</div><div class="wall tx-rv" id="w-rspeakers"></div>
+  <div class="gl">Guests</div><div class="wall tx-rv" id="w-rguests"></div>
+</section>
+
+<!-- 04 -->
 <section class="sec tx-in" id="re">
   <hr class="tx-rule">
   <div class="sec-h" style="margin-top:34px">
-    <div><span class="label">03 · The RE series</span><h2>three colours,<br>one conversation</h2></div>
+    <div><span class="label">04 · The RE series</span><h2>three colours,<br>one conversation</h2></div>
     <div>
       <figure class="key tx-rv" id="keyvis"><img src="tedx/img/th-key.jpg" alt="RE series key visual: insecuRE, REady, dREaming"></figure>
       <p class="tx-lead">Eighteen articles on dREaming, insecuRE and REady. Each phase got its own colour and its own episodes, so a feed of small posts still read as one story.</p>
@@ -1231,19 +1250,6 @@ the puzzles</h2>
   <div class="track tx-rv"><div class="track-h"><i style="background:var(--b)"></i><h3><b>RE</b>ady</h3></div><div class="strip" id="s-ready"></div></div>
 </section>
 
-<!-- 04 -->
-<section class="sec tx-in" id="reset">
-  <hr class="tx-rule">
-  <div class="sec-h" style="margin-top:34px">
-    <div><span class="label">04 · Reset</span><h2>a new insight<br>into what<br>people know</h2></div>
-    <div>
-      <p class="tx-lead">Reset looked again at what everyone already knows, so it would speak to today's generation. The campaign lifted engagement by 250%.</p>
-      <ul class="meta"><li><b>08.01.2023</b></li><li>10th floor, Ta Quang Buu Library</li><li>Speakers <b>Lê Nhật Nam, Trương Công Tuấn, Teresa Xuan Nguyen, Javier Gonzalez Nunez</b></li></ul>
-    </div>
-  </div>
-  <div class="wall tx-rv" id="w-reset"></div>
-</section>
-
 <section class="end tx-in">
   <span class="label">Turn the page</span>
   <h2>more chapters<br>to flip through</h2>
@@ -1251,6 +1257,9 @@ the puzzles</h2>
   <p class="tx-credit">Photos: TEDx Bachkhoa fanpage</p>
 </section>
 </div>
+<section class="band cs-lib">
+  <div class="in"><h2>Work Library</h2><ul class="rows" id="tx-lib"></ul></div>
+</section>
 <div id="tx-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
   <button class="lx" aria-label="Close">✕</button><button class="lp" aria-label="Previous">←</button><img alt=""><button class="ln" aria-label="Next">→</button><div class="lc"></div>
 </div>
@@ -2011,6 +2020,9 @@ the puzzles</h2>
     }).join('');
     return true;
   }
+  document.getElementById('tx-lib').innerHTML = WORK_LIST.filter(function (x) { return x.id !== 'tedx'; }).map(function (x) {
+    return '<li><a href="#/chapters/' + slug(x.id) + '"><span class="y">' + x.yr.slice(0, 4) + '</span><span class="t">' + x.title + '<small>' + x.mark + ' · ' + x.role + '</small></span><span class="ar">→</span></a></li>';
+  }).join('');
   var baseTitle = document.title;
   // Home shelf, after untold's: tall books, a logo on top, the story's title down the spine
   var shelf = document.getElementById('shelf2'), ticks = document.getElementById('sb-ticks'), sbN = document.getElementById('sb-n');
@@ -2187,14 +2199,18 @@ the puzzles</h2>
 (function () {
   var I = function (n) { return 'tedx/img/t' + (n < 10 ? '0' : '') + n + '.jpg'; };
   var G = {
-    zero: [[2,'Recruitment key visual'],[42,'Our 1st meeting · 01 Nov 2021']],
-    zero2: [[3,'TEDxBachKhoa 2022 key visual'],[61,'Member recruitment 2022'],[60,'Recruitment timeline 2022'],[62,'Recruitment banner']],
+    zero: [[2,'Recruitment key visual · season 1'],[42,'Our 1st meeting · 01 Nov 2021']],
+    zero2: [[3,'TEDxBachKhoa 2022 key visual'],[61,'Member recruitment 2022'],[60,'Recruitment timeline 2022']],
+    banner: [[62,'Recruitment banner']],
     unveiled: [[43,'The Unveiled · 27.03.2022'],[47,'Timeline'],[59,'Recap'],[44,'The Unveiled banner']],
-    guests: [[55,'Luke Ngo · speaker'],[58,'Hiên · quote'],[56,'Trường Vũ · quote'],[57,'Ngọc Khánh · quote'],[52,'Thank you, speakers'],[53,'MC'],[46,'Performers']],
-    dream: [['dream1', 4, '01', 'Một cái nhìn thoáng qua về lịch sử của AI', 'th-dream1'], ['dream2', 1, '02', ''], ['dream3', 1, '03', '']],
-    insec: [['insec1', 4, '01', 'Nghệ thuật “ảo”', 'th-insec1'], ['insec2', 4.49, '02', 'Hôn nhân và chủ nghĩa tự do cá nhân', 'th-insec2'], ['insec3', 1, '03', '']],
-    ready: [['ready1', 4, '01', 'Sẵn sàng cho một kỷ nguyên mới cùng trí tuệ nhân tạo', 'th-ready1'], ['ready2', 4.49, '02', 'PRIDE không chỉ là tự hào', 'th-ready2'], ['ready5', 4.49, '05', 'Năm ngôn ngữ tình yêu', 'th-ready5']],
-    reset: [[35,'Reset · 08.01.2023'],[33,'Presented by TEDxBachKhoa'],[30,'Lê Nhật Nam · speaker'],[31,'Trương Công Tuấn · speaker'],[36,'Teresa Xuan Nguyen · speaker'],[37,'Javier Gonzalez Nunez · speaker'],[39,'Performer and MC'],[38,'Thank you, speakers'],[40,'10th floor, Ta Quang Buu Library'],[41,'Ta Quang Buu Library'],[28,'Reset banner']]
+    speakers: [[55,'Luke Ngo · speaker'],[58,'Hiên · quote'],[56,'Trường Vũ · quote'],[57,'Ngọc Khánh · quote']],
+    guests: [[53,'MC'],[46,'Performers']],
+    dream: [['dream1', 1, '01', 'Một cái nhìn thoáng qua về lịch sử của AI'], ['dream2', 1, '02', ''], ['dream3', 1, '03', '']],
+    insec: [['insec1', 1, '01', 'Nghệ thuật “ảo”'], ['insec2', 1, '02', 'Hôn nhân và chủ nghĩa tự do cá nhân'], ['insec3', 1, '03', '']],
+    ready: [['ready1', 1, '01', 'Sẵn sàng cho một kỷ nguyên mới cùng trí tuệ nhân tạo'], ['ready2', 1, '02', 'PRIDE không chỉ là tự hào'], ['ready5', 1, '05', 'Năm ngôn ngữ tình yêu']],
+    reset: [[35,'Reset · 08.01.2023'],[33,'Presented by TEDxBachKhoa'],[40,'10th floor, Ta Quang Buu Library'],[28,'Reset banner']],
+    rspeakers: [[30,'Lê Nhật Nam · speaker'],[31,'Trương Công Tuấn · speaker'],[36,'Teresa Xuan Nguyen · speaker'],[37,'Javier Gonzalez Nunez · speaker'],[38,'Thank you, speakers']],
+    rguests: [[39,'Performer and MC']]
   };
   var seq = [];
   function fig(tag, key, p) {
@@ -2208,7 +2224,7 @@ the puzzles</h2>
   // hero trio first so lightbox order starts there
   var hp = document.getElementById('heroPic');
   [[0,'TEDxBachKhoa'],[43,'The Unveiled'],[35,'Reset']].forEach(function (p) { hp.appendChild(fig(false, 'h', p)); });
-  fill('w-zero', 'zero', true); fill('w-zero2', 'zero2', true); fill('w-unveiled', 'unveiled', true); fill('w-guests', 'guests', true);
+  fill('w-zero', 'zero', true); fill('w-zero2', 'zero2', true); fill('w-unveiled', 'unveiled', true); fill('w-banner', 'banner', true); fill('w-speakers', 'speakers', true); fill('w-guests', 'guests', true);
   function episodes(id, key) {
     var el = document.getElementById(id);
     G[key].forEach(function (ep) {
@@ -2224,7 +2240,7 @@ the puzzles</h2>
   }
   seq.push({ src: 'tedx/img/th-key.jpg', alt: 'The RE series' }); var ki = seq.length - 1; document.getElementById('keyvis').addEventListener('click', function () { open(ki); });
   episodes('s-dream', 'dream'); episodes('s-insec', 'insec'); episodes('s-ready', 'ready');
-  fill('w-reset', 'reset', true);
+  fill('w-reset', 'reset', true); fill('w-rspeakers', 'rspeakers', true); fill('w-rguests', 'rguests', true);
 
   var lb = document.getElementById('tx-lb'), im = lb.querySelector('img'), ct = lb.querySelector('.lc'), cur = 0;
   function show(i) { cur = (i + seq.length) % seq.length; im.src = seq[cur].src; im.alt = seq[cur].alt; ct.textContent = (cur + 1) + ' / ' + seq.length + (seq[cur].alt ? '  ·  ' + seq[cur].alt : ''); }
